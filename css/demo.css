@@ -1,0 +1,34 @@
+body {
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+
+
+    --dot-bg: #d4f1f8;
+    --dot-color: #03045e;
+    --dot-size: 1px;
+    --dot-space: 10px;
+    background:
+        linear-gradient(90deg, var(--dot-bg) calc(var(--dot-space) - var(--dot-size)), transparent 1%) center / var(--dot-space) var(--dot-space),
+        linear-gradient(var(--dot-bg) calc(var(--dot-space) - var(--dot-size)), transparent 1%) center / var(--dot-space) var(--dot-space),
+        var(--dot-color);
+}
+
+.loginBG{
+    background-image: url("../image/bg_1.png"),url("../image/bg_2.png");
+    background-position: left, center;
+    background-repeat: no-repeat, no-repeat;
+    background-size: cover, cover;
+    width: 100%;
+    height: 100%;
+}
+
+.dim{
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.575);
+    width: 100%;
+    height: 100%;
+    
+}
+
+.txtColor{
+    color: #9FC3E5;
+}
