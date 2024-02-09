@@ -14,6 +14,14 @@
   <link rel="stylesheet" href="../css/demo.css">
   <!-- fontawesome -->
   <script src="https://kit.fontawesome.com/d050a6d764.js" crossorigin="anonymous"></script>
+  <!-- Custom fonts for this template-->
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link
+    href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+    rel="stylesheet">
+
+  <!-- Custom styles for this template-->
+  <link href="css/sb-admin-2.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -22,15 +30,15 @@
       <div class="col-sm-auto sticky-top rounded-2" style="background-color: #173B7E;">
         <div
           class="d-flex flex-sm-column flex-row flex-nowrap bg-transparent text-center align-items-center justify-content-center sticky-top ">
-          <a  href="https://www.obedshouse.org/" target="_blank" class="d-block p-3 link-dark text-decoration-none" title="" data-bs-toggle="tooltip"
-            data-bs-placement="right" data-bs-original-title="Icon-only">
+          <a href="https://www.obedshouse.org/" target="_blank" class="d-block p-3 link-dark text-decoration-none"
+            title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Icon-only">
             <img src="../image/obeds.jpg" class="img-fluid rounded-4" width="80px"></img>
           </a>
           <ul
             class="nav nav-pills nav-flush flex-sm-column flex-row flex-nowrap text-center align-items-center justify-content-center">
             <li class="nav-item">
-              <a href="./Dboard.html" class="p-0 mt-0 text-decoration-none" title="" data-bs-toggle="tooltip" data-bs-placement="right"
-                data-bs-original-title="Home">
+              <a href="./Dboard.html" class="p-0 mt-0 text-decoration-none" title="" data-bs-toggle="tooltip"
+                data-bs-placement="right"> 
                 <i class="txtColor icon fa-solid fa-chart-line  btn btn-outline-primary border-0"
                   style="font-size: 35px;"></i>
                 <p class="txtColor" style="font-size: 12px;">Dashboard</p>
@@ -38,7 +46,7 @@
             </li>
             <li>
               <a href="./Orphan.html" class="p-0 mt-0 text-decoration-none" title="" data-bs-toggle="tooltip"
-                data-bs-placement="right" data-bs-original-title="Dashboard">
+                data-bs-placement="right" > 
                 <i class="txtColor icon fa-solid fa-children fs-2  btn btn-outline-primary border-0"
                   style="font-size: 35px;"></i>
                 <p class="txtColor  font-size-sm " style="font-size: 12px;">Orphan Profile</p>
@@ -46,15 +54,15 @@
             </li>
             <li>
               <a href="./Files.html" class="p-0 mt-0 text-decoration-none" title="" data-bs-toggle="tooltip"
-                data-bs-placement="right" data-bs-original-title="Orders">
+                data-bs-placement="right" > 
                 <i class="txtColor icon fa-solid fa-folder-open fs-2  btn btn-outline-primary border-0"
                   style="font-size: 35px;"></i>
                 <p class="txtColor " style="font-size: 12px;">Orphanage Files</p>
               </a>
             </li>
             <li>
-              <a href="" class="p-0 mt-0 text-decoration-none" title="" data-bs-toggle="tooltip"
-                data-bs-placement="right" data-bs-original-title="Products">
+              <a href="./Trash.html" class="p-0 mt-0 text-decoration-none" title="" data-bs-toggle="tooltip"
+                data-bs-placement="right" > 
                 <i class="txtColor icon fa-solid fa-trash-can fs-2  btn btn-outline-primary border-0 "
                   style="font-size: 35px;"></i>
                 <p class="txtColor " style="font-size: 12px;">Trash</p>
@@ -75,6 +83,7 @@
           </div>
         </div>
       </div>
+    
 
 
 
@@ -82,59 +91,85 @@
         <!-- content -->
         <div>
           <div class="container-fluid">
-            <div class="">
-              <div class="row justify-content-center">
-              <div class="col-md-2 text-center bg-light m-3 card clickable" data-target="#totalOrphansModal">
-                <div class="card-body">
-                  <h5 class="card-title">Total Orphans</h5>
-                  <h2 class="card-text" id="totalOrphansCount">350</h2>
+            <div class="row mt-3">
+              <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card bgdash shadow h-100 py-2">
+                  <div class="card-body d-flex justify-content-between align-items-center">
+                    <h5 class="card-title text-info">Total Orphans</h5>
+                    <i class="txtColor icon fa-solid fa-children fs-2   border-0" style="font-size: 35px;"></i>
+                  </div>
+                  <div class="card-body text-center">
+                    <h1 class="display-4">
+                      <?php echo $orphan_count; ?>100
+                    </h1>
+                  </div>
                 </div>
               </div>
-              <div class="col-md-2 text-center  bg-light m-3 card clickable" data-target="#genderCountModal">
-                <div class="card-body">
-                  <h5 class="card-title">Gender Count</h5>
-                  <ul class="card-text">
-                    <li>Male: <span id="maleCount">180</span></li>
-                    <li>Female: <span id="femaleCount">170</span></li>
-                  </ul>
+
+                <div class="col-xl-3 col-md-6 mb-4">
+                  <div class="card bgdash shadow h-100 py-2">
+                    <div class="card-body d-flex justify-content-between align-items-center">
+                      <h5 class="card-title text-info">Total Orphans</h5>
+                      <i class="txtColor icon fa-solid fa-venus-mars fs-2 border-0" style="font-size: 35px;"></i>
+                    </div>
+                    <div class="card-body text-center">
+                      <ul class="list-group bgdash list-group-flush">
+                        <li class="list-group-item bgdash d-flex justify-content-between align-items-center">
+                          Male
+                          <span class="badge bg-success rounded-pill">55</span>
+                        </li>
+                        <li class="list-group-item bgdash d-flex justify-content-between align-items-center">
+                          Female
+                          <span class="badge bg-danger rounded-pill">48</span>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
                 </div>
-              </div>
-              <div class="col-md-2 text-center  bg-light m-3 card clickable" data-target="#interventionNeededModal">
-                <div class="card-body">
-                  <h5 class="card-title">Intervention Needed</h5>
-                  <h2 class="card-text" id="interventionNeededCount">85</h2>
+
+                <div class="col-xl-3 col-md-6 mb-4">
+                  <div class="card bgdash shadow h-100 py-2">
+                    <div class="card-body d-flex justify-content-between align-items-center">
+                      <h5 class="card-title text-info">Needs Intervention:</h5>
+                      <i class="txtColor icon fa-solid fa-circle-exclamation fs-2   border-0" style="font-size: 35px;"></i>
+                    </div>
+                    <div class="card-body text-center">
+                      <h1 class="display-4">
+                        <?php echo $orphan_count; ?>124
+                      </h1>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
 
-            <!-- charts dre haaa -->
-            <div>
-              <div class="col-md-6 bg-light m-3 card clickable"  data-target="#orphanStatusGraphModal">
-                <div class="card-body">
-                  <h5 class="card-title">Orphan Status</h5>
-                  <canvas id="orphanStatusGraph"></canvas>
+                <div class="col-xl-3 col-md-6 mb-4">
+                  <div class="card bgdash shadow h-100 py-2">
+                    <div class="card-body d-flex justify-content-between align-items-center">
+                      <h5 class="card-title text-info">Additional content</h5>
+                      <i class="txtColor icon fa-solid fa-children fs-2   border-0" style="font-size: 35px;"></i>
+                    </div>
+                    <div class="card-body text-center">
+                      <h1 class="display-4">
+                        <?php echo $orphan_count; ?>...
+                      </h1>
+                    </div>
+                  </div>
                 </div>
+
+
+
+
+              <!-- charts dre haaa -->
+              <div>
+
               </div>
-            </div>
-          
 
-            <div id="totalOrphansModal" class="modal fade" tabindex="-1" role="dialog">
-            </div>
-            <div id="genderCountModal" class="modal fade" tabindex="-1" role="dialog">
-            </div>
-            <div id="orphanStatusGraphModal" class="modal fade" tabindex="-1" role="dialog">
-            </div>
-            <div id="interventionNeededModal" class="modal fade" tabindex="-1" role="dialog">
-            </div>
 
-            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-            <script src="../js/dashboard.js"></script>
 
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
 
 
 </body>
