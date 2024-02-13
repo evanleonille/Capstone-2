@@ -88,23 +88,30 @@
                                     <i class="fa-solid fa-arrow-left"></i>
                                 </a>
                             </div>
-                            <div class="row info">
-                                <img class="col-3 file-icon fs-1 img-fluid picsize" src="../image/Profpic (7).png"
-                                    height="100px" width="100px" alt="File Icon">
-                                <div class="col-5 mt-3">
-                                    <h3>Bakit Ganito Podcast</h3>
-                                    <p>Orphan ID: 124</p>
+                            <div class="row info ">
+                              <img class="col-3 file-icon fs-1 img-fluid picsize" src="../image/Profpic (7).png" height="100px" width="100px"
+                                alt="File Icon">
+                              <div class="col-5 mt-3">
+                                <h3>Bakit Ganito Podcast</h3>
+                                <p>Orphan ID: 124</p>
+                              </div>
+                              <div class="col border text-end align-items-end justify-content-end">
+                                <div class="row mt-3 text-end px-0 mx-5">
+                                  <a class="btn btn-primary" href="./academic.html"> 
+                                    Academic Information </a>
                                 </div>
-                                <div class="col-4 mt-3 info-icon text-end px-0 mx-0">
-                                    <a class="btn btn-primary  " data-bs-toggle="modal"
-                                        data-bs-target="#noteModal"> Add
-                                        Notes </a>
-                                    <a class="btn btn-primary" href="./orphanSentiment_detail.html" > See
-                                        Notes </a>
-                                
+                                <div class="row mt-3 text-end px-0 mx-5 info-icon">
+                                  <a class="btn btn-primary" href="./health.html"> 
+                                    Health Information </a>
+                                </div>
+                                <div class="row mt-3 info-icon text-end px-0 mx-5">
+                                  <!-- <a class="btn btn-primary  " data-bs-toggle="modal" data-bs-target="#noteModal"> Add                                                                                           Notes </a> -->
+                                  <a class="btn btn-primary" href="./orphanSentiment_detail.html"> See
+                                    Notes </a>
+                                </div>
+                              </div>
+                            
                             </div>
-
-                        </div>
 
                         <hr class="mt-2">
                         <div class="container row">
@@ -175,12 +182,13 @@
                         <hr class="mt-2" />
                         <div class="container row">
                             <div class="row ">
-                                <div class="col-10 me-5">
-                                    <h2>BMI</h2>
-                                </div>
-                                <div class="col-lg-1 text-center align-items-end justify-content-end btn btn-primary m-1">
-                                    <a>Edit</a>
-                                </div>
+                              <div class="col-8 me-5">
+                                <h2>BMI</h2>
+                              </div>
+                              <div class="col-3 text-end align-items-end justify-content-end mx-0 px-0">
+                                <a class="btn btn-primary" href="./bmi.html">BMI History</a>
+                                <!-- <a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#bmiModal">Edit</a> -->
+                              </div>
                             </div>
                             <p class="col-6"><strong>Height:</strong> <input class="form-control" value="Male" type="text"
                                     aria-label="Disabled input example" readonly>
@@ -224,30 +232,32 @@
                             </div>
 
                             <!-- modal for upload -->
-                            <div class="modal fade" id="noteModal" tabindex="-1" role="dialog"
-                                aria-labelledby="noteModalLabel" aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header  ">
-                                            <h5 class="modal-title" id="noteModalLabel">Upload Typed Notes</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <div class="center-container">
-                                                <div class="containerNote">
-                                                    <h1>Upload Typed Notes</h1>
-                                                    <form method="POST" action="{% url 'add_note' orphan.orphanID %}"
-                                                        enctype="multipart/form-data">
-                                                        {% csrf_token %}
-                                                        <label for="notes">Typed Notes:</label>
-                                                        <textarea id="notes" name="text" rows="5" class="form-control"
-                                                            required></textarea>
-                                                </div>
-                                                <div class="form-group">
-                                                    <button class="btn btn-primary mt-2" type="submit">Upload
-                                                        Notes</button>
-                                                </div>
+                            <div class="modal fade" id="noteModal" tabindex="-1" role="dialog" aria-labelledby="noteModalLabel" aria-hidden="true">
+                              <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                                <div class="modal-content">
+                                  <div class="modal-header  ">
+                                    <h5 class="modal-title" id="noteModalLabel">Upload Typed Notes</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                  </div>
+                                  <div class="modal-body">
+                                    <div class="center-container">
+                                      <div class="containerNote">
+                                        <h1>Upload Typed Notes</h1>
+                                        <form method="POST" action="{% url 'add_note' orphan.orphanID %}" enctype="multipart/form-data">
+                                          {% csrf_token %}
+                                          <label for="notes">Typed Notes:</label>
+                                          <textarea id="notes" name="text" rows="5" class="form-control" required></textarea>
+                                      </div>
+                                      <div class="form-group">
+                                        <button class="btn btn-primary mt-2" type="submit">Upload
+                                          Notes</button>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+
                     </form>
                 </div>
             </div>
@@ -265,5 +275,5 @@
 
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-
+<script src="../js/bmi.js"></script>
 </html>
