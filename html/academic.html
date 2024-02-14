@@ -97,9 +97,7 @@
                         </div>
                         <div class="col text-end align-items-end justify-content-end">
                             <div class="row mt-3 info-icon text-end px-0 mx-5">
-                                <button type="button" class="btn btn-primary mx-1" id="uploadBtn" data-bs-toggle="modal"
-                                    data-bs-target="#uploadModal"><i class="ion ion-md-cloud-upload"></i>
-                                    Add Orphan Profile</button>
+                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addAcademicDetailsModal">Add Details</button>
                             </div>
                         </div>
                     </div>
@@ -142,143 +140,57 @@
                 </div>
 
                 <!-- modal for upload academic -->
-                <div class="modal fade" id="uploadModal" tabindex="-1" aria-labelledby="uploadModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-lg">
-                        <div class="modal-content ">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="uploadModalLabel">Create new profile
-                                </h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <div class="text-start">
-                                    <form>
-                                        <div class="row mb-3 bg-transparent">
-                                            <div class="col-xl-6">
-                                                <label for="firstName" class="form-label">First
-                                                    Name</label>
-                                                <input type="text" class="form-control" id="firstName" required>
-                                            </div>
-                                            <div class="col-xl-6">
-                                                <label for="middleName" class="form-label">Middle
-                                                    Name</label>
-                                                <input type="text" class="form-control" id="middleName">
-                                            </div>
-                                            <div class="col-xl-12">
-                                                <label for="lastName" class="form-label">Last
-                                                    Name</label>
-                                                <input type="text" class="form-control" id="lastName" required>
-                                            </div>
-                                        </div>
-                
-                                        <div class="row mb-3 bg-transparent">
-                                            <div class="col-md-6">
-                                                <label for="gender" class="form-label">Gender</label>
-                                                <select class="form-select" id="gender" required>
-                                                    <option value="">Select Gender</option>
-                                                    <option value="male">Male</option>
-                                                    <option value="female">Female</option>
-                                                    <option value="other">Other</option>
-                                                </select>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <label for="birthdate" class="form-label">Birthdate</label>
-                                                <input type="date" class="form-control" id="birthdate" required>
-                                            </div>
-                                        </div>
-                
-                                        <div class="row mb-3 bg-transparent">
-                                            <div class="col-md-6">
-                                                <label for="FatherName" class="form-label">Father's
-                                                    Name</label>
-                                                <input type="input" class="form-control" id="text" required>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <label for="MotherName" class="form-label">Mother's
-                                                    Name</label>
-                                                <input type="input" class="form-control" id="text" required>
-                                            </div>
-                                            <div class="col-xl-12">
-                                                <label for="middleName" class="form-label">Home
-                                                    Address</label>
-                                                <input type="input" class="form-control" id="text">
-                                            </div>
-                                        </div>
-                
-                                        <div class="row mb-3 bg-transparent">
-                                            <div class="col-md-4">
-                                                <label for="dateAdmitted" class="form-label">Date
-                                                    Admitted</label>
-                                                <input type="date" class="form-control" id="dateAdmitted" required>
-                                            </div>
-                                            <div class="col-md-8">
-                                                <label for="file" class="form-label">Upload
-                                                    Profile Picture</label>
-                                                <input type="file" class="form-control" id="file">
-                                            </div>
-                                            <div class="col-md-4">
-                                                <label for="file" class="form-label">Upload
-                                                    Medical Certificate</label>
-                                                <input type="file" class="form-control" id="file">
-                                            </div>
-                                            <div class="col-md-8">
-                                                <label for="file" class="form-label">Upload
-                                                    File</label>
-                                                <input type="file" class="form-control" id="file">
-                                            </div>
-                                        </div>
-                
-                
-                
-                                        <button class="btn btn-primary" type="submit" value="Submit" style="float:right;"> Submit
-                                        </button>
-                
-                                    </form>
-                                </div>
-                            </div>
+                <div class="modal fade" id="addAcademicDetailsModal" tabindex="-1" aria-labelledby="addAcademicDetailsModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg"> <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="addAcademicDetailsModalLabel">Add Academic Details</h5>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                    </div>
-                </div>
-
-             
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#numberInputModal">Enter Numbers</button>
-
-                <div class="modal fade" id="numberInputModal" tabindex="-1" aria-labelledby="numberInputModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="numberInputModalLabel">Enter Three Numbers</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <div class="modal-body">
+                          <form id="academicDetailsForm">
+                            <div class="mb-3">
+                              <label for="dateInput" class="form-label">Date</label>
+                              <input type="date" class="form-control" id="dateInput" aria-describedby="dateHelp" required>
+                              <small id="dateHelp" class="form-text text-muted">Enter the date of completion or evaluation.</small>
                             </div>
-                            <div class="modal-body">
-                                <form id="numberInputForm">
-                                    <div class="row mb-3">
-                                        <label for="number1Input" class="col-sm-3 col-form-label">Number 1:</label>
-                                        <div class="col-sm-9">
-                                            <input type="number" class="form-control" id="number1Input" name="number1" required>
-                                        </div>
-                                    </div>
-                                    <div class="row mb-3">
-                                        <label for="number2Input" class="col-sm-3 col-form-label">Number 2:</label>
-                                        <div class="col-sm-9">
-                                            <input type="number" class="form-control" id="number2Input" name="number2" required>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <label for="number3Input" class="col-sm-3 col-form-label">Number 3:</label>
-                                        <div class="col-sm-9">
-                                            <input type="number" class="form-control" id="number3Input" name="number3" required>
-                                        </div>
-                                    </div>
-                                </form>
+                            <div class="mb-3">
+                              <label for="yearLevelInput" class="form-label">Year Level</label>
+                              <input type="text" class="form-control" id="yearLevelInput" aria-describedby="yearLevelHelp" required>
+                              <small id="yearLevelHelp" class="form-text text-muted">Enter your year level (e.g., Freshman, Sophomore).</small>
                             </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="submit" form="numberInputForm" class="btn btn-primary">Submit</button>
+                            <div class="mb-3">
+                              <label for="gradingPeriodInput" class="form-label">Grading Period</label>
+                              <input type="text" class="form-control" id="gradingPeriodInput" aria-describedby="gradingPeriodHelp" required>
+                              <small id="gradingPeriodHelp" class="form-text text-muted">Enter the grading period (e.g., Semester 1, Trimester 3).</small>
                             </div>
+                            <div class="mb-3">
+                              <label for="subjectInput" class="form-label">Subject</label>
+                              <input type="text" class="form-control" id="subjectInput" aria-describedby="subjectHelp" required>
+                              <small id="subjectHelp" class="form-text text-muted">Enter the subject name.</small>
+                            </div>
+                            <div class="mb-3">
+                              <label for="gradesInput" class="form-label">Grades</label>
+                              <input type="text" class="form-control" id="gradesInput" aria-describedby="gradesHelp" required>
+                              <small id="gradesHelp" class="form-text text-muted">Enter individual grades separated by commas or colons (e.g., 85 Midterm, 92 Final).</small>
+                            </div>
+                            <div class="mb-3">
+                              <label for="statusInput" class="form-label">Status</label>
+                              <select class="form-select" id="statusInput" aria-label="Status">
+                                <option value="Passed">Passed</option>
+                                <option value="Failed">Failed</option>
+                                <option value="In Progress">In Progress</option>
+                              </select>
+                            </div>
+                          </form>
                         </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                          <button type="submit" form="academicDetailsForm" class="btn btn-primary">Add Details</button>
+                        </div>
+                      </div>
                     </div>
-                </div>
+                  </div>
+
 
             </div>
         </div>
@@ -286,5 +198,5 @@
 
 
 </body>
-
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </html>

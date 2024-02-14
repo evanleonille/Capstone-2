@@ -97,9 +97,8 @@
                         </div>
                         <div class="col text-end align-items-end justify-content-end">
                             <div class="row mt-3 info-icon text-end px-0 mx-5">
-                                <button type="button" class="btn btn-primary mx-1" id="uploadBtn" data-bs-toggle="modal"
-                                    data-bs-target="#uploadModal"><i class="ion ion-md-cloud-upload"></i>
-                                    Add Orphan Profile</button>
+                                <button type="button" class="btn btn-primary mx-1" data-bs-toggle="modal" data-bs-target="#addHealthDetailsModal"><i class="ion ion-md-cloud-upload"></i>
+                                    Add Health Details</button>
                             </div>
                         </div>
                     </div>
@@ -108,173 +107,81 @@
                 <hr class="mt-3">
 
                 <div>
-                    <h2>Academic Details</h2>
+                    <h2>Health Details</h2>
                     <table class="table table-striped">
                         <thead>
                             <tr>
                                 <th scope="col">Date</th>
-                                <th scope="col">Year Level</th>
-                                <th scope="col">Grading Period</th>
-                                <th scope="col">Subject</th>
-                                <th scope="col">Grades</th>
-                                <th scope="col">Status</th>
+                                <th scope="col">Temperature (°C)</th>
+                                <th scope="col">Blood Pressure (mmHg)</th>
+                                <th scope="col">Heart Rate (bpm)</th>
+                                <th scope="col">Other Details</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td>2024-02-13</td>
-                                <td>Freshman</td>
-                                <td>Semester 1</td>
-                                <td>Mathematics</td>
-                                <td>85 (Midterm), 92 (Final Exam)</td>
-                                <td>Passed</td>
-                            </tr>
-                            <tr>
-                                <td>2023-12-15</td>
-                                <td>Sophomore</td>
-                                <td>Semester 2</td>
-                                <td>History</td>
-                                <td>90 (Quizzes), 78 (Essay), 82 (Final Project)</td>
-                                <td>Passed</td>
+                                <td>2024-02-14</td>
+                                <td>36.5</td>
+                                <td>120/80</td>
+                                <td>75</td>
+                                <td>Feeling well, no symptoms.</td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
 
                 <!-- modal for upload academic -->
-                <div class="modal fade" id="uploadModal" tabindex="-1" aria-labelledby="uploadModalLabel" aria-hidden="true">
+                <div class="modal fade" id="addHealthDetailsModal" tabindex="-1" aria-labelledby="addHealthDetailsModalLabel"
+                    aria-hidden="true">
                     <div class="modal-dialog modal-lg">
-                        <div class="modal-content ">
+                        <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="uploadModalLabel">Create new profile
-                                </h5>
+                                <h5 class="modal-title" id="addHealthDetailsModalLabel">Add Health Details</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <div class="text-start">
-                                    <form>
-                                        <div class="row mb-3 bg-transparent">
-                                            <div class="col-xl-6">
-                                                <label for="firstName" class="form-label">First
-                                                    Name</label>
-                                                <input type="text" class="form-control" id="firstName" required>
-                                            </div>
-                                            <div class="col-xl-6">
-                                                <label for="middleName" class="form-label">Middle
-                                                    Name</label>
-                                                <input type="text" class="form-control" id="middleName">
-                                            </div>
-                                            <div class="col-xl-12">
-                                                <label for="lastName" class="form-label">Last
-                                                    Name</label>
-                                                <input type="text" class="form-control" id="lastName" required>
-                                            </div>
-                                        </div>
-                
-                                        <div class="row mb-3 bg-transparent">
-                                            <div class="col-md-6">
-                                                <label for="gender" class="form-label">Gender</label>
-                                                <select class="form-select" id="gender" required>
-                                                    <option value="">Select Gender</option>
-                                                    <option value="male">Male</option>
-                                                    <option value="female">Female</option>
-                                                    <option value="other">Other</option>
-                                                </select>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <label for="birthdate" class="form-label">Birthdate</label>
-                                                <input type="date" class="form-control" id="birthdate" required>
-                                            </div>
-                                        </div>
-                
-                                        <div class="row mb-3 bg-transparent">
-                                            <div class="col-md-6">
-                                                <label for="FatherName" class="form-label">Father's
-                                                    Name</label>
-                                                <input type="input" class="form-control" id="text" required>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <label for="MotherName" class="form-label">Mother's
-                                                    Name</label>
-                                                <input type="input" class="form-control" id="text" required>
-                                            </div>
-                                            <div class="col-xl-12">
-                                                <label for="middleName" class="form-label">Home
-                                                    Address</label>
-                                                <input type="input" class="form-control" id="text">
-                                            </div>
-                                        </div>
-                
-                                        <div class="row mb-3 bg-transparent">
-                                            <div class="col-md-4">
-                                                <label for="dateAdmitted" class="form-label">Date
-                                                    Admitted</label>
-                                                <input type="date" class="form-control" id="dateAdmitted" required>
-                                            </div>
-                                            <div class="col-md-8">
-                                                <label for="file" class="form-label">Upload
-                                                    Profile Picture</label>
-                                                <input type="file" class="form-control" id="file">
-                                            </div>
-                                            <div class="col-md-4">
-                                                <label for="file" class="form-label">Upload
-                                                    Medical Certificate</label>
-                                                <input type="file" class="form-control" id="file">
-                                            </div>
-                                            <div class="col-md-8">
-                                                <label for="file" class="form-label">Upload
-                                                    File</label>
-                                                <input type="file" class="form-control" id="file">
-                                            </div>
-                                        </div>
-                
-                
-                
-                                        <button class="btn btn-primary" type="submit" value="Submit" style="float:right;"> Submit
-                                        </button>
-                
-                                    </form>
-                                </div>
+                                <form id="addHealthDetailsForm">
+                                    <div class="mb-3">
+                                        <label for="dateInput" class="form-label">Date</label>
+                                        <input type="date" class="form-control" id="dateInput" aria-describedby="dateHelp" required>
+                                        <small id="dateHelp" class="form-text text-muted">Enter the date of measurement.</small>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="temperatureInput" class="form-label">Temperature (°C)</label>
+                                        <input type="number" step="0.1" class="form-control" id="temperatureInput"
+                                            aria-describedby="temperatureHelp" required>
+                                        <small id="temperatureHelp" class="form-text text-muted">Enter your body temperature.</small>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="bloodPressureInput" class="form-label">Blood Pressure (mmHg)</label>
+                                        <input type="text" class="form-control" id="bloodPressureInput"
+                                            aria-describedby="bloodPressureHelp" placeholder="e.g., 120/80" required>
+                                        <small id="bloodPressureHelp" class="form-text text-muted">Enter your systolic and diastolic
+                                            blood pressure separated by a slash.</small>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="heartRateInput" class="form-label">Heart Rate (bpm)</label>
+                                        <input type="number" class="form-control" id="heartRateInput" aria-describedby="heartRateHelp"
+                                            required>
+                                        <small id="heartRateHelp" class="form-text text-muted">Enter your resting heart rate.</small>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="otherDetailsInput" class="form-label">Other Details</label>
+                                        <textarea class="form-control" id="otherDetailsInput" rows="3"
+                                            aria-describedby="otherDetailsHelp"></textarea>
+                                        <small id="otherDetailsHelp" class="form-text text-muted">Add any additional notes or
+                                            symptoms.</small>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="submit" form="addHealthDetailsForm" class="btn btn-primary">Save Details</button>
                             </div>
                         </div>
                     </div>
-                </div>
+                </div>>
 
-
-                <a class="btn btn-primary me-5 " data-bs-toggle="modal" data-bs-target="#noteModal">
-                    Add
-                    Notes </a>
-
-                <div class="modal fade" id="noteModal" tabindex="-1" role="dialog"
-                                    aria-labelledby="noteModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header  ">
-                                                <h5 class="modal-title" id="noteModalLabel">Upload Typed Notes</h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                    aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <div class="center-container">
-                                                    <div class="containerNote">
-                                                        <h1>Upload Typed Notes</h1>
-                                                        <form method="POST"
-                                                            action="{% url 'add_note' orphan.orphanID %}"
-                                                            enctype="multipart/form-data">
-                                                            {% csrf_token %}
-                                                            <label for="notes">Typed Notes:</label>
-                                                            <textarea id="notes" name="text" rows="5"
-                                                                class="form-control" required></textarea>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <button class="btn btn-primary mt-2" type="submit">Upload
-                                                            Notes</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
 
             </div>
         </div>
@@ -282,5 +189,5 @@
 
 
 </body>
-
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </html>
