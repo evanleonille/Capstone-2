@@ -3,10 +3,10 @@ document.addEventListener('DOMContentLoaded', function () {
   var myChart = new Chart(ctx, {
     type: 'radar',
     data: {
-      labels: ['Blood Pressure', 'Heart Rate', 'Cholesterol', 'BMI', 'Blood Sugar'],
+      labels: ['Blood Pressure', 'Heart Rate', 'BMI',],
       datasets: [{
         label: 'Orphan Health Metrics',
-        data: [120, 80, 200, 25, 90], // Example values
+        data: [120, 80, 25], // Example values
         backgroundColor: 'rgba(75, 192, 192, 0.2)',
         borderColor: 'rgba(75, 192, 192, 1)',
         borderWidth: 2
