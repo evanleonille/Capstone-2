@@ -166,6 +166,44 @@
                                         <small id="heartRateHelp" class="form-text text-muted">Enter your resting heart rate.</small>
                                     </div>
                                     <div class="mb-3">
+                                        <div class="row">
+                                        <label class="form-label">Symptoms</label>
+                                        <div class="col-5">
+                                            <input type="checkbox" id="nauseaCheckbox" name="symptom" value="nausea">
+                                            <label for="nauseaCheckbox">Nausea</label>
+                                        </div>
+                                        <div class="col-5">
+                                            <input type="checkbox" id="vomitingCheckbox" name="symptom" value="vomiting">
+                                            <label for="vomitingCheckbox">Vomiting</label>
+                                        </div>
+                                        <div class="col-5">
+                                            <input type="checkbox" id="headacheCheckbox" name="symptom" value="headache">
+                                            <label for="headacheCheckbox">Headache</label>
+                                        </div>
+                                        <div class="col-5">
+                                            <input type="checkbox" id="stomachacheCheckbox" name="symptom" value="stomachache">
+                                            <label for="stomachacheCheckbox">Stomachache</label>
+                                        </div>
+                                        <div class="col-5">
+                                            <input type="checkbox" id="coughCheckbox" name="symptom" value="cough">
+                                            <label for="coughCheckbox">Cough with phlegm and mucus</label>
+                                        </div>
+                                        <div class="col-5">
+                                            <input type="checkbox" id="dizzinessCheckbox" name="symptom" value="dizziness">
+                                            <label for="dizzinessCheckbox">Dizziness</label>
+                                        </div>
+                                        <div class="col-5">
+                                            <input type="checkbox" id="painCheckbox" name="symptom" value="pain">
+                                            <label for="painCheckbox">Pain in the heart</label>
+                                        </div>
+                                        <div class="col-5">
+                                            <input type="checkbox" id="othersCheckbox" name="symptom" value="others">
+                                            <label for="othersCheckbox">Others</label>
+                                            <input type="input" class="bg-white rounded-2">
+                                        </div>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
                                         <label for="otherDetailsInput" class="form-label">Other Details</label>
                                         <textarea class="form-control" id="otherDetailsInput" rows="3"
                                             aria-describedby="otherDetailsHelp"></textarea>
@@ -174,6 +212,7 @@
                                     </div>
                                 </form>
                             </div>
+                            
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                 <button type="submit" form="addHealthDetailsForm" class="btn btn-primary">Save Details</button>

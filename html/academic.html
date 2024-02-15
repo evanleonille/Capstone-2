@@ -106,90 +106,80 @@
                 <hr class="mt-3">
 
                 <div>
-                    <h2>Academic Details</h2>
-                    <table class="table table-striped">
-                        <thead>
-                            <tr>
-                                <th scope="col">Date</th>
-                                <th scope="col">Year Level</th>
-                                <th scope="col">Grading Period</th>
-                                <th scope="col">Subject</th>
-                                <th scope="col">Grades</th>
-                                <th scope="col">Status</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>2024-02-13</td>
-                                <td>Freshman</td>
-                                <td>Semester 1</td>
-                                <td>Mathematics</td>
-                                <td>85 (Midterm), 92 (Final Exam)</td>
-                                <td>Passed</td>
-                            </tr>
-                            <tr>
-                                <td>2023-12-15</td>
-                                <td>Sophomore</td>
-                                <td>Semester 2</td>
-                                <td>History</td>
-                                <td>90 (Quizzes), 78 (Essay), 82 (Final Project)</td>
-                                <td>Passed</td>
-                            </tr>
-                        </tbody>
-                    </table>
+<h2>Academic Details</h2>
+<table id="academicDetailsTable" class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Date</th>
+            <th scope="col">Year Level</th>
+            <th scope="col">Grading Period</th>
+            <th scope="col">Subject</th>
+            <th scope="col">Grades</th>
+            <th scope="col">Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- Table body will be dynamically populated -->
+    </tbody>
+</table>
+</div>
                 </div>
 
                 <!-- modal for upload academic -->
                 <div class="modal fade" id="addAcademicDetailsModal" tabindex="-1" aria-labelledby="addAcademicDetailsModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-lg"> <div class="modal-content">
-                        <div class="modal-header">
-                          <h5 class="modal-title" id="addAcademicDetailsModalLabel">Add Academic Details</h5>
-                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="addAcademicDetailsModalLabel">Add Academic Details</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form id="academicDetailsForm">
+                                    <div class="mb-3">
+                                        <label for="dateInput" class="form-label">Date</label>
+                                        <input type="date" class="form-control" id="dateInput" aria-describedby="dateHelp" required>
+                                        <small id="dateHelp" class="form-text text-muted">Enter the date of completion or evaluation.</small>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="yearLevelInput" class="form-label">Year Level</label>
+                                        <input type="text" class="form-control" id="yearLevelInput" aria-describedby="yearLevelHelp" required>
+                                        <small id="yearLevelHelp" class="form-text text-muted">Enter your year level (e.g., Freshman, Sophomore).</small>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="gradingPeriodInput" class="form-label">Grading Period</label>
+                                        <input type="text" class="form-control" id="gradingPeriodInput" aria-describedby="gradingPeriodHelp" required>
+                                        <small id="gradingPeriodHelp" class="form-text text-muted">Enter the grading period (e.g., Semester 1, Trimester 3).</small>
+                                    </div>
+                                    <div id="subjectFields" class="row">
+                                        <div class="mb-3 col-6">
+                                            <label class="form-label">Subject</label>
+                                            <input type="text" class="form-control mb-3 subject-input" placeholder="Subject" required>
+                                        </div>
+                                        <div class="mb-3 col-6">
+                                            <label class="form-label">Grade</label>
+                                            <input type="text" class="form-control mb-3 grade-input" placeholder="Grade" required>
+                                        </div>
+                                    </div>
+                                    <button type="button" class="btn btn-primary mt-3" onclick="addSubjectField()">Add Subject</button>
+                                    <div class="mb-3">
+                                        <label for="statusInput" class="form-label">Status</label>
+                                        <select class="form-select" id="statusInput" aria-label="Status">
+                                            <option value="Passed">Passed</option>
+                                            <option value="Failed">Failed</option>
+                                            <option value="In Progress">In Progress</option>
+                                        </select>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="submit" form="academicDetailsForm" class="btn btn-primary">Add Details</button>
+                            </div>
                         </div>
-                        <div class="modal-body">
-                          <form id="academicDetailsForm">
-                            <div class="mb-3">
-                              <label for="dateInput" class="form-label">Date</label>
-                              <input type="date" class="form-control" id="dateInput" aria-describedby="dateHelp" required>
-                              <small id="dateHelp" class="form-text text-muted">Enter the date of completion or evaluation.</small>
-                            </div>
-                            <div class="mb-3">
-                              <label for="yearLevelInput" class="form-label">Year Level</label>
-                              <input type="text" class="form-control" id="yearLevelInput" aria-describedby="yearLevelHelp" required>
-                              <small id="yearLevelHelp" class="form-text text-muted">Enter your year level (e.g., Freshman, Sophomore).</small>
-                            </div>
-                            <div class="mb-3">
-                              <label for="gradingPeriodInput" class="form-label">Grading Period</label>
-                              <input type="text" class="form-control" id="gradingPeriodInput" aria-describedby="gradingPeriodHelp" required>
-                              <small id="gradingPeriodHelp" class="form-text text-muted">Enter the grading period (e.g., Semester 1, Trimester 3).</small>
-                            </div>
-                            <div class="mb-3">
-                              <label for="subjectInput" class="form-label">Subject</label>
-                              <input type="text" class="form-control" id="subjectInput" aria-describedby="subjectHelp" required>
-                              <small id="subjectHelp" class="form-text text-muted">Enter the subject name.</small>
-                            </div>
-                            <div class="mb-3">
-                              <label for="gradesInput" class="form-label">Grades</label>
-                              <input type="text" class="form-control" id="gradesInput" aria-describedby="gradesHelp" required>
-                              <small id="gradesHelp" class="form-text text-muted">Enter individual grades separated by commas or colons (e.g., 85 Midterm, 92 Final).</small>
-                            </div>
-                            <div class="mb-3">
-                              <label for="statusInput" class="form-label">Status</label>
-                              <select class="form-select" id="statusInput" aria-label="Status">
-                                <option value="Passed">Passed</option>
-                                <option value="Failed">Failed</option>
-                                <option value="In Progress">In Progress</option>
-                              </select>
-                            </div>
-                          </form>
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                          <button type="submit" form="academicDetailsForm" class="btn btn-primary">Add Details</button>
-                        </div>
-                      </div>
                     </div>
-                  </div>
+                </div>
+                
+                
 
 
             </div>
@@ -199,4 +189,6 @@
 
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../js/academic-subject.js"></script>
+<script src="../js/academic-table.js"></script>
 </html>
