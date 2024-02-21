@@ -71,7 +71,7 @@
                         <ul class="dropdown-menu text-small shadow  " aria-labelledby="dropdownUser3">
                             <li><a class="dropdown-item" href="./Login.html">Logout</a></li>
                             <li><a class="dropdown-item" href="#">Settings</a></li>
-                            <li><a class="dropdown-item" href="./profile.html">Profile</a></li>
+                            <li><a class="dropdown-item" href="./orphan_profile.html">Profile</a></li>
                         </ul>
                     </div>
                 </div>
@@ -105,82 +105,138 @@
                 
                 <hr class="mt-3">
 
-                <div>
-<h2>Academic Details</h2>
-<table id="academicDetailsTable" class="table table-striped">
-    <thead>
-        <tr>
-            <th scope="col">Date</th>
-            <th scope="col">Year Level</th>
-            <th scope="col">Grading Period</th>
-            <th scope="col">Subject</th>
-            <th scope="col">Grades</th>
-            <th scope="col">Status</th>
-        </tr>
-    </thead>
-    <tbody>
+                <!-- Academic Details -->
+                <div class="d-flex justify-content-between mb-3">
+                    <div class="d-flex align-items-center">
+                        <label for="entriesSelect" class="form-label me-2 mb-0">Show</label>
+                        <select class="form-select form-select-sm me-2" id="entriesSelect" style="width: 60px;">
+                            <option value="10">10</option>
+                            <option value="25">25</option>
+                            <option value="50">50</option>
+                            <option value="100">100</option>
+                        </select>
+                        <span class="me-2">entries</span>
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <button class="btn btn-sm me-2"><i class="bi bi-filter"></i></button>
+                        <label for="statusFilter" class="form-label me-2 mb-0">Status</label>
+                        <select class="form-select form-select-sm me-2" id="statusFilter" style="width: 100px;">
+                            <option value="">All</option>
+                            <option value="Passed">Passed</option>
+                            <option value="Failed">Failed</option>
+                        </select>
+                    </div>
+                </div>
+
+
+    <!-- Table -->
+    <div class="mb-3">
+        <table id="academicDetailsTable" class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Date</th>
+                    <th scope="col">Year Level</th>
+                    <th scope="col">Grading Period</th>
+                    <th scope="col">Subject</th>
+                    <th scope="col">Grades</th>
+                    <th scope="col">Status</th>
+                </tr>
+            </thead>
+            <tbody>
         <!-- Table body will be dynamically populated -->
     </tbody>
 </table>
 </div>
                 </div>
 
-                <!-- modal for upload academic -->
-                <div class="modal fade" id="addAcademicDetailsModal" tabindex="-1" aria-labelledby="addAcademicDetailsModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-lg">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="addAcademicDetailsModalLabel">Add Academic Details</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+<!-- Modal for uploading academic details -->
+<div class="modal fade" id="addAcademicDetailsModal" tabindex="-1" aria-labelledby="addAcademicDetailsModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addAcademicDetailsModalLabel">Add Academic Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="academicDetailsForm">
+                    <!-- Date -->
+                    <div class="mb-3">
+                        <label for="dateInput" class="form-label">Date</label>
+                        <input type="date" class="form-control" id="dateInput" aria-describedby="dateHelp" required>
+                        <small id="dateHelp" class="form-text text-muted">Enter the date of completion or evaluation.</small>
+                    </div>
+                    <!-- Year Level -->
+                    <div class="mb-3">
+                        <label for="yearLevelInput" class="form-label">Year Level</label>
+                        <select class="form-select" id="yearLevelInput" aria-describedby="yearLevelHelp" required>
+                            <option value="">Select Year Level</option>
+                            <option value="Grade 1">Grade 1</option>
+                            <option value="Grade 2">Grade 2</option>
+                            <option value="Grade 3">Grade 3</option>
+                            <option value="Grade 4">Grade 4</option>
+                            <option value="Grade 5">Grade 5</option>
+                            <option value="Grade 6">Grade 6</option>
+                            <option value="Grade 7">Grade 7</option>
+                            <option value="Grade 8">Grade 8</option>
+                            <option value="Grade 9">Grade 9</option>
+                            <option value="Grade 10">Grade 10</option>
+                            <option value="Grade 11">Grade 11</option>
+                            <option value="Grade 12">Grade 12</option>
+                            <option value="1st Year College">1st Year College</option>
+                            <option value="2nd Year College">2nd Year College</option>
+                            <option value="3rd Year College">3rd Year College</option>
+                            <option value="4th Year College">4th Year College</option>
+                            <option value="5th Year College">5th Year College</option>
+                            <option value="6th Year College">6th Year College</option>
+                            <option value="7th Year College">7th Year College</option>
+                        </select>
+                        <small id="yearLevelHelp" class="form-text text-muted">Select your year level.</small>
+                    </div>
+                    <!-- Grading Period -->
+                    <div class="mb-3">
+                        <label for="gradingPeriodInput" class="form-label">Grading Period</label>
+                        <select class="form-select" id="gradingPeriodInput" aria-describedby="gradingPeriodHelp" required>
+                            <option value="">Select Grading Period</option>
+                            <option value="1st Grading">1st Grading</option>
+                            <option value="2nd Grading">2nd Grading</option>
+                            <option value="3rd Grading">3rd Grading</option>
+                            <option value="4th Grading">4th Grading</option>
+                            <option value="1st Semester">1st Semester</option>
+                            <option value="2nd Semester">2nd Semester</option>
+                            <option value="College">Summer</option>
+                        </select>
+                        <small id="gradingPeriodHelp" class="form-text text-muted">Select the grading period.</small>
+                    </div>
+                        <!-- Subject and Grade -->
+                        <div id="subjectFields" class="row">
+                            <div class="mb-3 col-6">
+                                <label class="form-label">Subject</label>
+                                <input type="text" class="form-control mb-3 subject-input" placeholder="Subject" required>
                             </div>
-                            <div class="modal-body">
-                                <form id="academicDetailsForm">
-                                    <div class="mb-3">
-                                        <label for="dateInput" class="form-label">Date</label>
-                                        <input type="date" class="form-control" id="dateInput" aria-describedby="dateHelp" required>
-                                        <small id="dateHelp" class="form-text text-muted">Enter the date of completion or evaluation.</small>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="yearLevelInput" class="form-label">Year Level</label>
-                                        <input type="text" class="form-control" id="yearLevelInput" aria-describedby="yearLevelHelp" required>
-                                        <small id="yearLevelHelp" class="form-text text-muted">Enter your year level (e.g., Freshman, Sophomore).</small>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="gradingPeriodInput" class="form-label">Grading Period</label>
-                                        <input type="text" class="form-control" id="gradingPeriodInput" aria-describedby="gradingPeriodHelp" required>
-                                        <small id="gradingPeriodHelp" class="form-text text-muted">Enter the grading period (e.g., Semester 1, Trimester 3).</small>
-                                    </div>
-                                    <div id="subjectFields" class="row">
-                                        <div class="mb-3 col-6">
-                                            <label class="form-label">Subject</label>
-                                            <input type="text" class="form-control mb-3 subject-input" placeholder="Subject" required>
-                                        </div>
-                                        <div class="mb-3 col-6">
-                                            <label class="form-label">Grade</label>
-                                            <input type="text" class="form-control mb-3 grade-input" placeholder="Grade" required>
-                                        </div>
-                                    </div>
-                                    <button type="button" class="btn btn-primary mt-3" onclick="addSubjectField()">Add Subject</button>
-                                    <div class="mb-3">
-                                        <label for="statusInput" class="form-label">Status</label>
-                                        <select class="form-select" id="statusInput" aria-label="Status">
-                                            <option value="Passed">Passed</option>
-                                            <option value="Failed">Failed</option>
-                                            <option value="In Progress">In Progress</option>
-                                        </select>
-                                    </div>
-                                </form>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="submit" form="academicDetailsForm" class="btn btn-primary">Add Details</button>
+                            <div class="mb-3 col-6">
+                                <label class="form-label">Grade</label>
+                                <input type="number" class="form-control mb-3 grade-input" placeholder="Grade" min="0" max="100" required>
                             </div>
                         </div>
-                    </div>
-                </div>
-                
-                
+                        <button type="button" class="btn btn-primary mt-3" onclick="addSubjectField()">Add Subject</button>
 
+
+                    <!-- GWA -->
+                    <div class="mb-3">
+                        <label for="gwaInput" class="form-label">GWA</label>
+                        <input type="number" class="form-control" id="gwaInput" aria-describedby="gwaHelp" min="0" max="100" placeholder="General Weighted Average" required>
+
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="submit" form="academicDetailsForm" class="btn btn-primary">Add Details</button>
+            </div>
+        </div>
+    </div>
+</div>
 
             </div>
         </div>
@@ -191,4 +247,6 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 <script src="../js/academic-subject.js"></script>
 <script src="../js/academic-table.js"></script>
+<script src="../js/academic-filter.js"></script>
+
 </html>
