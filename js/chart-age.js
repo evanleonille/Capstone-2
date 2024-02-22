@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-  var ctx2 = document.getElementById('overallChart').getContext('2d');
+  var ctx2 = document.getElementById('ageChart').getContext('2d');
   var overallChart = new Chart(ctx2, {
     type: 'bar',
     data: {
