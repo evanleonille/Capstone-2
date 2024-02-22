@@ -17,7 +17,12 @@
         responsive: true,
         legend: {
           display: true,
-          position: 'left'
-        }
+          position: 'left',
+        },
+        title: {
+          display: true,
+          text: 'Sentiments',
+          fontSize: 28,
+      }
       }
     });
