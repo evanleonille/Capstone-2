@@ -183,14 +183,14 @@
               </div>
 
               <hr class="mt-2" />
-              <div class="container-fluid row">
+              <div class="container-fluid  row">
                 <div class="row ">
-                  <div class="col-8 me-5">
+                  <div class="col-10 me-5">
                     <h2>BMI</h2>
                   </div>
-                  <div class="col-3 text-end align-items-end justify-content-end mx-0 px-0">
-                    <a class="btn btn-primary" href="./bmi.html">BMI History</a>
-                    <!-- <a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#bmiModal">Edit</a> -->
+                  <div class="col-lg-1 text-center align-items-end justify-content-end btn btn-primary m-1"
+                    data-bs-toggle="modal" data-bs-target="#additionalInfoModal">
+                    <a href="./bmi.html" class="text-decoration-none text-white">BMI History</a>
                   </div>
                 </div>
                 <p class="col-6"><strong>Height:</strong> <input class="form-control" value="Male" type="text"
@@ -245,7 +245,7 @@
   <!-- edit personal info modal -->
   <div class="modal fade" id="personalInfoModal" tabindex="-1" aria-labelledby="personalInfoModalLabel"
     aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="personalInfoModalLabel">Edit Personal Information</h5>
@@ -291,7 +291,7 @@
   <!-- edit modal for additional details -->
   <div class="modal fade" id="additionalInfoModal" tabindex="-1" aria-labelledby="additionalInfoModalLabel"
     aria-hidden="true">
-    <div class="modal-dialog modal-lg">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="additionalInfoModalLabel">Edit Additional Information</h5>
