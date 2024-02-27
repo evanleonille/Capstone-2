@@ -238,61 +238,100 @@
 
                 </div>
 
-                <!-- Files List -->
-                <div class="row container-fluid border-top border-bottom pt-2 mx-auto">
-                    <div class="col-1 border-end mb-2">
-                        No.
-                    </div>
-                    <div class="col-4 border-end mb-2">
-                        File Name
-                    </div>
-                    <div class="col-2 border-end mb-2">
-                        Date
-                    </div>
-                    <div class="col-2 border-end mb-2">
-                        File Type
-                    </div>
-                    <div class="col-3 text-end border-end mb-2">
-                        Actions
-                    </div>
-                </div>
+<!-- Files List -->
+<div class="row container-fluid border-top border-bottom pt-2 mx-auto">
+    <div class="col-4 border-end mb-2">
+        File Name
+    </div>
+    <div class="col-4 text-end mb-2">
+        Date Uploaded
+    </div>
+    <div class="col-4 text-end mb-2">
+        Actions
+    </div>
+</div>
 
-                <!-- List of Files -->
-                <div class="container-fluid row pb-3 pt-2 mx-auto">
-                    <ul class="list-group ">
-                        <!-- Sample File Item -->
-                        <li class="list-group-item d-flex justify-content-between align-items-center" data-href="../files/Sample1.jpg">
-                            <div class="row w-100">
-                                <div class="col-1">1.</div>
-                                <div class="col-4">
-                                    <div class="clickable-file" style="border: 1px solid #ced4da; border-radius: .25rem; padding: .375rem .75rem;">
-                                        October Report.webp
-                                    </div>
-                                </div>
-                                <div class="col-2">2023-10-01</div>
-                                <div class="col-2">JPG</div>
-                                <div class="col-3 text-end">
-                                    <div class="dropdown">
-                                        <button class="btn btn-sm btn-light dropdown-toggle" type="button"
-                                            id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                                            Actions
-                                        </button>
-                                        <ul class="dropdown-menu dropdown-menu-end"
-                                            aria-labelledby="dropdownMenuButton1">
-                                            <li><a class="dropdown-item" href="#" data-bs-toggle="modal"
-                                                    data-bs-target="#downloadFileModal">Download</a></li>
-                                            <li><a class="dropdown-item" href="#" data-bs-toggle="modal"
-                                                    data-bs-target="#renameFileModal">Rename</a></li>
-                                            <li><a class="dropdown-item text-danger" href="#" data-bs-toggle="modal"
-                                                    data-bs-target="#deleteFileModal">Delete</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <!-- Additional File Items... -->
-                    </ul>
+<!-- Sample File Items -->
+<div class="container-fluid pb-3 pt-2 mx-auto">
+    <ul class="list-group">
+        <!-- Sample File Item 1 -->
+        <li class="list-group-item d-flex justify-content-between align-items-center" data-href="../files/Sample1.jpg">
+            <div class="row w-100">
+                <div class="col-4">
+                    <div class="clickable-file" style="border: 1px solid #ced4da; border-radius: .25rem; padding: .375rem .75rem;">
+                        October Report.webp
+                    </div>
                 </div>
+                <div class="col-4 text-end">2024-01-22</div>
+                <div class="col-4 text-end">
+                    <div class="dropdown">
+                        <button class="btn btn-sm btn-light dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                            Actions
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton1">
+                            <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#detailsModal">Details</a></li>
+                            <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#downloadFileModal">Download</a></li>
+                            <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#renameFileModal">Rename</a></li>
+                            <li><a class="dropdown-item text-danger" href="#" data-bs-toggle="modal" data-bs-target="#deleteFileModal">Delete</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <!-- End Sample File Item 1 -->
+    </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+<!-- Details Modal -->
+<!-- Details Modal -->
+<div class="modal fade" id="detailsModal" tabindex="-1" aria-labelledby="detailsModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="detailsModalLabel">File Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p><strong>File Name:</strong> October Report.webp</p>
+                <p><strong>File Type:</strong> Image</p>
+                <p><strong>File Size:</strong> 1.5 MB</p>
+                <p><strong>Date Uploaded:</strong> 2023-10-01</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary">Open File</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Open File Modal -->
+<div class="modal fade" id="openFileModal" tabindex="-1" aria-labelledby="openFileModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="openFileModalLabel">Open File</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <iframe src="../files/Sample1.jpg" style="width: 100%; height: 500px;" frameborder="0"></iframe>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
 
                 <footer class="d-flex justify-content-between p-3 bg-light ">
                     <button class="btn btn-primary" id="previous-page">Previous</button>
@@ -333,6 +372,23 @@
           window.location.href = './Files.html';
       }
   </script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const openFileButtons = document.querySelectorAll(".open-file-button");
+
+        openFileButtons.forEach(function(button) {
+            button.addEventListener("click", function() {
+                const fileSrc = this.dataset.fileSrc;
+                const openFileModal = new bootstrap.Modal(document.getElementById('openFileModal'));
+                openFileModal.show();
+
+                const iframe = document.querySelector("#openFileModal iframe");
+                iframe.src = fileSrc;
+            });
+        });
+    });
+</script>
+
   
 
 </body>
