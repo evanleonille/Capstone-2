@@ -17,7 +17,16 @@ uploadForm.addEventListener('submit', function(event) {
 
   // Simulate upload (replace with your actual upload logic)
   setTimeout(function() {
+    const uploadSuccess = Math.random() < 0.5; // Simulate a 50% chance of success
     uploadProgress.style.display = 'none';
-    uploadMessage.textContent = "File uploaded successfully!";
+    if (uploadSuccess) {
+      uploadMessage.textContent = "File uploaded successfully!";
+      alert("File uploaded successfully!"); // Window alert for successful upload
+      // Redirect to files page
+      window.location.href = './Files.html';
+    } else {
+      uploadMessage.textContent = "Failed to upload file. Please try again.";
+      alert("Failed to upload file. Please try again."); // Window alert for unsuccessful upload
+    }
   }, 2000); // Simulate upload time
 });
