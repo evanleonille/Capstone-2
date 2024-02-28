@@ -14,21 +14,34 @@
     <link rel="stylesheet" href="../css/demo.css">
     <!-- fontawesome -->
     <script src="https://kit.fontawesome.com/d050a6d764.js" crossorigin="anonymous"></script>
+    <style>
+        .profile-info-container {
+            margin-top: 2.5rem;
+        }
+
+        .profile-picture-container {
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .photo-placeholder {
+            margin-top: 2.5rem;
+            text-align: center;
+        }
+    </style>
 </head>
 
 <body>
-    <div class="container-fluid ">
-        <div class="row ">
+    <div class="container-fluid">
+        <div class="row">
             <div class="col-sm-auto sticky-top rounded-2" style="background-color: #173B7E;">
-                <div
-                    class="d-flex flex-sm-column flex-row flex-nowrap bg-transparent text-center align-items-center justify-content-center sticky-top ">
+                <div class="d-flex flex-sm-column flex-row flex-nowrap bg-transparent text-center align-items-center justify-content-center sticky-top ">
                     <a href="https://www.obedshouse.org/" target="_blank"
                         class="d-block p-3 link-dark text-decoration-none" title="" data-bs-toggle="tooltip"
                         data-bs-placement="right" data-bs-original-title="Icon-only">
                         <img src="../image/obeds.jpg" class="img-fluid rounded-4" width="80px"></img>
                     </a>
-                    <ul
-                        class="nav nav-pills nav-flush flex-sm-column flex-row flex-nowrap text-center align-items-center justify-content-center">
+                    <ul class="nav nav-pills nav-flush flex-sm-column flex-row flex-nowrap text-center align-items-center justify-content-center">
                         <li class="nav-item">
                             <a href="./Dboard.html" class="p-0 mt-0 text-decoration-none" title=""
                                 data-bs-toggle="tooltip" data-bs-placement="right">
@@ -71,83 +84,508 @@
                         <ul class="dropdown-menu text-small shadow  " aria-labelledby="dropdownUser3">
                             <li><a class="dropdown-item" href="./Login.html">Logout</a></li>
                             <li><a class="dropdown-item" href="#">Settings</a></li>
-                            <li><a class="dropdown-item" href="./profile.html">Profile</a></li>
+                            <li><a class="dropdown-item" href="#editProfileModal" data-bs-toggle="modal">Edit Profile</a></li>
                         </ul>
                     </div>
                 </div>
             </div>
 
-
-
-
             <div class="col-sm m-3 border vh-100 overflow-auto bg-light rounded-4">
                 <!-- content -->
 
                 <div class="container-fluid row">
-                    <h1 class="mt-3">System Profile Information</h1>
-                    <div class="col-lg-3 col-md-3 text-center ">
-                        <img src="../image/Profpic (1).png" alt="Profile Picture" class="profile-picture img-fluid align-items-center justify-content-center">
-                    </div>
-                    <div class="col-lg-9 card mb-3">
-                        <div class="card-body">
-                            <h5 class="card-title">Personal Information</h5>
-                            <table class="table table-white">
-                                <tbody>
-                                    <tr>
-                                        <th scope="row">Full Name</th>
-                                        <td id="fullName">John Doe</td>
-                                        <td class="edit-field">
-                                            <a href="#" id="editFullNameLink" class="btn btn-primary">Edit</a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">Email</th>
-                                        <td id="email">johndoe@example.com</td>
-                                        <td class="edit-field">
-                                            <a href="#" id="editEmailLink" class="btn btn-primary">Edit</a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">Phone Number</th>
-                                        <td id="phoneNumber">123-456-7890</td>
-                                        <td class="edit-field">
-                                            <a href="#" id="editPhoneLink" class="btn btn-primary">Edit</a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">Username</th>
-                                        <td id="username">johndoe123</td>
-                                        <td class="edit-field">
-                                            <a href="#" id="editUsernameLink" class="btn btn-primary">Edit</a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">Bio</th>
-                                        <td id="bio">A brief description of me.</td>
-                                        <td class="edit-field">
-                                            <a href="#" id="editBioLink" class="btn btn-primary">Edit</a>
-                                        </td>
-                                    </tr>
-                                    </tbody>
-                            </table>
-                        </div>
-                    </div>
-            
-                    <div class="card mb-3">
-                        <div class="card-body">
-                            <h5 class="card-title">Password Management</h5>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <a href="#" class="btn btn-primary">Change Picture</a>
-                                    <a href="#" id="changePasswordLink" class="btn btn-primary">Change Password</a>
-                                </div>
+                    <div class="col-lg-3 col-md-3 text-center mb-3">
+                        <div class="photo-placeholder">
+                            <div class="profile-picture-container">
+                                <img src="../image/Profpic (1).png" alt="Profile Picture" class="profile-picture img-fluid mb-3">
+                                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#uploadPhotoModal">Upload Photo</button>
                             </div>
                         </div>
                     </div>
+<div class="col-lg-9 card mb-3 profile-info-container">
+    <div class="card-body">
+        <h5 class="card-title text-center" style="font-weight: bold; font-size: 1.2rem;">Personal Information</h5>
+        <hr> <!-- Horizontal line -->
+        <table class="table table-white">
+            <tbody>
+                <tr>
+                    <th scope="row">Bio</th>
+                    <td id="bio">A brief description of me.</td>
+                    <td>
+                        <a href="#" id="editBioLink" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editBioModal">Edit</a>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">Full Name</th>
+                    <td id="fullName">John Doe</td>
+                    <td>
+                        <a href="#" id="editFullNameLink" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editFullNameModal">Edit</a>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">Username</th>
+                    <td id="username">johndoe123</td>
+                    <td>
+                        <a href="#" id="editUsernameLink" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editUsernameModal">Edit</a>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">Email</th>
+                    <td id="email">johndoe@example.com</td>
+                    <td>
+                        <a href="#" id="editEmailLink" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editEmailModal">Edit</a>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">Phone Number</th>
+                    <td id="phoneNumber">123-456-7890</td>
+                    <td>
+                        <a href="#" id="editPhoneLink" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editPhoneModal">Edit</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+<!-- Edit Bio Modal -->
+<div class="modal fade" id="editBioModal" tabindex="-1" aria-labelledby="editBioModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editBioModalLabel">Edit Bio</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- Form for editing bio -->
+                <form>
+                    <div class="mb-3">
+                        <label for="bioInput" class="form-label">Bio</label>
+                        <textarea class="form-control" id="bioInput" rows="3">A brief description of me.</textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="saveBioChanges()">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Custom JavaScript -->
+<script>
+    // Function to save changes in the bio modal
+    function saveBioChanges() {
+        var newBio = document.getElementById('bioInput').value;
+
+        // Here, you can implement your logic to save the new bio
+
+        // Show alert that changes are saved
+        alert("Bio changed!");
+
+        // Redirect to the profile page
+        window.location.href = "../html/profile.html";
+    }
+</script>
+
+
+<!-- Edit Full Name Modal -->
+<div class="modal fade" id="editFullNameModal" tabindex="-1" aria-labelledby="editFullNameModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editFullNameModalLabel">Edit Full Name</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- Form for editing full name -->
+                <form>
+                    <div class="mb-3">
+                        <label for="firstNameInput" class="form-label">First Name</label>
+                        <input type="text" class="form-control" id="firstNameInput" value="John">
+                    </div>
+                    <div class="mb-3">
+                        <label for="middleNameInput" class="form-label">Middle Name</label>
+                        <input type="text" class="form-control" id="middleNameInput" value="">
+                    </div>
+                    <div class="mb-3">
+                        <label for="lastNameInput" class="form-label">Last Name</label>
+                        <input type="text" class="form-control" id="lastNameInput" value="Doe">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="saveFullNameChanges()">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Custom JavaScript -->
+<script>
+    // Function to save changes in the full name modal
+    function saveFullNameChanges() {
+        var firstName = document.getElementById('firstNameInput').value;
+        var middleName = document.getElementById('middleNameInput').value;
+        var lastName = document.getElementById('lastNameInput').value;
+
+        // Concatenate first name, middle name, and last name
+        var fullName = firstName.trim() + (middleName.trim() ? ' ' + middleName.trim() : '') + ' ' + lastName.trim();
+
+        // Update the full name in the UI (this is just a placeholder, you need to update the UI according to your structure)
+        document.getElementById('fullName').textContent = fullName;
+
+        // Show alert that changes are saved
+        alert("Full name changed!");
+
+        // Redirect to the profile page
+        window.location.href = "../html/profile.html";
+    }
+</script>
+
+
+
+
+<!-- Edit Username Modal -->
+<div class="modal fade" id="editUsernameModal" tabindex="-1" aria-labelledby="editUsernameModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editUsernameModalLabel">Edit Username</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- Form for editing username -->
+                <form>
+                    <div class="mb-3">
+                        <label for="newUsername" class="form-label">New Username</label>
+                        <input type="text" class="form-control" id="newUsername" required>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="saveUsernameChanges()">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Custom JavaScript -->
+<script>
+    // Function to save changes in the username modal
+    function saveUsernameChanges() {
+        var newUsername = document.getElementById('newUsername').value;
+
+        // Here, you can implement your logic to save the new username
+
+        // Show alert that changes are saved
+        alert("Username changed!");
+
+        // Redirect to the profile page
+        window.location.href = "../html/profile.html";
+    }
+</script>
+
+
+
+<!-- Edit Email Modal -->
+<div class="modal fade" id="editEmailModal" tabindex="-1" aria-labelledby="editEmailModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editEmailModalLabel">Edit Email</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- Form for editing email -->
+                <form>
+                    <div class="mb-3">
+                        <label for="newEmail" class="form-label">New Email</label>
+                        <input type="email" class="form-control" id="newEmail" required>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="saveEmailChanges()">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Custom JavaScript -->
+<script>
+    // Function to validate email address
+    function validateEmail(email) {
+        var re = /\S+@\S+\.\S+/;
+        return re.test(email);
+    }
+
+    // Function to save changes in the email modal
+    function saveEmailChanges() {
+        var newEmail = document.getElementById('newEmail').value;
+
+        // Validate the email address
+        if (!validateEmail(newEmail)) {
+            alert("Invalid email address. Please enter a valid email.");
+            return;
+        }
+
+        // Here, you can implement your logic to save the new email
+
+        // Show alert that changes are saved
+        alert("Email changed!");
+
+        // Redirect to the profile page
+        window.location.href = "../html/profile.html";
+    }
+</script>
+
+
+
+
+
+<!-- Edit Phone Number Modal -->
+<div class="modal fade" id="editPhoneModal" tabindex="-1" aria-labelledby="editPhoneModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editPhoneModalLabel">Edit Phone Number</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- Form for editing phone number -->
+                <form>
+                    <div class="mb-3">
+                        <label for="newPhoneNumber" class="form-label">Phone Number</label>
+                        <input type="tel" class="form-control" id="newPhoneNumber" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
+                        <small>Format: 123-456-7890 (Reminder: Remove the first zero)</small>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="savePhoneNumberChanges()">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Custom JavaScript -->
+<script>
+    // Function to validate phone number
+    function validatePhoneNumber(phoneNumber) {
+        var re = /^\d{3}-\d{3}-\d{4}$/;
+        return re.test(phoneNumber);
+    }
+
+    // Function to save changes in the phone number modal
+    function savePhoneNumberChanges() {
+        var phoneNumber = document.getElementById('newPhoneNumber').value;
+
+        // Remove the first zero
+        phoneNumber = phoneNumber.replace(/^0+/, '');
+
+        // Validate the phone number
+        if (!validatePhoneNumber(phoneNumber)) {
+            alert("Invalid phone number. Please enter a valid phone number.");
+            return;
+        }
+
+        // Here, you can implement your logic to save the new phone number
+
+        // Show alert that changes are saved
+        alert("Phone number changed!");
+
+        // Close the modal
+        $('#editPhoneModal').modal('hide');
+    }
+</script>
+
+<div class="card mb-3">
+    <div class="card-body">
+        <h5 class="card-title">Password Management</h5>
+        <div class="row">
+            <div class="col-md-6">
+                <!-- Add data-bs-toggle and data-bs-target attributes to link to open modal -->
+                <a href="#" id="changePasswordLink" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#changePasswordModal">Change Password</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Password Management Modal -->
+<div class="modal fade" id="changePasswordModal" tabindex="-1" aria-labelledby="changePasswordModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="changePasswordModalLabel">Change Password</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- Form for changing password -->
+                <form>
+                    <div class="mb-3">
+                        <label for="currentPassword" class="form-label">Current Password</label>
+                        <input type="password" class="form-control" id="currentPassword" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="newPassword" class="form-label">New Password</label>
+                        <div class="input-group">
+                            <input type="password" class="form-control" id="newPassword" required>
+                            <button class="btn btn-outline-secondary" type="button" id="togglePasswordVisibility">Show</button>
+                        </div>
+                        <!-- Reminder for password requirements -->
+                        <div id="passwordReminder" style="color: red; font-size: 0.8em; display: none;">
+                            Password must contain at least one capital letter, one symbol (!@#$%^&*), and be at least 8 characters long.
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="confirmNewPassword" class="form-label">Confirm New Password</label>
+                        <input type="password" class="form-control" id="confirmNewPassword" required>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="changePassword()">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Custom JavaScript -->
+<script>
+    // Function to change the password
+    function changePassword() {
+        var currentPassword = document.getElementById('currentPassword').value;
+        var newPassword = document.getElementById('newPassword').value;
+        var confirmNewPassword = document.getElementById('confirmNewPassword').value;
+
+        // Password validation logic
+        var passwordRegex = /^(?=.*[A-Z])(?=.*[!@#$%^&*])(?=.{8,})/;
+        
+        if (!passwordRegex.test(newPassword)) {
+            // Show password reminder
+            document.getElementById('passwordReminder').style.display = 'block';
+            return;
+        } else {
+            // Hide password reminder if password meets requirements
+            document.getElementById('passwordReminder').style.display = 'none';
+        }
+
+        if (newPassword !== confirmNewPassword) {
+            alert("New password and confirm password do not match.");
+            return;
+        }
+
+        // Here, you can implement your logic to change the password
+
+        // Show alert that changes are saved
+        alert("Password changed!");
+
+        // Redirect to profile page
+        window.location.href = "profile.html";
+    }
+
+    // Toggle password visibility
+    document.getElementById('togglePasswordVisibility').addEventListener('click', function() {
+        var passwordInput = document.getElementById('newPassword');
+        var passwordVisibilityButton = document.getElementById('togglePasswordVisibility');
+
+        if (passwordInput.type === 'password') {
+            passwordInput.type = 'text';
+            passwordVisibilityButton.textContent = 'Hide';
+        } else {
+            passwordInput.type = 'password';
+            passwordVisibilityButton.textContent = 'Show';
+        }
+    });
+</script>
+
+
+
+
+
+
+
+                    
+
+
+
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Upload Photo Modal -->
+    <div class="modal fade" id="uploadPhotoModal" tabindex="-1" aria-labelledby="uploadPhotoModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="uploadPhotoModalLabel">Upload Photo</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- Form for photo upload -->
+                    <form>
+                        <div class="mb-3">
+                            <label for="photoUpload" class="form-label">Choose Photo (PNG, JPEG, JPG)</label>
+                            <input type="file" class="form-control" id="photoUpload" accept=".png, .jpeg, .jpg">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" onclick="validateFile()">Save changes</button>
+                </div>
+            </div>
         </div>
     </div>
 
 
+
+
+
+
+
+
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JavaScript -->
+    <script>
+        // Function to validate file upload
+        function validateFile() {
+            var fileInput = document.getElementById('photoUpload');
+            if (fileInput.files.length === 0) {
+                alert("No file chosen");
+            } else {
+                var allowedExtensions = /(\.png|\.jpeg|\.jpg)$/i;
+                if (!allowedExtensions.exec(fileInput.value)) {
+                    alert("Upload unsuccessful. Please choose a PNG, JPEG, or JPG file.");
+                } else {
+                    saveChangesAndRedirect();
+                }
+            }
+        }
+
+        // Function to save changes and redirect to main profile page
+        function saveChangesAndRedirect() {
+            // Show alert that changes are saved
+            alert("Changes saved!");
+            // Redirect to the main profile page
+            window.location.replace("../html/profile.html");
+        }
+    </script>
 </body>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
 </html>
