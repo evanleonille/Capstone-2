@@ -1,440 +1,619 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <!-- bootstrap 5 -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-  <!-- boostrap 5 icon -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
-  <!-- Css -->
-  <link rel="stylesheet" href="../css/demo.css">
-  <!-- fontawesome -->
-  <script src="https://kit.fontawesome.com/d050a6d764.js" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <!-- boostrap 5 icon -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    <!-- Css -->
+    <link rel="stylesheet" href="../css/demo.css">
+    <!-- fontawesome -->
+    <script src="https://kit.fontawesome.com/d050a6d764.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
-  <div class="container-fluid ">
-    <div class="row ">
-      <div class="col-sm-auto sticky-top rounded-2" style="background-color: #173B7E;">
-        <div
-          class="d-flex flex-sm-column flex-row flex-nowrap bg-transparent text-center align-items-center justify-content-center sticky-top ">
-          <a href="https://www.obedshouse.org/" target="_blank" class="d-block p-3 link-dark text-decoration-none"
-            title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Icon-only">
-            <img src="../image/obeds.jpg" class="img-fluid rounded-4" width="80px"></img>
-          </a>
-          <ul
-            class="nav nav-pills nav-flush flex-sm-column flex-row flex-nowrap text-center align-items-center justify-content-center">
-            <li class="nav-item">
-              <a href="./Dboard.html" class="p-0 mt-0 text-decoration-none" title="" data-bs-toggle="tooltip"
-                data-bs-placement="right">
-                <i class="txtColor icon fa-solid fa-chart-line  btn btn-outline-primary border-0"
-                  style="font-size: 35px;"></i>
-                <p class="txtColor" style="font-size: 12px;">Dashboard</p>
-              </a>
-            </li>
-            <li>
-              <a href="./Orphan.html" class="p-0 mt-0 text-decoration-none" title="" data-bs-toggle="tooltip"
-                data-bs-placement="right">
-                <i class="txtColor icon fa-solid fa-children fs-2  btn btn-outline-primary border-0"
-                  style="font-size: 35px;"></i>
-                <p class="txtColor  font-size-sm " style="font-size: 12px;">Orphan Profile</p>
-              </a>
-            </li>
-            <li>
-              <a href="./Files.html" class="p-0 mt-0 text-decoration-none" title="" data-bs-toggle="tooltip"
-                data-bs-placement="right">
-                <i class="txtColor icon fa-solid fa-folder-open fs-2  btn btn-outline-primary border-0"
-                  style="font-size: 35px;"></i>
-                <p class="txtColor " style="font-size: 12px;">Orphanage Files</p>
-              </a>
-            </li>
-            <li>
-              <a href="./Trash.html" class="p-0 mt-0 text-decoration-none" title="" data-bs-toggle="tooltip"
-                data-bs-placement="right">
-                <i class="txtColor icon fa-solid fa-trash-can fs-2  btn btn-outline-primary border-0 "
-                  style="font-size: 35px;"></i>
-                <p class="txtColor " style="font-size: 12px;">Trash</p>
-              </a>
-            </li>
-          </ul>
-          <div class="dropdown ">
-            <a href="#"
-              class="d-flex align-items-center justify-content-center p-3 link-dark text-decoration-none dropdown-toggle"
-              id="dropdownUser3" data-bs-toggle="dropdown" aria-expanded="false">
-              <i class="bi-person-circle h2"></i>
-            </a>
-            <ul class="dropdown-menu text-small shadow  " aria-labelledby="dropdownUser3">
-              <li><a class="dropdown-item" href="./Login.html">Logout</a></li>
-              <li><a class="dropdown-item" href="#">Settings</a></li>
-              <li><a class="dropdown-item" href="./profile.html">Profile</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-
-
-      <div class=" col-sm m-3 vh-100 overflow-auto bg-light rounded-4 ">
-        <!-- content -->
-        <div class="">
-          <form class="">
-            <div class="container-fluid m-2">
-              <div class="">
-                <a href="./Orphan.html" class="btn btn-primary mt-3">
-                  <i class="fa-solid fa-arrow-left"></i>
-                </a>
-              </div>
-              <div class="row info ">
-                <img class="col-3 file-icon fs-1 img-fluid picsize" src="../image/Profpic (7).png" height="100px"
-                  width="100px" alt="File Icon">
-                <div class="col-5 mt-3">
-                  <h3>Bakit Ganito Podcast</h3>
-                  <span class="badge bg-success rounded-pill">Admitted</span>
+    <div class="container-fluid ">
+        <div class="row ">
+            <div class="col-sm-auto sticky-top rounded-2" style="background-color: #173B7E;">
+                <div
+                    class="d-flex flex-sm-column flex-row flex-nowrap bg-transparent text-center align-items-center justify-content-center sticky-top ">
+                    <a href="https://www.obedshouse.org/" target="_blank"
+                        class="d-block p-3 link-dark text-decoration-none" title="" data-bs-toggle="tooltip"
+                        data-bs-placement="right" data-bs-original-title="Icon-only">
+                        <img src="../image/obeds.jpg" class="img-fluid rounded-4" width="80px"></img>
+                    </a>
+                    <ul
+                        class="nav nav-pills nav-flush flex-sm-column flex-row flex-nowrap text-center align-items-center justify-content-center">
+                        <li class="nav-item">
+                            <a href="./Dboard.html" class="p-0 mt-0 text-decoration-none" title=""
+                                data-bs-toggle="tooltip" data-bs-placement="right">
+                                <i class="txtColor icon fa-solid fa-chart-line  btn btn-outline-primary border-0"
+                                    style="font-size: 35px;"></i>
+                                <p class="txtColor" style="font-size: 12px;">Dashboard</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="./Orphan.html" class="p-0 mt-0 text-decoration-none" title=""
+                                data-bs-toggle="tooltip" data-bs-placement="right">
+                                <i class="txtColor icon fa-solid fa-children fs-2  btn btn-outline-primary border-0"
+                                    style="font-size: 35px;"></i>
+                                <p class="txtColor  font-size-sm " style="font-size: 12px;">Orphan Profile</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="./Files.html" class="p-0 mt-0 text-decoration-none" title=""
+                                data-bs-toggle="tooltip" data-bs-placement="right">
+                                <i class="txtColor icon fa-solid fa-folder-open fs-2  btn btn-outline-primary border-0"
+                                    style="font-size: 35px;"></i>
+                                <p class="txtColor " style="font-size: 12px;">Orphanage Files</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="./Trash.html" class="p-0 mt-0 text-decoration-none" title=""
+                                data-bs-toggle="tooltip" data-bs-placement="right">
+                                <i class="txtColor icon fa-solid fa-trash-can fs-2  btn btn-outline-primary border-0 "
+                                    style="font-size: 35px;"></i>
+                                <p class="txtColor " style="font-size: 12px;">Trash</p>
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="dropdown ">
+                        <a href="#"
+                            class="d-flex align-items-center justify-content-center p-3 link-dark text-decoration-none dropdown-toggle"
+                            id="dropdownUser3" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="bi-person-circle h2"></i>
+                        </a>
+                        <ul class="dropdown-menu text-small shadow  " aria-labelledby="dropdownUser3">
+                            <li><a class="dropdown-item" href="./Login.html">Logout</a></li>
+                            <li><a class="dropdown-item" href="#">Settings</a></li>
+                            <li><a class="dropdown-item" href="./profile.html">Profile</a></li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="col text-end align-items-end justify-content-end">
-                  <div class="row mt-3 text-end px-0 mx-5">
-                      <a class="btn btn-primary" href="./academic.html">Academic Information</a>
-                  </div>
-                  <div class="row mt-3 text-end px-0 mx-5 info-icon">
-                      <a class="btn btn-primary" href="./health.html">Health Information</a>
-                  </div>
-                  <div class="row mt-3 info-icon text-end px-0 mx-5">
-                      <a class="btn btn-primary" href="./orphanSentiment_detail.html">See Notes</a>
-                  </div>
-                  <div class="row mt-3 info-icon text-end px-0 mx-5">
-                    <a class="btn btn-primary" href="#" data-bs-toggle="modal" data-bs-target="#changeProfilePictureModal">Change Profile Picture</a>
+            </div>
 
-                  </div>
-              </div>
-              
 
-              </div>
+            <div class="col-sm m-3 border vh-100 overflow-auto bg-light rounded-4">
+                <!-- Add Orphan Profile Button -->
+                <div class="container-fluid row p-2 bg-light sticky-top">
+                    <div class="col d-flex justify-content-between align-items-center">
+                        <button type="button" class="btn btn-primary mx-1" id="uploadBtn" data-bs-toggle="modal"
+                            data-bs-target="#uploadModal">
+                            <i class="ion ion-md-cloud-upload"></i>
+                            Add Orphan Profile
+                        </button>
+                        <div class="d-flex align-items-center">
+                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                            <button class="btn btn-outline-success btn-sm" type="submit">Search</button>
+                        </div>
+                    </div>
+                </div>
 
-              
-<!-- Change Profile Picture Modal -->
-<div class="modal fade" id="changeProfilePictureModal" tabindex="-1" aria-labelledby="changeProfilePictureModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-      <div class="modal-content">
-          <div class="modal-header">
-              <h5 class="modal-title" id="changeProfilePictureModalLabel">Change Profile Picture</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-              <form id="profilePictureForm">
-                  <div class="mb-3">
-                      <label for="profilePictureInput" class="form-label">Choose Profile Picture (JPG, JPEG, PNG)</label>
-                      <input type="file" class="form-control" id="profilePictureInput" accept=".jpg, .jpeg, .png">
-                  </div>
-              </form>
-          </div>
-          <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary" id="uploadProfilePictureBtn">Upload</button>
-          </div>
-      </div>
-  </div>
+                <!-- Line to separate sections -->
+                <hr>
+
+                <!-- Content -->
+                <div class="container-fluid row p-2 bg-light sticky-top">
+                    <div class="col">
+                        <div class="d-flex justify-content-between mb-3">
+                            <div class="d-flex align-items-center">
+                                <label for="entriesSelect" class="form-label me-2 mb-0">Show</label>
+                                <select class="form-select form-select-sm me-2" id="entriesSelect" style="width: 60px;">
+                                    <option value="5">5</option>
+                                    <option value="10">10</option>
+                                    <option value="25">25</option>
+                                    <option value="50">50</option>
+                                    <option value="100">100</option>
+                                </select>
+                                <span class="me-2">entries</span>
+                            </div>
+
+                            <div class="d-flex align-items-center">
+                                <button class="btn btn-sm me-2"><i class="bi bi-filter"></i></button>
+                                <label for="statusFilter" class="form-label me-2 mb-0">Status</label>
+                                <select class="form-select form-select-sm me-2" id="statusFilter" style="width: 100px;">
+                                    <option value="">All</option>
+                                    <option value="Admitted">Admitted</option>
+                                    <option value="In Process">In Process</option>
+                                    <option value="Graduate">Graduate</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+                    <div>
+                        <div class="container-fluid">
+                            <div class="">
+                                <div class="flex-grow-1 light-style ">
+                                    <div class="container-m-nx container-m-ny bg-lightest mb-3">
+                                        <div class="row  justify-content-center text-center">
+                                            <!-- orphan profile -->
+                                            <!-- bg-danger, bg-success, bg-warning -->
+                                            
+
+                                            <a class="card m-2 btn btn-light align-items-center orphancard"
+                                                href="./orphan-content.html" style="width: 250px; height: 300px;">
+                                                <img src="../image/Profpic (7).png" width="150px" height="150px"
+                                                    card-img-top" alt="...">
+                                                <div class="card-body d-flex flex-column justify-content-between">
+                                                    <div>
+                                                        <h3 class="card-title">Name</h3>
+                                                        <p class="status text-center mb-2">
+                                                            <span class="badge bg-warning rounded-pill">In
+                                                                Process</span>
+                                                        </p>
+                                                    </div>
+                                                    <p class="small text-muted text-center mt-auto mb-0 pb-2">Date
+                                                        Admitted: January 1, 2023</p>
+                                                </div>
+                                            </a>
+
+                                            <a class="card m-2 btn btn-light align-items-center orphancard"
+                                                href="./orphan-content.html" style="width: 250px; height: 300px;">
+                                                <img src="../image/Profpic (7).png" width="150px" height="150px"
+                                                    card-img-top" alt="...">
+                                                <div class="card-body d-flex flex-column justify-content-between">
+                                                    <div>
+                                                        <h3 class="card-title">Name</h3>
+                                                        <p class="status text-center mb-2">
+                                                            <span class="badge bg-success rounded-pill">In
+                                                                Process</span>
+                                                        </p>
+                                                    </div>
+                                                    <p class="small text-muted text-center mt-auto mb-0 pb-2">Date
+                                                        Admitted: January 1, 2023</p>
+                                                </div>
+                                            </a>
+
+                                            <a class="card m-2 btn btn-light align-items-center orphancard"
+                                                href="./orphan-content.html" style="width: 250px; height: 300px;">
+                                                <img src="../image/Profpic (7).png" width="150px" height="150px"
+                                                    card-img-top" alt="...">
+                                                <div class="card-body d-flex flex-column justify-content-between">
+                                                    <div>
+                                                        <h3 class="card-title">Name</h3>
+                                                        <p class="status text-center mb-2">
+                                                            <span class="badge bg-danger rounded-pill">In
+                                                                Process</span>
+                                                        </p>
+                                                    </div>
+                                                    <p class="small text-muted text-center mt-auto mb-0 pb-2">Date
+                                                        Admitted: January 1, 2023</p>
+                                                </div>
+                                            </a>
+
+                                            <a class="card m-2 btn btn-light align-items-center orphancard"
+                                                href="./orphan-content.html" style="width: 250px; height: 300px;">
+                                                <img src="../image/Profpic (7).png" width="150px" height="150px"
+                                                    card-img-top" alt="...">
+                                                <div class="card-body d-flex flex-column justify-content-between">
+                                                    <div>
+                                                        <h3 class="card-title">Name</h3>
+                                                        <p class="status text-center mb-2">
+                                                            <span class="badge bg-warning rounded-pill">In
+                                                                Process</span>
+                                                        </p>
+                                                    </div>
+                                                    <p class="small text-muted text-center mt-auto mb-0 pb-2">Date
+                                                        Admitted: January 1, 2023</p>
+                                                </div>
+                                            </a>
+
+                                            <a class="card m-2 btn btn-light align-items-center orphancard"
+                                                href="./orphan-content.html" style="width: 250px; height: 300px;">
+                                                <img src="../image/Profpic (7).png" width="150px" height="150px"
+                                                    card-img-top" alt="...">
+                                                <div class="card-body d-flex flex-column justify-content-between">
+                                                    <div>
+                                                        <h3 class="card-title">Name</h3>
+                                                        <p class="status text-center mb-2">
+                                                            <span class="badge bg-success rounded-pill">In
+                                                                Process</span>
+                                                        </p>
+                                                    </div>
+                                                    <p class="small text-muted text-center mt-auto mb-0 pb-2">Date
+                                                        Admitted: January 1, 2023</p>
+                                                </div>
+                                            </a>
+
+                                            <a class="card m-2 btn btn-light align-items-center orphancard"
+                                                href="./orphan-content.html" style="width: 250px; height: 300px;">
+                                                <img src="../image/Profpic (7).png" width="150px" height="150px"
+                                                    card-img-top" alt="...">
+                                                <div class="card-body d-flex flex-column justify-content-between">
+                                                    <div>
+                                                        <h3 class="card-title">Name</h3>
+                                                        <p class="status text-center mb-2">
+                                                            <span class="badge bg-danger rounded-pill">In
+                                                                Process</span>
+                                                        </p>
+                                                    </div>
+                                                    <p class="small text-muted text-center mt-auto mb-0 pb-2">Date
+                                                        Admitted: January 1, 2023</p>
+                                                </div>
+                                            </a>
+
+                                            <a class="card m-2 btn btn-light align-items-center orphancard"
+                                                href="./orphan-content.html" style="width: 250px; height: 300px;">
+                                                <img src="../image/Profpic (7).png" width="150px" height="150px"
+                                                    card-img-top" alt="...">
+                                                <div class="card-body d-flex flex-column justify-content-between">
+                                                    <div>
+                                                        <h3 class="card-title">Name</h3>
+                                                        <p class="status text-center mb-2">
+                                                            <span class="badge bg-warning rounded-pill">In
+                                                                Process</span>
+                                                        </p>
+                                                    </div>
+                                                    <p class="small text-muted text-center mt-auto mb-0 pb-2">Date
+                                                        Admitted: January 1, 2023</p>
+                                                </div>
+                                            </a>
+
+                                            <a class="card m-2 btn btn-light align-items-center orphancard"
+                                                href="./orphan-content.html" style="width: 250px; height: 300px;">
+                                                <img src="../image/Profpic (7).png" width="150px" height="150px"
+                                                    card-img-top" alt="...">
+                                                <div class="card-body d-flex flex-column justify-content-between">
+                                                    <div>
+                                                        <h3 class="card-title">Name</h3>
+                                                        <p class="status text-center mb-2">
+                                                            <span class="badge bg-success rounded-pill">In
+                                                                Process</span>
+                                                        </p>
+                                                    </div>
+                                                    <p class="small text-muted text-center mt-auto mb-0 pb-2">Date
+                                                        Admitted: January 1, 2023</p>
+                                                </div>
+                                            </a>
+
+                                            <a class="card m-2 btn btn-light align-items-center orphancard"
+                                                href="./orphan-content.html" style="width: 250px; height: 300px;">
+                                                <img src="../image/Profpic (7).png" width="150px" height="150px"
+                                                    card-img-top" alt="...">
+                                                <div class="card-body d-flex flex-column justify-content-between">
+                                                    <div>
+                                                        <h3 class="card-title">Name</h3>
+                                                        <p class="status text-center mb-2">
+                                                            <span class="badge bg-danger rounded-pill">In
+                                                                Process</span>
+                                                        </p>
+                                                    </div>
+                                                    <p class="small text-muted text-center mt-auto mb-0 pb-2">Date
+                                                        Admitted: January 1, 2023</p>
+                                                </div>
+                                            </a>
+
+                                            
+
+
+                                            <!-- content orphan profile -->
+                                        </div>
+                                    </div>
+                                </div>
+                                <footer class="d-flex justify-content-between p-3 bg-light sticky-bottom">
+                                    <button class="btn btn-primary" id="previous-page">Previous</button>
+                                    <span class="mx-3">Page <span id="current-page">1</span> of <span
+                                            id="total-pages">10</span></span>
+                                    <button class="btn btn-primary" id="next-page">Next</button>
+                                </footer>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        
+<!-- modal for add orphan profile v2 -->
+<div class="modal fade" id="uploadModal" tabindex="-1" aria-labelledby="uploadModal" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="uploadModal">Create Orphan Profile</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="multiPageForm">
+
+
+                    <!-- Orphan Information -->
+<div class="page" id="page1">
+    <div class="container">
+        <div class="row mb-3 bg-transparent">
+            <h4 for="orphanName" class="form-label">Orphan Name</h4>
+            <div class="col-xl-6">
+                <label for="firstName" class="form-label">First
+                    Name<span style="color: red;">*</span></label>
+                <input type="text" class="form-control" id="firstName" required>
+            </div>
+            <div class="col-xl-6">
+                <label for="middleName" class="form-label">Middle
+                    Name</label>
+                <input type="text" class="form-control" id="middleName">
+            </div>
+            <div class="col-xl-12">
+                <label for="lastName" class="form-label">Last
+                    Name<span style="color: red;">*</span></label>
+                <input type="text" class="form-control" id="lastName" required>
+            </div>
+        </div>
+
+        <div class="row mb-3 bg-transparent">
+            <div class="col-md-6">
+                <label for="gender" class="form-label">Gender<span style="color: red;">*</span></label>
+                <select class="form-select" id="gender" required>
+                    <option value="">Select Gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                </select>
+            </div>
+            <div class="col-md-6">
+                <label for="birthdate" class="form-label">Birthdate</label>
+                <input type="date" class="form-control" id="birthdate">
+            </div>
+        </div>
+
+        <div class="row mb-3 bg-transparent">
+            <div class="col-md-6">
+                <label for="dateAdmitted" class="form-label">Date Admitted<span style="color: red;">*</span></label>
+                <input type="date" class="form-control" id="dateAdmitted" required>
+            </div>
+            <div class="col-md-6">
+                <label for="status" class="form-label">Status<span style="color: red;">*</span></label>
+                <select class="form-select" id="status" required>
+                    <option value="">Select Status</option>
+                    <option value="Admitted">Admitted</option>
+                    <option value="Graduated">Graduated</option>
+                    <option value="In Process">In Process</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row mb-3 bg-transparent">
+            <div class="col-md-6">
+                <label for="profilePicture" class="form-label">Upload Profile Picture (PNG, JPG, JPEG)<span style="color: red;">*</span></label>
+                <input type="file" class="form-control" id="profilePicture" accept=".png, .jpg, .jpeg" required>
+            </div>
+        </div>
+    </div>
 </div>
 
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-      // Handle profile picture upload
-      document.getElementById("uploadProfilePictureBtn").addEventListener("click", function () {
-          var profilePictureInput = document.getElementById("profilePictureInput");
-          var profilePicture = profilePictureInput.files[0];
-          if (!profilePicture) {
-              alert("No picture is chosen.");
-          } else {
-              var allowedFormats = ["image/jpeg", "image/jpg", "image/png"];
-              if (!allowedFormats.includes(profilePicture.type)) {
-                  alert("Wrong file format. Please choose a JPG, JPEG, or PNG file.");
-              } else {
-                  // Picture uploaded successfully
-                  alert("Profile picture changed.");
-                  // Close the modal
-                  var changeProfilePictureModal = new bootstrap.Modal(document.getElementById("changeProfilePictureModal"));
-                  changeProfilePictureModal.hide();
-                  // Redirect to ../html/orphan-content.html
-                  window.location.href = "../html/orphan-content.html";
-              }
-          }
-      });
-  });
-</script>
 
 
 
 
-
-
-              <hr class="mt-2">
-              <div class="container-fluid row">
-                <div class="row">
-                  <div class="col-10 me-5">
-                    <h2>Personal Information</h2>
-                  </div>
-                  <div class="col-lg-1 text-center align-items-end justify-content-end btn btn-primary m-1"
-                    data-bs-toggle="modal" data-bs-target="#personalInfoModal">
-                    <a>Edit</a>
-                  </div>
-                </div>
-
-                <p class="col-6"><strong>Gender:</strong> <input class="form-control" value="Male" type="text"
-                    aria-label="Disabled input example" readonly>
-                </p>
-                <p class="col-6"><strong>Birth Date:</strong> <input class="form-control" value="10-10-2021" type="text"
-                    aria-label="Disabled input example" readonly></p>
-                <p class="col-6"><strong>Date Admitted:</strong> <input class="form-control" value="1-23-1999"
-                    type="text" aria-label="Disabled input example" readonly></p>
-                <p class="col-6"><strong>Nationality:</strong> <input class="form-control" value="Filipino" type="text"
-                    aria-label="Disabled input example" readonly></p>
-              </div>
-
-
-
-              <hr class="mt-2" />
-              <div class="container-fluid row">
-                <div class="row ">
-                  <div class="col-10 me-5">
-                    <h2>Adittional Information</h2>
-                  </div>
-                  <div class="col-lg-1 text-center align-items-end justify-content-end btn btn-primary m-1"
-                    data-bs-toggle="modal" data-bs-target="#additionalInfoModal">
-                    <a>Edit</a>
-                  </div>
-                </div>
-                <div class="col-6">
-                  <p class="col-12"><strong>Mother's Name:</strong> <input class="form-control" value="Male" type="text"
-                      aria-label="Disabled input example" readonly>
-                  </p>
-                  <p class="col-12"><strong>Date of Birth:</strong> <input class="form-control" value="10-10-2021"
-                      type="text" aria-label="Disabled input example" readonly></p>
-                  <p class="col-12"><strong>Contact Details:</strong> <input class="form-control" value="1-23-1999"
-                      type="text" aria-label="Disabled input example" readonly></p>
-                  <p class="col-12"><strong>Occupation:</strong> <input class="form-control" value="Filipino"
-                      type="text" aria-label="Disabled input example" readonly></p>
-                  <p class="col-12"><strong>Address:</strong> <input class="form-control" value="Filipino" type="text"
-                      aria-label="Disabled input example" readonly></p>
-                  <p class="col-12"><strong>Status:</strong> <input class="form-control" value="Filipino" type="text"
-                      aria-label="Disabled input example" readonly></p>
-                </div>
-
-                <div class="col-6">
-                  <p class="col-12"><strong>Father's Name:</strong> <input class="form-control" value="Male" type="text"
-                      aria-label="Disabled input example" readonly>
-                  </p>
-                  <p class="col-12"><strong>Date of Birth:</strong> <input class="form-control" value="10-10-2021"
-                      type="text" aria-label="Disabled input example" readonly></p>
-                  <p class="col-12"><strong>Contact Details:</strong> <input class="form-control" value="1-23-1999"
-                      type="text" aria-label="Disabled input example" readonly></p>
-                  <p class="col-12"><strong>Occupation:</strong> <input class="form-control" value="Filipino"
-                      type="text" aria-label="Disabled input example" readonly></p>
-                  <p class="col-12"><strong>Address:</strong> <input class="form-control" value="Filipino" type="text"
-                      aria-label="Disabled input example" readonly></p>
-                  <p class="col-12"><strong>Status:</strong> <input class="form-control" value="Filipino" type="text"
-                      aria-label="Disabled input example" readonly></p>
-                </div>
-              </div>
-
-              <hr class="mt-2" />
-              <div class="container-fluid  row">
-                <div class="row ">
-                  <div class="col-10 me-5">
-                    <h2>BMI</h2>
-                  </div>
-                  <div class="col-lg-1 text-center align-items-end justify-content-end btn btn-primary m-1">
-                    <a href="./bmi.html" class="text-decoration-none text-white">BMI History</a>
-                  </div>
-                </div>
-                <p class="col-6"><strong>Height:</strong> <input class="form-control" value="Male" type="text"
-                    aria-label="Disabled input example" readonly>
-                </p>
-                <p class="col-6"><strong>Weight:</strong> <input class="form-control" value="10-10-2021" type="text"
-                    aria-label="Disabled input example" readonly></p>
-                <p class="col-6"><strong>BMI:</strong> <input class="form-control" value="1-23-1999" type="text"
-                    aria-label="Disabled input example" readonly></p>
-                <p class="col-6"><strong>Status:</strong> <input class="form-control" value="Filipino" type="text"
-                    aria-label="Disabled input example" readonly></p>
-              </div>
-
-              <hr class="mt-2">
-              <div class="container-fluid">
-
-                <h2>Oprhan Files</h2>
-                <div class="row  ">
-                  <div class=" col-lg-3 card file-card m-1">
-                    <div class="card-body">
-                      <h5 class="card-title">Birth Certificate</h5>
-                      <p class="card-text">File description goes here...</p>
-                      <a class="btn btn-primary" href="../files/BirthCert.pdf" target="_blank">Open File</a>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save</button>
                     </div>
-                  </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 
-                  <div class=" col-lg-3 card file-card m-1">
-                    <div class="card-body">
-                      <h5 class="card-title">Birth Certificate</h5>
-                      <p class="card-text">File description goes here...</p>
-                      <a class="btn btn-primary" href="../files/ReportCard.pdf" target="_blank">Open File</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                            <!-- Page 2 -->
+                            <div class="page" id="page2">
+                                <div class="container">
+                                    <form id="addHealthDetailsForm">
+                                        <div class="mb-3">
+                                            <label for="dateInput" class="form-label">Date</label>
+                                            <input type="date" class="form-control" id="dateInput"
+                                                aria-describedby="dateHelp" required>
+                                            <small id="dateHelp" class="form-text text-muted">Enter the date of
+                                                measurement.</small>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="temperatureInput" class="form-label">Temperature
+                                                (°C)</label>
+                                            <div class="input-group">
+                                                <input type="number" step="0.1" class="form-control"
+                                                    id="temperatureInput" aria-describedby="temperatureHelp" required>
+                                                <span class="input-group-text">°C</span>
+                                            </div>
+                                            <small id="temperatureHelp" class="form-text text-muted">Enter your body
+                                                temperature.</small>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="bloodPressureInput" class="form-label">Blood Pressure
+                                                (mmHg)</label>
+                                            <input type="number" class="form-control" id="bloodPressureInput"
+                                                aria-describedby="bloodPressureHelp" placeholder="e.g., 120/80"
+                                                required>
+                                            <small id="bloodPressureHelp" class="form-text text-muted">Enter your
+                                                systolic and diastolic
+                                                blood pressure separated by a slash.</small>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="heartRateInput" class="form-label">Heart Rate (bpm)</label>
+                                            <input type="number" class="form-control" id="heartRateInput"
+                                                aria-describedby="heartRateHelp" required>
+                                            <small id="heartRateHelp" class="form-text text-muted">Enter your
+                                                resting heart rate.</small>
+                                        </div>
+                                        <div class="mb-3">
+                                            <div class="row">
+                                                <label class="form-label">Symptoms</label>
+                                                <div class="col-6">
+                                                    <input type="checkbox" id="nauseaCheckbox" name="symptom"
+                                                        value="nausea">
+                                                    <label for="nauseaCheckbox">Nausea</label>
+                                                </div>
+                                                <div class="col-6">
+                                                    <input type="checkbox" id="vomitingCheckbox" name="symptom"
+                                                        value="vomiting">
+                                                    <label for="vomitingCheckbox">Vomiting</label>
+                                                </div>
+                                                <!-- Add more checkboxes here -->
+                                                <div class="col-6">
+                                                    <input type="checkbox" id="headacheCheckbox" name="symptom"
+                                                        value="headache">
+                                                    <label for="headacheCheckbox">Headache</label>
+                                                </div>
+                                                <div class="col-6">
+                                                    <input type="checkbox" id="stomachacheCheckbox" name="symptom"
+                                                        value="stomachache">
+                                                    <label for="stomachacheCheckbox">Stomachache</label>
+                                                </div>
+                                                <div class="col-6">
+                                                    <input type="checkbox" id="coughCheckbox" name="symptom"
+                                                        value="cough">
+                                                    <label for="coughCheckbox">Cough with phlegm</label>
+                                                </div>
+                                                <div class="col-6">
+                                                    <input type="checkbox" id="dizzinessCheckbox" name="symptom"
+                                                        value="dizziness">
+                                                    <label for="dizzinessCheckbox">Dizziness</label>
+                                                </div>
+                                                <div class="col-6">
+                                                    <input type="checkbox" id="painCheckbox" name="symptom"
+                                                        value="pain">
+                                                    <label for="painCheckbox">Pain in the heart</label>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="otherDetailsInput" class="form-label">Other Details</label>
+                                            <textarea class="form-control" id="otherDetailsInput" rows="3"
+                                                aria-describedby="otherDetailsHelp"></textarea>
+                                            <small id="otherDetailsHelp" class="form-text text-muted">Add any
+                                                additional notes or
+                                                symptoms.</small>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <!-- Page 3 -->
+                            <div class="page" id="page3">
+                                <div class="container">
+                                    <form id="academicDetailsForm">
+                                        <!-- Date -->
+                                        <div class="mb-3">
+                                            <label for="dateInput" class="form-label">Date</label>
+                                            <input type="date" class="form-control" id="dateInput"
+                                                aria-describedby="dateHelp" required>
+                                            <small id="dateHelp" class="form-text text-muted">Enter the date of
+                                                completion or evaluation.</small>
+                                        </div>
+                                        <!-- Year Level -->
+                                        <div class="mb-3">
+                                            <label for="yearLevelInput" class="form-label">Year Level</label>
+                                            <select class="form-select" id="yearLevelInput"
+                                                aria-describedby="yearLevelHelp" required>
+                                                <option value="">Select Year Level</option>
+                                                <option value="Grade 1">Grade 1</option>
+                                                <option value="Grade 2">Grade 2</option>
+                                                <option value="Grade 3">Grade 3</option>
+                                                <option value="Grade 4">Grade 4</option>
+                                                <option value="Grade 5">Grade 5</option>
+                                                <option value="Grade 6">Grade 6</option>
+                                                <option value="Grade 7">Grade 7</option>
+                                                <option value="Grade 8">Grade 8</option>
+                                                <option value="Grade 9">Grade 9</option>
+                                                <option value="Grade 10">Grade 10</option>
+                                                <option value="Grade 11">Grade 11</option>
+                                                <option value="Grade 12">Grade 12</option>
+                                                <option value="1st Year College">1st Year College</option>
+                                                <option value="2nd Year College">2nd Year College</option>
+                                                <option value="3rd Year College">3rd Year College</option>
+                                                <option value="4th Year College">4th Year College</option>
+                                                <option value="5th Year College">5th Year College</option>
+                                                <option value="6th Year College">6th Year College</option>
+                                                <option value="7th Year College">7th Year College</option>
+                                            </select>
+                                            <small id="yearLevelHelp" class="form-text text-muted">Select your year
+                                                level.</small>
+                                        </div>
+                                        <!-- Grading Period -->
+                                        <div class="mb-3">
+                                            <label for="gradingPeriodInput" class="form-label">Grading
+                                                Period</label>
+                                            <select class="form-select" id="gradingPeriodInput"
+                                                aria-describedby="gradingPeriodHelp" required>
+                                                <option value="">Select Grading Period</option>
+                                                <option value="1st Grading">1st Grading</option>
+                                                <option value="2nd Grading">2nd Grading</option>
+                                                <option value="3rd Grading">3rd Grading</option>
+                                                <option value="4th Grading">4th Grading</option>
+                                                <option value="1st Semester">1st Semester</option>
+                                                <option value="2nd Semester">2nd Semester</option>
+                                                <option value="College">Summer</option>
+                                            </select>
+                                            <small id="gradingPeriodHelp" class="form-text text-muted">Select the
+                                                grading period.</small>
+                                        </div>
+                                        <!-- Subject and Grade -->
+                                        <div id="subjectFields" class="row">
+                                            <div class="mb-3 col-6">
+                                                <label class="form-label">Subject</label>
+                                                <input type="text" class="form-control mb-3 subject-input"
+                                                    placeholder="Subject" required>
+                                            </div>
+                                            <div class="mb-3 col-6">
+                                                <label class="form-label">Grade</label>
+                                                <input type="number" class="form-control mb-3 grade-input"
+                                                    placeholder="Grade" min="0" max="100" required>
+                                            </div>
+                                        </div>
+                                        <button type="button" class="btn btn-primary mt-3"
+                                            onclick="addSubjectField()">Add Subject</button>
+
+
+                                        <!-- GWA -->
+                                        <div class="mb-3">
+                                            <label for="gwaInput" class="form-label">GWA</label>
+                                            <input type="number" class="form-control" id="gwaInput"
+                                                aria-describedby="gwaHelp" min="0" max="100"
+                                                placeholder="General Weighted Average" required>
+
+                                        </div>
+                                    </form>
+                                </div>
+
+                            </div>
+                        </form>
                     </div>
-                  </div>
-
-                  <div class=" col-lg-3 card file-card m-1">
-                    <div class="card-body">
-                      <h5 class="card-title">Birth Certificate</h5>
-                      <p class="card-text">File description goes here...</p>
-                      <a class="btn btn-primary" href="#" target="_blank">Open File</a>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" id="prevBtn">Previous</button>
+                        <button type="button" class="btn btn-primary" id="nextBtn">Next</button>
                     </div>
-                  </div>
                 </div>
-
-
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
-  </div>
-
-
-
-
-
-  
-  <!-- edit personal info modal -->
-  <div class="modal fade" id="personalInfoModal" tabindex="-1" aria-labelledby="personalInfoModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="personalInfoModalLabel">Edit Personal Information</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class=" modal-body">
-          <form>
-            <div class="mb-3">
-              <label for="inputName" class="form-label">Name:</label>
-              <input type="text" class="form-control" id="inputName" value="Bakit Ganito Podcast">
             </div>
-            <div class="mb-3">
-              <label for="gender" class="form-label">Gender</label>
-              <select class="form-select" id="gender" required>
-                <option value="">Select Gender</option>
-                <option value="male">Male</option>
-                <option value="female">Female</option>
-                <option value="other">Other</option>
-              </select>
-            </div>
-            <div class="mb-3">
-              <label for="birthdate" class="form-label">Birthdate</label>
-              <input type="date" class="form-control" id="birthdate" value="10-10-2021" required>
-            </div>
-            <div class="mb-3">
-              <label for="dateAdmitted" class="form-label">Date Admitted:</label>
-              <input type="date" class="form-control" id="dateAdmitted" value="10-10-2021" required>
-            </div>
-            <div class="mb-3">
-              <label for="inputEthnicity" class="form-label">Ethnicity:</label>
-              <input type="text" class="form-control" id="inputEthnicity" value="Filipino">
-            </div>
-          </form>
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save Changes</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- edit modal for additional details -->
-  <div class="modal fade" id="additionalInfoModal" tabindex="-1" aria-labelledby="additionalInfoModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="additionalInfoModalLabel">Edit Additional Information</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <form>
-            <div class="container">
-              <div class="row">
-                <div class="col-12 mb-3">
-                  <label for="motherName" class="form-label">Mother's Name:</label>
-                  <input type="text" class="form-control" id="motherName" value="Mother's Name">
-                </div>
-                <div class="col-6 mb-3">
-                  <label for="motherDob" class="form-label">Date of Birth:</label>
-                  <input type="date" class="form-control" id="motherDob" value="2023-10-26">
-                </div>
-                <div class="col-6 mb-3">
-                  <label for="motherContact" class="form-label">Contact Details:</label>
-                  <input type="text" class="form-control" id="motherContact" value="Contact details">
-                </div>
-                <div class="col-6 mb-3">
-                  <label for="motherOccupation" class="form-label">Occupation:</label>
-                  <input type="text" class="form-control" id="motherOccupation" value="Occupation">
-                </div>
-                <div class="col-6 mb-3">
-                  <label for="motherStatus" class="form-label">Status:</label>
-                  <input type="text" class="form-control" id="motherStatus" value="Status">
-                </div>
-                <div class="col-12 mb-3">
-                  <label for="motherAddress" class="form-label">Address:</label>
-                  <textarea class="form-control" id="motherAddress" rows="3">Address</textarea>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-12 mb-3">
-                  <label for="fatherName" class="form-label">Father's Name:</label>
-                  <input type="text" class="form-control" id="fatherName" value="Father's name">
-                </div>
-                <div class="col-6 mb-3">
-                  <label for="fatherDob" class="form-label">Date of Birth:</label>
-                  <input type="date" class="form-control" id="fatherDob" value="2023-10-26">
-                </div>
-                <div class="col-6 mb-3">
-                  <label for="fatherContact" class="form-label">Contact Details:</label>
-                  <input type="text" class="form-control" id="fatherContact" value="Contact details">
-                </div>
-                <div class="col-6 mb-3">
-                  <label for="fatherOccupation" class="form-label">Occupation:</label>
-                  <input type="text" class="form-control" id="fatherOccupation" value="Occupation">
-                </div>
-                <div class="col-6 mb-3">
-                  <label for="motherStatus" class="form-label">Status:</label>
-                  <input type="text" class="form-control" id="motherStatus" value="Status">
-                </div>
-                <div class="col-12 mb-3">
-                  <label for="fatherAddress" class="form-label">Address:</label>
-                  <textarea class="form-control" id="fatherAddress" rows="3">Address</textarea>
-                </div>
-              </div>
-          </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save Changes</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  </form>
-  </div>
-  </div>
-  </div>
-
 
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-<script src="../js/bmi.js"></script>
-<script src="../js/profile_calendar.js"></script>
-
+<script src="../js/academic-subject.js"></script>
+<script src="../js/orphan-add-profile.js"></script>
+<script src="../js/orphan.js"></script>
 
 
 </html>
