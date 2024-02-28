@@ -34,8 +34,52 @@
                 <a class="btn text-white  mt-3" href="./Dboard.html">Login</a>
             </form>
             <div class="text-center fs-6">
-                <a href="#">Forget password?</a>
+                <!-- Corrected link to trigger the modal -->
+                <a href="#passwordResetModal" data-bs-toggle="modal" data-bs-target="#passwordResetModal">Forget password?</a>
             </div>
         </div>
     </div>
 </body>
+
+<!-- Bootstrap modal for password reset -->
+<div class="modal fade" id="passwordResetModal" tabindex="-1" aria-labelledby="passwordResetModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="passwordResetModalLabel">Reset Password</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- Form for resetting password -->
+                <form id="passwordResetForm">
+                    <div class="mb-3">
+                        <label for="resetEmail" class="form-label">Enter your email</label>
+                        <input type="email" class="form-control" id="resetEmail" required>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="resetPassword()">Reset Password</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- JavaScript -->
+<script>
+    // Function to reset password
+    function resetPassword() {
+        var resetEmail = document.getElementById('resetEmail').value;
+
+        // Validate email format (you can add more robust email validation if needed)
+
+        // Here, you can implement the logic to send a password reset link to the provided email address
+
+        // Show alert that password reset link has been sent
+        alert("Password reset link has been sent to your email.");
+
+        // Close the modal
+        $('#passwordResetModal').modal('hide');
+    }
+</script>
