@@ -1,364 +1,101 @@
 <!-- modal for add orphan profile v1 -->
 <div class="modal fade" id="uploadModal" tabindex="-1" aria-labelledby="uploadModalLabel" aria-hidden="true">
+
     <div class="modal-dialog modal-lg">
-        <div class="modal-content ">
+        <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="uploadModalLabel">Create new profile
+                <h5 class="modal-title" id="uploadModalLabel">
+                    Create new profile
                 </h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                </button>
             </div>
             <div class="modal-body">
                 <div class="text-start">
                     <form>
-
-                        <nav>
-                            <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                                <button class="nav-link active" id="nav-personalinfo-tab" data-bs-toggle="tab"
-                                    data-bs-target="#nav-personalinfo" type="button" role="tab"
-                                    aria-controls="nav-personalinfo" aria-selected="true">Personal
-                                    Information</button>
-                                <button class="nav-link" id="nav-healthinfo-tab" data-bs-toggle="tab"
-                                    data-bs-target="#nav-healthinfo" type="button" role="tab"
-                                    aria-controls="nav-healthinfo" aria-selected="false">Health Information</button>
-                                <button class="nav-link" id="nav-academicinfo-tab" data-bs-toggle="tab"
-                                    data-bs-target="#nav-academicinfo" type="button" role="tab"
-                                    aria-controls="nav-academicinfo" aria-selected="false">Academic
-                                    Information</button>
-                                <button class="nav-link" id="nav-disabled-tab" data-bs-toggle="tab"
-                                    data-bs-target="#nav-disabled" type="button" role="tab"
-                                    aria-controls="nav-disabled" aria-selected="false" disabled>Disabled</button>
+                        <div class="row mb-3 bg-transparent">
+                            <div class="col-xl-6">
+                                <label for="firstName" class="form-label">
+                                    First Name
+                                </label>
+                                <input type="text" class="form-control" id="firstName" required />
                             </div>
-                        </nav>
-                        <div class="tab-content" id="nav-tabContent">
-                            <div class="tab-pane fade show active" id="nav-personalinfo" role="tabpanel"
-                                aria-labelledby="nav-personalinfo-tab" tabindex="0">
-
-                                <div class="container">
-                                    <div class="row mb-3 bg-transparent">
-                                        <h4 for="orphanName" class="form-label">Orphan Name:</h4>
-                                        <div class="col-xl-6">
-                                            <label for="firstName" class="form-label">First
-                                                Name</label>
-                                            <input type="text" class="form-control" id="firstName" required>
-                                        </div>
-                                        <div class="col-xl-6">
-                                            <label for="middleName" class="form-label">Middle
-                                                Name</label>
-                                            <input type="text" class="form-control" id="middleName">
-                                        </div>
-                                        <div class="col-xl-12">
-                                            <label for="lastName" class="form-label">Last
-                                                Name</label>
-                                            <input type="text" class="form-control" id="lastName" required>
-                                        </div>
-                                    </div>
-
-                                    <div class="row mb-3 bg-transparent">
-                                        <div class="col-md-6">
-                                            <label for="gender" class="form-label">Gender</label>
-                                            <select class="form-select" id="gender" required>
-                                                <option value="">Select Gender</option>
-                                                <option value="male">Male</option>
-                                                <option value="female">Female</option>
-                                                <option value="other">Other</option>
-                                            </select>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label for="birthdate" class="form-label">Birthdate</label>
-                                            <input type="date" class="form-control" id="birthdate" required>
-                                        </div>
-                                    </div>
-
-                                    <hr class="mt-2">
-
-                                    <div class="container">
-                                        <div class="row">
-                                            <div class="col-12 mb-3">
-                                                <h4 for="motherName" class="form-label">Mother's Name:</h4>
-                                                <input type="text" class="form-control" id="motherName">
-                                            </div>
-                                            <div class="col-6 mb-3">
-                                                <label for="motherDob" class="form-label">Date of Birth:</label>
-                                                <input type="date" class="form-control" id="motherDob">
-                                            </div>
-                                            <div class="col-6 mb-3">
-                                                <label for="motherContact" class="form-label">Contact
-                                                    Details:</label>
-                                                <input type="text" class="form-control" id="motherContact">
-                                            </div>
-                                            <div class="col-6 mb-3">
-                                                <label for="motherOccupation" class="form-label">Occupation:</label>
-                                                <input type="text" class="form-control" id="motherOccupation">
-                                            </div>
-                                            <div class="col-6 mb-3">
-                                                <label for="motherStatus" class="form-label">Status:</label>
-                                                <input type="text" class="form-control" id="motherStatus">
-                                            </div>
-                                            <div class="col-12 mb-3">
-                                                <label for="motherAddress" class="form-label">Address:</label>
-                                                <textarea class="form-control" id="motherAddress"
-                                                    rows="3"></textarea>
-                                            </div>
-
-                                            <hr class="mt-2">
-
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-12 mb-3">
-                                                <h4 for="fatherName" class="form-label">Father's Name:</h4>
-                                                <input type="text" class="form-control" id="fatherName">
-                                            </div>
-                                            <div class="col-6 mb-3">
-                                                <label for="fatherDob" class="form-label">Date of Birth:</label>
-                                                <input type="date" class="form-control" id="fatherDob">
-                                            </div>
-                                            <div class="col-6 mb-3">
-                                                <label for="fatherContact" class="form-label">Contact
-                                                    Details:</label>
-                                                <input type="text" class="form-control" id="fatherContact">
-                                            </div>
-                                            <div class="col-6 mb-3">
-                                                <label for="fatherOccupation" class="form-label">Occupation:</label>
-                                                <input type="text" class="form-control" id="fatherOccupation">
-                                            </div>
-                                            <div class="col-6 mb-3">
-                                                <label for="motherStatus" class="form-label">Status:</label>
-                                                <input type="text" class="form-control" id="motherStatus">
-                                            </div>
-                                            <div class="col-12 mb-3">
-                                                <label for="fatherAddress" class="form-label">Address:</label>
-                                                <textarea class="form-control" id="fatherAddress"
-                                                    rows="3"></textarea>
-                                            </div>
-                                        </div>
-
-                                        <div class="row mb-3 bg-transparent">
-                                            <div class="col-md-4">
-                                                <label for="dateAdmitted" class="form-label">Date
-                                                    Admitted</label>
-                                                <input type="date" class="form-control" id="dateAdmitted" required>
-                                            </div>
-                                            <div class="col-md-8">
-                                                <label for="file" class="form-label">Upload
-                                                    Profile Picture</label>
-                                                <input type="file" class="form-control" id="file">
-                                            </div>
-                                            <div class="col-md-4">
-                                                <label for="file" class="form-label">Upload
-                                                    Medical Certificate</label>
-                                                <input type="file" class="form-control" id="file">
-                                            </div>
-                                            <div class="col-md-8">
-                                                <label for="file" class="form-label">Upload
-                                                    File</label>
-                                                <input type="file" class="form-control" id="file">
-                                            </div>
-                                        </div>
-
-                                        <button class="btn btn-primary" type="submit" value="Submit"
-                                            style="float:right;"> Submit
-                                        </button>
-                                    </div>
-
-                                </div>
-
+                            <div class="col-xl-6">
+                                <label for="middleName" class="form-label">
+                                    Middle Name
+                                </label>
+                                <input type="text" class="form-control" id="middleName" />
                             </div>
-                            <div class="tab-pane fade" id="nav-healthinfo" role="tabpanel"
-                                aria-labelledby="nav-healthinfo-tab" tabindex="0">
-
-                                <div class="container">
-                                    <form id="addHealthDetailsForm">
-                                        <div class="mb-3">
-                                            <label for="dateInput" class="form-label">Date</label>
-                                            <input type="date" class="form-control" id="dateInput"
-                                                aria-describedby="dateHelp" required>
-                                            <small id="dateHelp" class="form-text text-muted">Enter the date of
-                                                measurement.</small>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="temperatureInput" class="form-label">Temperature
-                                                (°C)</label>
-                                            <div class="input-group">
-                                                <input type="number" step="0.1" class="form-control"
-                                                    id="temperatureInput" aria-describedby="temperatureHelp"
-                                                    required>
-                                                <span class="input-group-text">°C</span>
-                                            </div>
-                                            <small id="temperatureHelp" class="form-text text-muted">Enter your body
-                                                temperature.</small>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="bloodPressureInput" class="form-label">Blood Pressure
-                                                (mmHg)</label>
-                                            <input type="number" class="form-control" id="bloodPressureInput"
-                                                aria-describedby="bloodPressureHelp" placeholder="e.g., 120/80"
-                                                required>
-                                            <small id="bloodPressureHelp" class="form-text text-muted">Enter your
-                                                systolic and diastolic
-                                                blood pressure separated by a slash.</small>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="heartRateInput" class="form-label">Heart Rate (bpm)</label>
-                                            <input type="number" class="form-control" id="heartRateInput"
-                                                aria-describedby="heartRateHelp" required>
-                                            <small id="heartRateHelp" class="form-text text-muted">Enter your
-                                                resting heart rate.</small>
-                                        </div>
-                                        <div class="mb-3">
-                                            <div class="row">
-                                                <label class="form-label">Symptoms</label>
-                                                <div class="col-6">
-                                                    <input type="checkbox" id="nauseaCheckbox" name="symptom"
-                                                        value="nausea">
-                                                    <label for="nauseaCheckbox">Nausea</label>
-                                                </div>
-                                                <div class="col-6">
-                                                    <input type="checkbox" id="vomitingCheckbox" name="symptom"
-                                                        value="vomiting">
-                                                    <label for="vomitingCheckbox">Vomiting</label>
-                                                </div>
-                                                <!-- Add more checkboxes here -->
-                                                <div class="col-6">
-                                                    <input type="checkbox" id="headacheCheckbox" name="symptom"
-                                                        value="headache">
-                                                    <label for="headacheCheckbox">Headache</label>
-                                                </div>
-                                                <div class="col-6">
-                                                    <input type="checkbox" id="stomachacheCheckbox" name="symptom"
-                                                        value="stomachache">
-                                                    <label for="stomachacheCheckbox">Stomachache</label>
-                                                </div>
-                                                <div class="col-6">
-                                                    <input type="checkbox" id="coughCheckbox" name="symptom"
-                                                        value="cough">
-                                                    <label for="coughCheckbox">Cough with phlegm</label>
-                                                </div>
-                                                <div class="col-6">
-                                                    <input type="checkbox" id="dizzinessCheckbox" name="symptom"
-                                                        value="dizziness">
-                                                    <label for="dizzinessCheckbox">Dizziness</label>
-                                                </div>
-                                                <div class="col-6">
-                                                    <input type="checkbox" id="painCheckbox" name="symptom"
-                                                        value="pain">
-                                                    <label for="painCheckbox">Pain in the heart</label>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="otherDetailsInput" class="form-label">Other Details</label>
-                                            <textarea class="form-control" id="otherDetailsInput" rows="3"
-                                                aria-describedby="otherDetailsHelp"></textarea>
-                                            <small id="otherDetailsHelp" class="form-text text-muted">Add any
-                                                additional notes or
-                                                symptoms.</small>
-                                        </div>
-                                    </form>
-
-                                </div>
-
+                            <div class="col-xl-12">
+                                <label for="lastName" class="form-label">Last Name</label>
+                                <input type="text" class="form-control" id="lastName" required />
                             </div>
-                            <div class="tab-pane fade" id="nav-academicinfo" role="tabpanel"
-                                aria-labelledby="nav-academicinfo-tab" tabindex="0">
-
-                                <div class="container">
-                                    <form id="academicDetailsForm">
-                                        <!-- Date -->
-                                        <div class="mb-3">
-                                            <label for="dateInput" class="form-label">Date</label>
-                                            <input type="date" class="form-control" id="dateInput"
-                                                aria-describedby="dateHelp" required>
-                                            <small id="dateHelp" class="form-text text-muted">Enter the date of
-                                                completion or evaluation.</small>
-                                        </div>
-                                        <!-- Year Level -->
-                                        <div class="mb-3">
-                                            <label for="yearLevelInput" class="form-label">Year Level</label>
-                                            <select class="form-select" id="yearLevelInput"
-                                                aria-describedby="yearLevelHelp" required>
-                                                <option value="">Select Year Level</option>
-                                                <option value="Grade 1">Grade 1</option>
-                                                <option value="Grade 2">Grade 2</option>
-                                                <option value="Grade 3">Grade 3</option>
-                                                <option value="Grade 4">Grade 4</option>
-                                                <option value="Grade 5">Grade 5</option>
-                                                <option value="Grade 6">Grade 6</option>
-                                                <option value="Grade 7">Grade 7</option>
-                                                <option value="Grade 8">Grade 8</option>
-                                                <option value="Grade 9">Grade 9</option>
-                                                <option value="Grade 10">Grade 10</option>
-                                                <option value="Grade 11">Grade 11</option>
-                                                <option value="Grade 12">Grade 12</option>
-                                                <option value="1st Year College">1st Year College</option>
-                                                <option value="2nd Year College">2nd Year College</option>
-                                                <option value="3rd Year College">3rd Year College</option>
-                                                <option value="4th Year College">4th Year College</option>
-                                                <option value="5th Year College">5th Year College</option>
-                                                <option value="6th Year College">6th Year College</option>
-                                                <option value="7th Year College">7th Year College</option>
-                                            </select>
-                                            <small id="yearLevelHelp" class="form-text text-muted">Select your year
-                                                level.</small>
-                                        </div>
-                                        <!-- Grading Period -->
-                                        <div class="mb-3">
-                                            <label for="gradingPeriodInput" class="form-label">Grading
-                                                Period</label>
-                                            <select class="form-select" id="gradingPeriodInput"
-                                                aria-describedby="gradingPeriodHelp" required>
-                                                <option value="">Select Grading Period</option>
-                                                <option value="1st Grading">1st Grading</option>
-                                                <option value="2nd Grading">2nd Grading</option>
-                                                <option value="3rd Grading">3rd Grading</option>
-                                                <option value="4th Grading">4th Grading</option>
-                                                <option value="1st Semester">1st Semester</option>
-                                                <option value="2nd Semester">2nd Semester</option>
-                                                <option value="College">Summer</option>
-                                            </select>
-                                            <small id="gradingPeriodHelp" class="form-text text-muted">Select the
-                                                grading period.</small>
-                                        </div>
-                                        <!-- Subject and Grade -->
-                                        <div id="subjectFields" class="row">
-                                            <div class="mb-3 col-6">
-                                                <label class="form-label">Subject</label>
-                                                <input type="text" class="form-control mb-3 subject-input"
-                                                    placeholder="Subject" required>
-                                            </div>
-                                            <div class="mb-3 col-6">
-                                                <label class="form-label">Grade</label>
-                                                <input type="number" class="form-control mb-3 grade-input"
-                                                    placeholder="Grade" min="0" max="100" required>
-                                            </div>
-                                        </div>
-                                        <button type="button" class="btn btn-primary mt-3"
-                                            onclick="addSubjectField()">Add Subject</button>
-
-
-                                        <!-- GWA -->
-                                        <div class="mb-3">
-                                            <label for="gwaInput" class="form-label">GWA</label>
-                                            <input type="number" class="form-control" id="gwaInput"
-                                                aria-describedby="gwaHelp" min="0" max="100"
-                                                placeholder="General Weighted Average" required>
-
-                                        </div>
-                                    </form>
-                                </div>
-
-                            </div>
-                            <div class="tab-pane fade" id="nav-disabled" role="tabpanel"
-                                aria-labelledby="nav-disabled-tab" tabindex="0">...</div>
                         </div>
 
+                        <div class="row mb-3 bg-transparent">
+                            <div class="col-md-6">
+                                <label for="gender" class="form-label">
+                                    Gender
+                                </label>
+                                <select class="form-select" id="gender" required>
+                                    <option value="">Select Gender</option>
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="birthdate" class="form-label">Birthdate</label>
+                                <input type="date" class="form-control" id="birthdate" required />
+                            </div>
+                        </div>
 
+                        <div class="row mb-3 bg-transparent">
+                            <div class="col-md-6">
+                                <label for="FatherName" class="form-label">Father's Name</label>
+                                <input type="input" class="form-control" id="text" required />
+                            </div>
+                            <div class="col-md-6">
+                                <label for="MotherName" class="form-label">Mother's Name</label>
+                                <input type="input" class="form-control" id="text" required />
+                            </div>
+                            <div class="col-xl-12">
+                                <label for="middleName" class="form-label">Home Address</label>
+                                <input type="input" class="form-control" id="text" />
+                            </div>
+                        </div>
 
+                        <div class="row mb-3 bg-transparent">
+                            <div class="col-md-4">
+                                <label for="dateAdmitted" class="form-label">Date
+                                    Admitted</label>
+                                <input type="date" class="form-control" id="dateAdmitted" required />
+                            </div>
+                            <div class="col-md-8">
+                                <label for="file" class="form-label">Upload Profile
+                                    Picture</label>
+                                <input type="file" class="form-control" id="file" />
+                            </div>
+                            <div class="col-md-4">
+                                <label for="file" class="form-label">Upload Medical
+                                    Certificate</label>
+                                <input type="file" class="form-control" id="file" />
+                            </div>
+                            <div class="col-md-8">
+                                <label for="file" class="form-label">Upload File</label>
+                                <input type="file" class="form-control" id="file" />
+                            </div>
+                        </div>
+
+                        <button class="btn btn-primary" type="submit" value="Submit" style="float: right">
+                            Submit
+                        </button>
                     </form>
                 </div>
             </div>
         </div>
     </div>
+
 </div>
 
 
@@ -368,327 +105,319 @@
     <!-- modal for add orphan profile v2 -->
     <div class="modal fade" id="uploadModal" tabindex="-1" aria-labelledby="uploadModal" aria-hidden="true">
         <div class="modal-dialog modal-lg">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="uploadModal">Create Orphan Profile</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              <form id="multiPageForm">
-                <!-- Page 1 -->
-                <div class="page" id="page1">
-                  <div class="container">
-                    <div class="row mb-3 bg-transparent">
-                        <h4 for="orphanName" class="form-label">Orphan Name:</h4>
-                        <div class="col-xl-6">
-                            <label for="firstName" class="form-label">First
-                                Name</label>
-                            <input type="text" class="form-control" id="firstName" required>
-                        </div>
-                        <div class="col-xl-6">
-                            <label for="middleName" class="form-label">Middle
-                                Name</label>
-                            <input type="text" class="form-control" id="middleName">
-                        </div>
-                        <div class="col-xl-12">
-                            <label for="lastName" class="form-label">Last
-                                Name</label>
-                            <input type="text" class="form-control" id="lastName" required>
-                        </div>
-                    </div>
-      
-                    <div class="row mb-3 bg-transparent">
-                        <div class="col-md-6">
-                            <label for="gender" class="form-label">Gender</label>
-                            <select class="form-select" id="gender" required>
-                                <option value="">Select Gender</option>
-                                <option value="male">Male</option>
-                                <option value="female">Female</option>
-                                <option value="other">Other</option>
-                            </select>
-                        </div>
-                        <div class="col-md-6">
-                            <label for="birthdate" class="form-label">Birthdate</label>
-                            <input type="date" class="form-control" id="birthdate" required>
-                        </div>
-                    </div>
-      
-                    <hr class="mt-2">
-      
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-12 mb-3">
-                                <h4 for="motherName" class="form-label">Mother's Name:</h4>
-                                <input type="text" class="form-control" id="motherName">
-                            </div>
-                            <div class="col-6 mb-3">
-                                <label for="motherDob" class="form-label">Date of Birth:</label>
-                                <input type="date" class="form-control" id="motherDob">
-                            </div>
-                            <div class="col-6 mb-3">
-                                <label for="motherContact" class="form-label">Contact
-                                    Details:</label>
-                                <input type="text" class="form-control" id="motherContact">
-                            </div>
-                            <div class="col-6 mb-3">
-                                <label for="motherOccupation" class="form-label">Occupation:</label>
-                                <input type="text" class="form-control" id="motherOccupation">
-                            </div>
-                            <div class="col-6 mb-3">
-                                <label for="motherStatus" class="form-label">Status:</label>
-                                <input type="text" class="form-control" id="motherStatus">
-                            </div>
-                            <div class="col-12 mb-3">
-                                <label for="motherAddress" class="form-label">Address:</label>
-                                <textarea class="form-control" id="motherAddress"
-                                    rows="3"></textarea>
-                            </div>
-      
-                            <hr class="mt-2">
-      
-                        </div>
-                        <div class="row">
-                            <div class="col-12 mb-3">
-                                <h4 for="fatherName" class="form-label">Father's Name:</h4>
-                                <input type="text" class="form-control" id="fatherName">
-                            </div>
-                            <div class="col-6 mb-3">
-                                <label for="fatherDob" class="form-label">Date of Birth:</label>
-                                <input type="date" class="form-control" id="fatherDob">
-                            </div>
-                            <div class="col-6 mb-3">
-                                <label for="fatherContact" class="form-label">Contact
-                                    Details:</label>
-                                <input type="text" class="form-control" id="fatherContact">
-                            </div>
-                            <div class="col-6 mb-3">
-                                <label for="fatherOccupation" class="form-label">Occupation:</label>
-                                <input type="text" class="form-control" id="fatherOccupation">
-                            </div>
-                            <div class="col-6 mb-3">
-                                <label for="motherStatus" class="form-label">Status:</label>
-                                <input type="text" class="form-control" id="motherStatus">
-                            </div>
-                            <div class="col-12 mb-3">
-                                <label for="fatherAddress" class="form-label">Address:</label>
-                                <textarea class="form-control" id="fatherAddress"
-                                    rows="3"></textarea>
-                            </div>
-                        </div>
-      
-                        <div class="row mb-3 bg-transparent">
-                            <div class="col-md-4">
-                                <label for="dateAdmitted" class="form-label">Date
-                                    Admitted</label>
-                                <input type="date" class="form-control" id="dateAdmitted" required>
-                            </div>
-                            <div class="col-md-8">
-                                <label for="file" class="form-label">Upload
-                                    Profile Picture</label>
-                                <input type="file" class="form-control" id="file">
-                            </div>
-                            <div class="col-md-4">
-                                <label for="file" class="form-label">Upload
-                                    Medical Certificate</label>
-                                <input type="file" class="form-control" id="file">
-                            </div>
-                            <div class="col-md-8">
-                                <label for="file" class="form-label">Upload
-                                    File</label>
-                                <input type="file" class="form-control" id="file">
-                            </div>
-                        </div>
-                    </div>
-      
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="uploadModal">Create Orphan Profile</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                </div>
-                <!-- Page 2 -->
-                <div class="page" id="page2">
-                  <div class="container">
-                    <form id="addHealthDetailsForm">
-                        <div class="mb-3">
-                            <label for="dateInput" class="form-label">Date</label>
-                            <input type="date" class="form-control" id="dateInput"
-                                aria-describedby="dateHelp" required>
-                            <small id="dateHelp" class="form-text text-muted">Enter the date of
-                                measurement.</small>
-                        </div>
-                        <div class="mb-3">
-                            <label for="temperatureInput" class="form-label">Temperature
-                                (°C)</label>
-                            <div class="input-group">
-                                <input type="number" step="0.1" class="form-control"
-                                    id="temperatureInput" aria-describedby="temperatureHelp"
-                                    required>
-                                <span class="input-group-text">°C</span>
+                <div class="modal-body">
+                    <form id="multiPageForm">
+                        <!-- Page 1 -->
+                        <div class="page" id="page1">
+                            <div class="container">
+                                <div class="row mb-3 bg-transparent">
+                                    <h4 for="orphanName" class="form-label">Orphan Name:</h4>
+                                    <div class="col-xl-6">
+                                        <label for="firstName" class="form-label">First
+                                            Name</label>
+                                        <input type="text" class="form-control" id="firstName" required>
+                                    </div>
+                                    <div class="col-xl-6">
+                                        <label for="middleName" class="form-label">Middle
+                                            Name</label>
+                                        <input type="text" class="form-control" id="middleName">
+                                    </div>
+                                    <div class="col-xl-12">
+                                        <label for="lastName" class="form-label">Last
+                                            Name</label>
+                                        <input type="text" class="form-control" id="lastName" required>
+                                    </div>
+                                </div>
+    
+                                <div class="row mb-3 bg-transparent">
+                                    <div class="col-md-6">
+                                        <label for="gender" class="form-label">Gender</label>
+                                        <select class="form-select" id="gender" required>
+                                            <option value="">Select Gender</option>
+                                            <option value="male">Male</option>
+                                            <option value="female">Female</option>
+                                            <option value="other">Other</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="birthdate" class="form-label">Birthdate</label>
+                                        <input type="date" class="form-control" id="birthdate" required>
+                                    </div>
+                                </div>
+    
+                                <hr class="mt-2">
+    
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-12 mb-3">
+                                            <h4 for="motherName" class="form-label">Mother's Name:</h4>
+                                            <input type="text" class="form-control" id="motherName">
+                                        </div>
+                                        <div class="col-6 mb-3">
+                                            <label for="motherDob" class="form-label">Date of Birth:</label>
+                                            <input type="date" class="form-control" id="motherDob">
+                                        </div>
+                                        <div class="col-6 mb-3">
+                                            <label for="motherContact" class="form-label">Contact
+                                                Details:</label>
+                                            <input type="text" class="form-control" id="motherContact">
+                                        </div>
+                                        <div class="col-6 mb-3">
+                                            <label for="motherOccupation" class="form-label">Occupation:</label>
+                                            <input type="text" class="form-control" id="motherOccupation">
+                                        </div>
+                                        <div class="col-6 mb-3">
+                                            <label for="motherStatus" class="form-label">Status:</label>
+                                            <input type="text" class="form-control" id="motherStatus">
+                                        </div>
+                                        <div class="col-12 mb-3">
+                                            <label for="motherAddress" class="form-label">Address:</label>
+                                            <textarea class="form-control" id="motherAddress" rows="3"></textarea>
+                                        </div>
+    
+                                        <hr class="mt-2">
+    
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12 mb-3">
+                                            <h4 for="fatherName" class="form-label">Father's Name:</h4>
+                                            <input type="text" class="form-control" id="fatherName">
+                                        </div>
+                                        <div class="col-6 mb-3">
+                                            <label for="fatherDob" class="form-label">Date of Birth:</label>
+                                            <input type="date" class="form-control" id="fatherDob">
+                                        </div>
+                                        <div class="col-6 mb-3">
+                                            <label for="fatherContact" class="form-label">Contact
+                                                Details:</label>
+                                            <input type="text" class="form-control" id="fatherContact">
+                                        </div>
+                                        <div class="col-6 mb-3">
+                                            <label for="fatherOccupation" class="form-label">Occupation:</label>
+                                            <input type="text" class="form-control" id="fatherOccupation">
+                                        </div>
+                                        <div class="col-6 mb-3">
+                                            <label for="motherStatus" class="form-label">Status:</label>
+                                            <input type="text" class="form-control" id="motherStatus">
+                                        </div>
+                                        <div class="col-12 mb-3">
+                                            <label for="fatherAddress" class="form-label">Address:</label>
+                                            <textarea class="form-control" id="fatherAddress" rows="3"></textarea>
+                                        </div>
+                                    </div>
+    
+                                    <div class="row mb-3 bg-transparent">
+                                        <div class="col-md-4">
+                                            <label for="dateAdmitted" class="form-label">Date
+                                                Admitted</label>
+                                            <input type="date" class="form-control" id="dateAdmitted" required>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <label for="file" class="form-label">Upload
+                                                Profile Picture</label>
+                                            <input type="file" class="form-control" id="file">
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label for="file" class="form-label">Upload
+                                                Medical Certificate</label>
+                                            <input type="file" class="form-control" id="file">
+                                        </div>
+                                        <div class="col-md-8">
+                                            <label for="file" class="form-label">Upload
+                                                File</label>
+                                            <input type="file" class="form-control" id="file">
+                                        </div>
+                                    </div>
+                                </div>
+    
                             </div>
-                            <small id="temperatureHelp" class="form-text text-muted">Enter your body
-                                temperature.</small>
                         </div>
-                        <div class="mb-3">
-                            <label for="bloodPressureInput" class="form-label">Blood Pressure
-                                (mmHg)</label>
-                            <input type="number" class="form-control" id="bloodPressureInput"
-                                aria-describedby="bloodPressureHelp" placeholder="e.g., 120/80"
-                                required>
-                            <small id="bloodPressureHelp" class="form-text text-muted">Enter your
-                                systolic and diastolic
-                                blood pressure separated by a slash.</small>
-                        </div>
-                        <div class="mb-3">
-                            <label for="heartRateInput" class="form-label">Heart Rate (bpm)</label>
-                            <input type="number" class="form-control" id="heartRateInput"
-                                aria-describedby="heartRateHelp" required>
-                            <small id="heartRateHelp" class="form-text text-muted">Enter your
-                                resting heart rate.</small>
-                        </div>
-                        <div class="mb-3">
-                            <div class="row">
-                                <label class="form-label">Symptoms</label>
-                                <div class="col-6">
-                                    <input type="checkbox" id="nauseaCheckbox" name="symptom"
-                                        value="nausea">
-                                    <label for="nauseaCheckbox">Nausea</label>
-                                </div>
-                                <div class="col-6">
-                                    <input type="checkbox" id="vomitingCheckbox" name="symptom"
-                                        value="vomiting">
-                                    <label for="vomitingCheckbox">Vomiting</label>
-                                </div>
-                                <!-- Add more checkboxes here -->
-                                <div class="col-6">
-                                    <input type="checkbox" id="headacheCheckbox" name="symptom"
-                                        value="headache">
-                                    <label for="headacheCheckbox">Headache</label>
-                                </div>
-                                <div class="col-6">
-                                    <input type="checkbox" id="stomachacheCheckbox" name="symptom"
-                                        value="stomachache">
-                                    <label for="stomachacheCheckbox">Stomachache</label>
-                                </div>
-                                <div class="col-6">
-                                    <input type="checkbox" id="coughCheckbox" name="symptom"
-                                        value="cough">
-                                    <label for="coughCheckbox">Cough with phlegm</label>
-                                </div>
-                                <div class="col-6">
-                                    <input type="checkbox" id="dizzinessCheckbox" name="symptom"
-                                        value="dizziness">
-                                    <label for="dizzinessCheckbox">Dizziness</label>
-                                </div>
-                                <div class="col-6">
-                                    <input type="checkbox" id="painCheckbox" name="symptom"
-                                        value="pain">
-                                    <label for="painCheckbox">Pain in the heart</label>
-                                </div>
-      
+                        <!-- Page 2 -->
+                        <div class="page" id="page2">
+                            <div class="container">
+                                <form id="addHealthDetailsForm">
+                                    <div class="mb-3">
+                                        <label for="dateInput" class="form-label">Date</label>
+                                        <input type="date" class="form-control" id="dateInput" aria-describedby="dateHelp"
+                                            required>
+                                        <small id="dateHelp" class="form-text text-muted">Enter the date of
+                                            measurement.</small>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="temperatureInput" class="form-label">Temperature
+                                            (°C)</label>
+                                        <div class="input-group">
+                                            <input type="number" step="0.1" class="form-control" id="temperatureInput"
+                                                aria-describedby="temperatureHelp" required>
+                                            <span class="input-group-text">°C</span>
+                                        </div>
+                                        <small id="temperatureHelp" class="form-text text-muted">Enter your body
+                                            temperature.</small>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="bloodPressureInput" class="form-label">Blood Pressure
+                                            (mmHg)</label>
+                                        <input type="number" class="form-control" id="bloodPressureInput"
+                                            aria-describedby="bloodPressureHelp" placeholder="e.g., 120/80" required>
+                                        <small id="bloodPressureHelp" class="form-text text-muted">Enter your
+                                            systolic and diastolic
+                                            blood pressure separated by a slash.</small>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="heartRateInput" class="form-label">Heart Rate (bpm)</label>
+                                        <input type="number" class="form-control" id="heartRateInput"
+                                            aria-describedby="heartRateHelp" required>
+                                        <small id="heartRateHelp" class="form-text text-muted">Enter your
+                                            resting heart rate.</small>
+                                    </div>
+                                    <div class="mb-3">
+                                        <div class="row">
+                                            <label class="form-label">Symptoms</label>
+                                            <div class="col-6">
+                                                <input type="checkbox" id="nauseaCheckbox" name="symptom" value="nausea">
+                                                <label for="nauseaCheckbox">Nausea</label>
+                                            </div>
+                                            <div class="col-6">
+                                                <input type="checkbox" id="vomitingCheckbox" name="symptom"
+                                                    value="vomiting">
+                                                <label for="vomitingCheckbox">Vomiting</label>
+                                            </div>
+                                            <!-- Add more checkboxes here -->
+                                            <div class="col-6">
+                                                <input type="checkbox" id="headacheCheckbox" name="symptom"
+                                                    value="headache">
+                                                <label for="headacheCheckbox">Headache</label>
+                                            </div>
+                                            <div class="col-6">
+                                                <input type="checkbox" id="stomachacheCheckbox" name="symptom"
+                                                    value="stomachache">
+                                                <label for="stomachacheCheckbox">Stomachache</label>
+                                            </div>
+                                            <div class="col-6">
+                                                <input type="checkbox" id="coughCheckbox" name="symptom" value="cough">
+                                                <label for="coughCheckbox">Cough with phlegm</label>
+                                            </div>
+                                            <div class="col-6">
+                                                <input type="checkbox" id="dizzinessCheckbox" name="symptom"
+                                                    value="dizziness">
+                                                <label for="dizzinessCheckbox">Dizziness</label>
+                                            </div>
+                                            <div class="col-6">
+                                                <input type="checkbox" id="painCheckbox" name="symptom" value="pain">
+                                                <label for="painCheckbox">Pain in the heart</label>
+                                            </div>
+    
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="otherDetailsInput" class="form-label">Other Details</label>
+                                        <textarea class="form-control" id="otherDetailsInput" rows="3"
+                                            aria-describedby="otherDetailsHelp"></textarea>
+                                        <small id="otherDetailsHelp" class="form-text text-muted">Add any
+                                            additional notes or
+                                            symptoms.</small>
+                                    </div>
+                                </form>
                             </div>
                         </div>
-                        <div class="mb-3">
-                            <label for="otherDetailsInput" class="form-label">Other Details</label>
-                            <textarea class="form-control" id="otherDetailsInput" rows="3"
-                                aria-describedby="otherDetailsHelp"></textarea>
-                            <small id="otherDetailsHelp" class="form-text text-muted">Add any
-                                additional notes or
-                                symptoms.</small>
+                        <!-- Page 3 -->
+                        <div class="page" id="page3">
+                            <div class="container">
+                                <form id="academicDetailsForm">
+                                    <!-- Date -->
+                                    <div class="mb-3">
+                                        <label for="dateInput" class="form-label">Date</label>
+                                        <input type="date" class="form-control" id="dateInput" aria-describedby="dateHelp"
+                                            required>
+                                        <small id="dateHelp" class="form-text text-muted">Enter the date of
+                                            completion or evaluation.</small>
+                                    </div>
+                                    <!-- Year Level -->
+                                    <div class="mb-3">
+                                        <label for="yearLevelInput" class="form-label">Year Level</label>
+                                        <select class="form-select" id="yearLevelInput" aria-describedby="yearLevelHelp"
+                                            required>
+                                            <option value="">Select Year Level</option>
+                                            <option value="Grade 1">Grade 1</option>
+                                            <option value="Grade 2">Grade 2</option>
+                                            <option value="Grade 3">Grade 3</option>
+                                            <option value="Grade 4">Grade 4</option>
+                                            <option value="Grade 5">Grade 5</option>
+                                            <option value="Grade 6">Grade 6</option>
+                                            <option value="Grade 7">Grade 7</option>
+                                            <option value="Grade 8">Grade 8</option>
+                                            <option value="Grade 9">Grade 9</option>
+                                            <option value="Grade 10">Grade 10</option>
+                                            <option value="Grade 11">Grade 11</option>
+                                            <option value="Grade 12">Grade 12</option>
+                                            <option value="1st Year College">1st Year College</option>
+                                            <option value="2nd Year College">2nd Year College</option>
+                                            <option value="3rd Year College">3rd Year College</option>
+                                            <option value="4th Year College">4th Year College</option>
+                                            <option value="5th Year College">5th Year College</option>
+                                            <option value="6th Year College">6th Year College</option>
+                                            <option value="7th Year College">7th Year College</option>
+                                        </select>
+                                        <small id="yearLevelHelp" class="form-text text-muted">Select your year
+                                            level.</small>
+                                    </div>
+                                    <!-- Grading Period -->
+                                    <div class="mb-3">
+                                        <label for="gradingPeriodInput" class="form-label">Grading
+                                            Period</label>
+                                        <select class="form-select" id="gradingPeriodInput"
+                                            aria-describedby="gradingPeriodHelp" required>
+                                            <option value="">Select Grading Period</option>
+                                            <option value="1st Grading">1st Grading</option>
+                                            <option value="2nd Grading">2nd Grading</option>
+                                            <option value="3rd Grading">3rd Grading</option>
+                                            <option value="4th Grading">4th Grading</option>
+                                            <option value="1st Semester">1st Semester</option>
+                                            <option value="2nd Semester">2nd Semester</option>
+                                            <option value="College">Summer</option>
+                                        </select>
+                                        <small id="gradingPeriodHelp" class="form-text text-muted">Select the
+                                            grading period.</small>
+                                    </div>
+                                    <!-- Subject and Grade -->
+                                    <div id="subjectFields" class="row">
+                                        <div class="mb-3 col-6">
+                                            <label class="form-label">Subject</label>
+                                            <input type="text" class="form-control mb-3 subject-input" placeholder="Subject"
+                                                required>
+                                        </div>
+                                        <div class="mb-3 col-6">
+                                            <label class="form-label">Grade</label>
+                                            <input type="number" class="form-control mb-3 grade-input" placeholder="Grade"
+                                                min="0" max="100" required>
+                                        </div>
+                                    </div>
+                                    <button type="button" class="btn btn-primary mt-3" onclick="addSubjectField()">Add
+                                        Subject</button>
+    
+    
+                                    <!-- GWA -->
+                                    <div class="mb-3">
+                                        <label for="gwaInput" class="form-label">GWA</label>
+                                        <input type="number" class="form-control" id="gwaInput" aria-describedby="gwaHelp"
+                                            min="0" max="100" placeholder="General Weighted Average" required>
+    
+                                    </div>
+                                </form>
+                            </div>
+    
                         </div>
                     </form>
                 </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" id="prevBtn">Previous</button>
+                    <button type="button" class="btn btn-primary" id="nextBtn">Next</button>
                 </div>
-                <!-- Page 3 -->
-                <div class="page" id="page3">
-                  <div class="container">
-                    <form id="academicDetailsForm">
-                        <!-- Date -->
-                        <div class="mb-3">
-                            <label for="dateInput" class="form-label">Date</label>
-                            <input type="date" class="form-control" id="dateInput"
-                                aria-describedby="dateHelp" required>
-                            <small id="dateHelp" class="form-text text-muted">Enter the date of
-                                completion or evaluation.</small>
-                        </div>
-                        <!-- Year Level -->
-                        <div class="mb-3">
-                            <label for="yearLevelInput" class="form-label">Year Level</label>
-                            <select class="form-select" id="yearLevelInput"
-                                aria-describedby="yearLevelHelp" required>
-                                <option value="">Select Year Level</option>
-                                <option value="Grade 1">Grade 1</option>
-                                <option value="Grade 2">Grade 2</option>
-                                <option value="Grade 3">Grade 3</option>
-                                <option value="Grade 4">Grade 4</option>
-                                <option value="Grade 5">Grade 5</option>
-                                <option value="Grade 6">Grade 6</option>
-                                <option value="Grade 7">Grade 7</option>
-                                <option value="Grade 8">Grade 8</option>
-                                <option value="Grade 9">Grade 9</option>
-                                <option value="Grade 10">Grade 10</option>
-                                <option value="Grade 11">Grade 11</option>
-                                <option value="Grade 12">Grade 12</option>
-                                <option value="1st Year College">1st Year College</option>
-                                <option value="2nd Year College">2nd Year College</option>
-                                <option value="3rd Year College">3rd Year College</option>
-                                <option value="4th Year College">4th Year College</option>
-                                <option value="5th Year College">5th Year College</option>
-                                <option value="6th Year College">6th Year College</option>
-                                <option value="7th Year College">7th Year College</option>
-                            </select>
-                            <small id="yearLevelHelp" class="form-text text-muted">Select your year
-                                level.</small>
-                        </div>
-                        <!-- Grading Period -->
-                        <div class="mb-3">
-                            <label for="gradingPeriodInput" class="form-label">Grading
-                                Period</label>
-                            <select class="form-select" id="gradingPeriodInput"
-                                aria-describedby="gradingPeriodHelp" required>
-                                <option value="">Select Grading Period</option>
-                                <option value="1st Grading">1st Grading</option>
-                                <option value="2nd Grading">2nd Grading</option>
-                                <option value="3rd Grading">3rd Grading</option>
-                                <option value="4th Grading">4th Grading</option>
-                                <option value="1st Semester">1st Semester</option>
-                                <option value="2nd Semester">2nd Semester</option>
-                                <option value="College">Summer</option>
-                            </select>
-                            <small id="gradingPeriodHelp" class="form-text text-muted">Select the
-                                grading period.</small>
-                        </div>
-                        <!-- Subject and Grade -->
-                        <div id="subjectFields" class="row">
-                            <div class="mb-3 col-6">
-                                <label class="form-label">Subject</label>
-                                <input type="text" class="form-control mb-3 subject-input"
-                                    placeholder="Subject" required>
-                            </div>
-                            <div class="mb-3 col-6">
-                                <label class="form-label">Grade</label>
-                                <input type="number" class="form-control mb-3 grade-input"
-                                    placeholder="Grade" min="0" max="100" required>
-                            </div>
-                        </div>
-                        <button type="button" class="btn btn-primary mt-3"
-                            onclick="addSubjectField()">Add Subject</button>
-      
-      
-                        <!-- GWA -->
-                        <div class="mb-3">
-                            <label for="gwaInput" class="form-label">GWA</label>
-                            <input type="number" class="form-control" id="gwaInput"
-                                aria-describedby="gwaHelp" min="0" max="100"
-                                placeholder="General Weighted Average" required>
-      
-                        </div>
-                    </form>
-                </div>
-                
-                </div>
-              </form>
             </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" id="prevBtn">Previous</button>
-              <button type="button" class="btn btn-primary" id="nextBtn">Next</button>
-            </div>
-          </div>
         </div>
-      </div>
+    </div>

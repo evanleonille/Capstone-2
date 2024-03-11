@@ -205,111 +205,104 @@
     </div>
 
 <!------------------------------------- modal------------------------------------------ -->
-<div class="modal fade" id="uploadModal" tabindex="-1" aria-labelledby="uploadModalLabel"
-                            aria-hidden="true">
+<div class="modal fade" id="uploadModal" tabindex="-1" aria-labelledby="uploadModalLabel" aria-hidden="true">
 
-                            <div class="modal-dialog modal-lg">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="uploadModalLabel">
-                                            Create new profile
-                                        </h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                            aria-label="Close">
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <div class="text-start">
-                                            <form>
-                                                <div class="row mb-3 bg-transparent">
-                                                    <div class="col-xl-6">
-                                                        <label for="firstName" class="form-label">
-                                                            First Name
-                                                        </label>
-                                                        <input type="text" class="form-control" id="firstName"
-                                                            required />
-                                                    </div>
-                                                    <div class="col-xl-6">
-                                                        <label for="middleName" class="form-label">
-                                                            Middle Name
-                                                        </label>
-                                                        <input type="text" class="form-control" id="middleName" />
-                                                    </div>
-                                                    <div class="col-xl-12">
-                                                        <label for="lastName" class="form-label">Last Name</label>
-                                                        <input type="text" class="form-control" id="lastName"
-                                                            required />
-                                                    </div>
-                                                </div>
-
-                                                <div class="row mb-3 bg-transparent">
-                                                    <div class="col-md-6">
-                                                        <label for="gender" class="form-label">
-                                                            Gender
-                                                        </label>
-                                                        <select class="form-select" id="gender" required>
-                                                            <option value="">Select Gender</option>
-                                                            <option value="male">Male</option>
-                                                            <option value="female">Female</option>
-                                                            <option value="other">Other</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <label for="birthdate" class="form-label">Birthdate</label>
-                                                        <input type="date" class="form-control" id="birthdate"
-                                                            required />
-                                                    </div>
-                                                </div>
-
-                                                <div class="row mb-3 bg-transparent">
-                                                    <div class="col-md-6">
-                                                        <label for="FatherName" class="form-label">Father's Name</label>
-                                                        <input type="input" class="form-control" id="text" required />
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <label for="MotherName" class="form-label">Mother's Name</label>
-                                                        <input type="input" class="form-control" id="text" required />
-                                                    </div>
-                                                    <div class="col-xl-12">
-                                                        <label for="middleName" class="form-label">Home Address</label>
-                                                        <input type="input" class="form-control" id="text" />
-                                                    </div>
-                                                </div>
-
-                                                <div class="row mb-3 bg-transparent">
-                                                    <div class="col-md-4">
-                                                        <label for="dateAdmitted" class="form-label">Date
-                                                            Admitted</label>
-                                                        <input type="date" class="form-control" id="dateAdmitted"
-                                                            required />
-                                                    </div>
-                                                    <div class="col-md-8">
-                                                        <label for="file" class="form-label">Upload Profile
-                                                            Picture</label>
-                                                        <input type="file" class="form-control" id="file" />
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <label for="file" class="form-label">Upload Medical
-                                                            Certificate</label>
-                                                        <input type="file" class="form-control" id="file" />
-                                                    </div>
-                                                    <div class="col-md-8">
-                                                        <label for="file" class="form-label">Upload File</label>
-                                                        <input type="file" class="form-control" id="file" />
-                                                    </div>
-                                                </div>
-
-                                                <button class="btn btn-primary" type="submit" value="Submit"
-                                                    style="float: right">
-                                                    Submit
-                                                </button>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="uploadModalLabel">
+                    Create new profile
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="text-start">
+                    <form>
+                        <div class="row mb-3 bg-transparent">
+                            <div class="col-xl-6">
+                                <label for="firstName" class="form-label">
+                                    First Name
+                                </label>
+                                <input type="text" class="form-control" id="firstName" required />
                             </div>
-
+                            <div class="col-xl-6">
+                                <label for="middleName" class="form-label">
+                                    Middle Name
+                                </label>
+                                <input type="text" class="form-control" id="middleName" />
+                            </div>
+                            <div class="col-xl-12">
+                                <label for="lastName" class="form-label">Last Name</label>
+                                <input type="text" class="form-control" id="lastName" required />
+                            </div>
                         </div>
+
+                        <div class="row mb-3 bg-transparent">
+                            <div class="col-md-6">
+                                <label for="gender" class="form-label">
+                                    Gender
+                                </label>
+                                <select class="form-select" id="gender" required>
+                                    <option value="">Select Gender</option>
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="birthdate" class="form-label">Birthdate</label>
+                                <input type="date" class="form-control" id="birthdate" required />
+                            </div>
+                        </div>
+
+                        <div class="row mb-3 bg-transparent">
+                            <div class="col-md-6">
+                                <label for="FatherName" class="form-label">Father's Name</label>
+                                <input type="input" class="form-control" id="text" required />
+                            </div>
+                            <div class="col-md-6">
+                                <label for="MotherName" class="form-label">Mother's Name</label>
+                                <input type="input" class="form-control" id="text" required />
+                            </div>
+                            <div class="col-xl-12">
+                                <label for="middleName" class="form-label">Home Address</label>
+                                <input type="input" class="form-control" id="text" />
+                            </div>
+                        </div>
+
+                        <div class="row mb-3 bg-transparent">
+                            <div class="col-md-4">
+                                <label for="dateAdmitted" class="form-label">Date
+                                    Admitted</label>
+                                <input type="date" class="form-control" id="dateAdmitted" required />
+                            </div>
+                            <div class="col-md-8">
+                                <label for="file" class="form-label">Upload Profile
+                                    Picture</label>
+                                <input type="file" class="form-control" id="file" />
+                            </div>
+                            <div class="col-md-4">
+                                <label for="file" class="form-label">Upload Medical
+                                    Certificate</label>
+                                <input type="file" class="form-control" id="file" />
+                            </div>
+                            <div class="col-md-8">
+                                <label for="file" class="form-label">Upload File</label>
+                                <input type="file" class="form-control" id="file" />
+                            </div>
+                        </div>
+
+                        <button class="btn btn-primary" type="submit" value="Submit" style="float: right">
+                            Submit
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
 </body>
 
 
