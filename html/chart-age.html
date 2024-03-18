@@ -89,49 +89,64 @@
                 </div>
 
 
-                <hr class="mt-3">
+<!-- Age -->
 
-                <div class="container">
-                    <div class="row">
-                      <div class="col-6">
-                
-                        <canvas id="ageChart"></canvas>
-                      </div>
-                
-                      <div class="col-6">
-                        <table class="table table-white">
-                          <thead>
-                            <tr>
-                              <th scope="col">Name</th>
-                              <th scope="col">Age</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                              <td>Alice</td>
-                              <td>32</td>
-                            </tr>
-                            <tr>
-                              <td>Bob</td>
-                              <td>45</td>
-                            </tr>
-                            <tr>
-                              <td>Charlie</td>
-                              <td>28</td>
-                            </tr>
-                            <tr>
-                              <td>Diana</td>
-                              <td>50</td>
-                            </tr>
-                            <tr>
-                              <td>Eve</td>
-                              <td>23</td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                    </div>
-                  </div>
+<hr class="mt-3">
+<div class="container">
+    <div class="bg-white rounded-4 border">
+        <!-- Age Details Filter -->
+        <div class="mb-3 p-3" style="background-color: #f8f9fa;">
+            <div class="d-flex justify-content-between">
+                <div class="d-flex align-items-center">
+                    <label for="entriesSelectAge" class="form-label me-2 mb-0">Show</label>
+                    <select class="form-select form-select-sm me-2" id="entriesSelectAge" style="width: 60px;">
+                        <option value="10">10</option>
+                        <option value="25">25</option>
+                        <option value="50">50</option>
+                        <option value="100">100</option>
+                    </select>
+                    <span class="mb-0 me-2">entries</span>
+                </div>
+                <div class="d-flex align-items-center">
+                    <label for="ageRangeSelect" class="form-label me-2 mb-0">Age Range:</label>
+                    <select class="form-select form-select-sm me-2" id="ageRangeSelect">
+                        <option value="">All</option>
+                        <option value="0-5">0-5</option>
+                        <option value="6-10">6-10</option>
+                        <option value="11-15">11-15</option>
+                        <option value="16-20">16-20</option>
+                        <option value="21-25">21-25</option>
+                        <!-- Add more appropriate age ranges as needed -->
+                    </select>
+                </div>
+            </div>
+        </div>
+        <!-- Age Details Table -->
+        <div class="mb-3">
+            <table id="ageDetailsTable" class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Birthdate</th>
+                        <th scope="col">Age</th>
+                        <th scope="col">Age Range</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>Jane Doe</td>
+                        <td>2000-05-15</td>
+                        <td>24</td>
+                        <td><span class="badge bg-success">21-25</span></td>
+                    </tr>
+                    <!-- More table rows -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
 
 
 
