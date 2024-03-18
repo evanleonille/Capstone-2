@@ -198,6 +198,7 @@
 
 
 
+
               <hr class="mt-2" />
               <div class="container-fluid row">
                 <div class="row ">
@@ -278,48 +279,47 @@
                     aria-label="Disabled input example" readonly></p>
               </div>
 
-              <hr class="mt-2">
-              <div class="container-fluid">
 
-                <h2>Oprhan Files</h2>
-                <div class="row  ">
-                  <div class=" col-lg-3 card file-card m-1">
-                    <div class="card-body">
-                      <h5 class="card-title">Birth Certificate</h5>
-                      <p class="card-text">File description goes here...</p>
-                      <a class="btn btn-primary" href="../files/BirthCert.pdf" target="_blank">Open File</a>
-                    </div>
+
+
+
+              <hr class="mt-2" />
+              <div class="container-fluid row">
+                <div class="row ">
+                  <div class="col-10 me-5">
+                    <h2>Adittional Information</h2>
                   </div>
-
-                  <div class=" col-lg-3 card file-card m-1">
-                    <div class="card-body">
-                      <h5 class="card-title">Birth Certificate</h5>
-                      <p class="card-text">File description goes here...</p>
-                      <a class="btn btn-primary" href="../files/ReportCard.pdf" target="_blank">Open File</a>
-                    </div>
-                  </div>
-
-                  <div class=" col-lg-3 card file-card m-1">
-                    <div class="card-body">
-                      <h5 class="card-title">Birth Certificate</h5>
-                      <p class="card-text">File description goes here...</p>
-                      <a class="btn btn-primary" href="#" target="_blank">Open File</a>
-                    </div>
+                  <div class="col-lg-1 text-center align-items-end justify-content-end btn btn-primary m-1"
+                    data-bs-toggle="modal" data-bs-target="#additionalFilesModal">
+                    <a>Edit</a>
                   </div>
                 </div>
 
+                <div class=" col-lg-3 card file-card m-1">
+                  <div class="card-body">
+                    <h5 class="card-title">Birth Certificate</h5>
+                    <p class="card-text">File description goes here...</p>
+                    <a class="btn btn-primary" href="../files/BirthCert.pdf" target="_blank">Open File</a>
+                  </div>
+                </div>
 
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
-  </div>
+                <div class=" col-lg-3 card file-card m-1">
+                  <div class="card-body">
+                    <h5 class="card-title">Birth Certificate</h5>
+                    <p class="card-text">File description goes here...</p>
+                    <a class="btn btn-primary" href="../files/ReportCard.pdf" target="_blank">Open File</a>
+                  </div>
+                </div>
 
-
-
-
-
+                <div class=" col-lg-3 card file-card m-1">
+                  <div class="card-body">
+                    <h5 class="card-title">Birth Certificate</h5>
+                    <p class="card-text">File description goes here...</p>
+                    <a class="btn btn-primary" href="#" target="_blank">Open File</a>
+                  </div>
+                </div>
+              </div>
+              
 
   <!-- edit personal info modal -->
   <div class="modal fade" id="personalInfoModal" tabindex="-1" aria-labelledby="personalInfoModalLabel"
@@ -450,6 +450,72 @@
   </div>
   </div>
 
+<!-- edit modal for orphan files -->
+<div class="modal fade" id="additionalFilesModal" tabindex="-1"
+aria-labelledby="additionalFilesModalLabel" aria-hidden="true">
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="additionalFilesModalLabel">Upload Orphan File</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <div class="modal-body">
+      <form id="profilePictureForm">
+        <div class="mb-3">
+          <label for="profilePictureInput" class="form-label">Choose File</label>
+          <input type="file" class="form-control" id="fileInput" accept="*/*">
+        </div>
+        <div class="mb-3">
+          <label for="fileNameInput" class="form-label">File Name (Format: OrphanName_File))</label>
+          <input type="text" class="form-control" id="fileNameInput">
+        </div>
+        <div class="mb-3">
+          <label for="descriptionInput" class="form-label">Description</label>
+          <textarea class="form-control" id="descriptionInput" rows="3"></textarea>
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      <button type="button" class="btn btn-primary" id="additionalFilesModalBtn">Upload</button>
+    </div>
+  </div>
+</div>
+</div>
+
+<script>
+  document.getElementById("additionalFilesModalBtn").addEventListener("click", function() {
+    // Fetching values from inputs
+    var fileName = document.getElementById("fileNameInput").value.trim();
+    var description = document.getElementById("descriptionInput").value.trim();
+    
+    // Checking if fileName follows the required format
+    var fileNameRegex = /^[\w\s-]+_[\w\s-]+$/;
+    if (!fileNameRegex.test(fileName)) {
+      alert("File Name format is incorrect. It should be: OrphanName_File");
+      return;
+    }
+    
+    // Checking if all fields are filled
+    if (fileName === '' || description === '') {
+      alert("Please fill in all fields.");
+      return;
+    }
+
+    // If all requirements are met
+    alert("Changes saved.");
+    // Assuming 'ok' is a button to close the modal
+    document.getElementById("additionalFilesModal").click(); // This simulates clicking 'ok' to close the modal
+    // Redirecting to the main page
+    window.location.href = "../html/orphan-content.html";
+  });
+</script>
+
+
+        </form>
+      </div>
+    </div>
+  </div>
 
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
