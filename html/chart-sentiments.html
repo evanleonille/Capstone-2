@@ -87,59 +87,64 @@
                         <i class="fa-solid fa-arrow-left"></i>
                     </a>
                 </div>
-
-
+            
                 <hr class="mt-3">
-<div class="container">
-    <div class="bg-white rounded-4 border">
-        <!-- Sentiments Details Filter -->
-        <div class="mb-3 p-3" style="background-color: #f8f9fa;">
-            <div class="d-flex justify-content-between">
-                <div class="d-flex align-items-center">
-                    <label for="entriesSelectSentiments" class="form-label me-2 mb-0">Show</label>
-                    <select class="form-select form-select-sm me-2" id="entriesSelectSentiments" style="width: 60px;">
-                        <option value="10">10</option>
-                        <option value="25">25</option>
-                        <option value="50">50</option>
-                        <option value="100">100</option>
-                    </select>
-                    <span class="mb-0 me-2">entries</span>
-                </div>
-                <div class="d-flex align-items-center">
-                    <label for="sortSelectSentiments" class="form-label me-2 mb-0">Sort:</label>
-                    <select class="form-select form-select-sm me-2" id="sortSelectSentiments">
-                        <option value="asc">Ascending</option>
-                        <option value="desc">Descending</option>
-                    </select>
+                <div class="container">
+                    <div class="bg-white rounded-4 border">
+                        <!-- Sentiments Details Filter -->
+                        <div class="mb-3 p-3" style="background-color: #f8f9fa;">
+                            <div class="d-flex justify-content-between">
+                                <div class="d-flex align-items-center">
+                                    <label for="entriesSelectSentiments" class="form-label me-2 mb-0">Show</label>
+                                    <select class="form-select form-select-sm me-2" id="entriesSelectSentiments" style="width: 60px;">
+                                        <option value="10">10</option>
+                                        <option value="25">25</option>
+                                        <option value="50">50</option>
+                                        <option value="100">100</option>
+                                    </select>
+                                    <span class="mb-0 me-2">entries</span>
+                                </div>
+                                <div class="d-flex align-items-center">
+                                    <label for="sortSelectSentiments" class="form-label me-2 mb-0">Sort:</label>
+                                    <select class="form-select form-select-sm me-2" id="sortSelectSentiments">
+                                        <option value="asc">Ascending</option>
+                                        <option value="desc">Descending</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Sentiments Details Table -->
+                        <div class="mb-3">
+                            <table id="sentimentsDetailsTable" class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">Date</th>
+                                        <th scope="col">Name</th>
+                                        <th scope="col">Note Title</th>
+                                        <th scope="col">Note Description</th>
+                                        <th scope="col">Status</th>
+                                        <th scope="col">Action</th> <!-- New Action column -->
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">1</th>
+                                        <td>2024-03-18</td>
+                                        <td>John Doe</td>
+                                        <td>Happy Thoughts</td>
+                                        <td>Feeling optimistic about the future</td>
+                                        <td><span class="badge bg-success">Positive</span></td>
+                                        <td><a href="../html/orphanSentiment_detail.html" class="btn btn-sm btn-light">View Detail</a></td> <!-- Action column -->
+                                    </tr>
+                                    <!-- More table rows -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-        <!-- Sentiments Details Table -->
-        <div class="mb-3">
-            <table id="sentimentsDetailsTable" class="table table-striped">
-                <thead>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Date</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">Note Title</th>
-                        <th scope="col">Note Description</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>2024-03-18</td>
-                        <td>John Doe</td>
-                        <td>Happy Thoughts</td>
-                        <td>Feeling optimistic about the future</td>
-                    </tr>
-                    <!-- More table rows -->
-                </tbody>
-            </table>
-        </div>
-    </div>
-</div>
+            
 
 
 
