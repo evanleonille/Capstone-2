@@ -107,56 +107,348 @@
                 <hr class="mt-3">
 
                 <div>
- <!-- Health Details Filter -->
+ 
+<!-- Health Details Filter -->
+<!-- Show number of Entries -->
 <div class="d-flex justify-content-between mb-3">
     <div class="d-flex align-items-center">
-        <label for="entriesSelectHealth" class="form-label me-2 mb-0">Show</label>
-        <select class="form-select form-select-sm me-2" id="entriesSelectHealth" style="width: 60px;">
-            <option value="10">10</option>
+        <label for="entriesSelect" class="form-label me-2 mb-0">Show</label>
+        <select class="form-select form-select-sm me-2" id="entriesSelect" style="width: 100px;">
+            <option value="all">All</option>
+            <option value="5">5</option>
+            <option value="10" selected>10</option>
+            <option value="15">15</option>
+            <option value="20">20</option>
             <option value="25">25</option>
+            <option value="30">30</option>
+            <option value="35">35</option>
+            <option value="40">40</option>
+            <option value="45">45</option>
             <option value="50">50</option>
-            <option value="100">100</option>
+            
         </select>
         <span class="me-2">entries</span>
     </div>
     <div class="d-flex align-items-center">
-        <button class="btn btn-sm me-2"><i class="bi bi-filter"></i></button>
-        <label for="statusFilterHealth" class="form-label me-2 mb-0">Status</label>
-        <select class="form-select form-select-sm me-2" id="statusFilterHealth" style="width: 100px;">
-            <option value="">All</option>
-            <option value="Normal">Normal</option>
-            <option value="Abnormal">Needs Confinement</option>
-        </select>
     </div>
 </div>
 
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Get the select element
+        var entriesSelect = document.getElementById("entriesSelect");
+
+        // Add event listener for change
+        entriesSelect.addEventListener("change", function() {
+            // Get the selected value
+            var selectedValue = entriesSelect.value;
+            // Call a function to update the table with the selected number of entries
+            updateTableEntries(selectedValue);
+        });
+    });
+
+    function updateTableEntries(entries) {
+        // Get the table body
+        var tableBody = document.querySelector('#healthDetailsTable tbody');
+        // Get all rows in the table
+        var rows = tableBody.querySelectorAll('tr');
+
+        // Show all rows if 'All' is selected
+        if (entries === 'all') {
+            rows.forEach(function(row) {
+                row.style.display = '';
+            });
+            return;
+        }
+
+        // Hide all rows
+        rows.forEach(function(row) {
+            row.style.display = 'none';
+        });
+
+        // Show only the specified number of entries
+        for (var i = 0; i < entries; i++) {
+            if (rows[i]) {
+                rows[i].style.display = '';
+            }
+        }
+    }
+</script>
+
 <!-- Health Details Table -->
-<div>
+<div class="col-sm m-3 vh-100 overflow-auto bg-light rounded-4">
     <h2>Health Details</h2>
     <table id="healthDetailsTable" class="table table-striped">
         <thead>
             <tr>
-                <th scope="col">Date</th>
-                <th scope="col">Temperature (°C)</th>
-                <th scope="col">Blood Pressure (mmHg)</th>
-                <th scope="col">Heart Rate (bpm)</th>
-                <th scope="col">Other Symptoms</th>
-                <th scope="col">Status</th>
+                <th scope="col">Date 
+                    <button class="btn btn-sm me-2" onclick="toggleDropdown('date')">
+                        <i class="bi bi-filter"></i>
+                    </button>
+                    <!-- Date filter dropdown -->
+                    <div id="dateDropdown" class="dropdown-menu" style="display: none;">
+                        <!-- Dropdown content here -->
+                    </div>
+                </th>
+                <th scope="col">Temperature (°C) 
+                    <button class="btn btn-sm me-2" onclick="toggleDropdown('temperature')">
+                        <i class="bi bi-filter"></i>
+                    </button>
+                    <!-- Temperature filter dropdown -->
+                    <div id="temperatureDropdown" class="dropdown-menu" style="display: none;">
+                        <!-- Dropdown content here -->
+                    </div>
+                </th>
+                <th scope="col">Blood Pressure (mmHg) 
+                    <button class="btn btn-sm me-2" onclick="toggleDropdown('bloodPressure')">
+                        <i class="bi bi-filter"></i>
+                    </button>
+                    <!-- Blood Pressure filter dropdown -->
+                    <div id="bloodPressureDropdown" class="dropdown-menu" style="display: none;">
+                        <!-- Dropdown content here -->
+                    </div>
+                </th>
+                <th scope="col">Heart Rate (bpm) 
+                    <button class="btn btn-sm me-2" onclick="toggleDropdown('heartRate')">
+                        <i class="bi bi-filter"></i>
+                    </button>
+                    <!-- Heart Rate filter dropdown -->
+                    <div id="heartRateDropdown" class="dropdown-menu" style="display: none;">
+                        <!-- Dropdown content here -->
+                    </div>
+                </th>
+                <th scope="col">Symptoms 
+                    <button class="btn btn-sm me-2" onclick="toggleDropdown('symptoms')">
+                        <i class="bi bi-filter"></i>
+                    </button>
+                    <!-- Symptoms filter dropdown -->
+                    <div id="symptomsDropdown" class="dropdown-menu" style="display: none;">
+                        <!-- Dropdown content here -->
+                    </div>
+                </th>
+                <th scope="col">Status 
+                    <button class="btn btn-sm me-2" onclick="toggleDropdown('status')">
+                        <i class="bi bi-filter"></i>
+                    </button>
+                    <!-- Status filter dropdown -->
+                    <div id="statusDropdown" class="dropdown-menu" style="display: none;">
+                        <!-- Dropdown content here -->
+                    </div>
+                </th>
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>2024-02-14</td>
-                <td>36.5</td>
-                <td>120/80</td>
-                <td>75</td>
-                <td>Nausea</td>
-                <td>Normal</td>
-            </tr>
             <!-- Add more rows dynamically -->
         </tbody>
     </table>
 </div>
+
+<!-- Populate Dropdown-->
+<script>
+    // Function to populate filter dropdown menus
+    function populateFilterDropdown(dropdownId, items) {
+        const dropdown = document.getElementById(dropdownId);
+        if (dropdown) {
+            items.forEach(item => {
+                const button = document.createElement('button');
+                button.classList.add('dropdown-item');
+                button.type = 'button';
+                button.textContent = item;
+                button.addEventListener('click', () => applyFilter(dropdownId.slice(0, -8), item)); // Removing 'Dropdown' from the end of dropdownId
+                dropdown.appendChild(button);
+            });
+        }
+    }
+
+    // Populate filter dropdown menus
+    document.addEventListener('DOMContentLoaded', function () {
+        populateFilterDropdown('dateDropdown', ['All', 'Ascending', 'Descending']);
+        populateFilterDropdown('temperatureDropdown', ['All', 'Ascending', 'Descending']);
+        populateFilterDropdown('bloodPressureDropdown', ['All', 'Ascending', 'Descending']);
+        populateFilterDropdown('heartRateDropdown', ['All', 'Ascending', 'Descending']);
+        populateFilterDropdown('symptomsDropdown', ['All', 'Nausea', 'Vomiting', 'Headache', 'Stomachache', 'Cough with phlegm', 'Dizziness', 'Pain in the heart']);
+        populateFilterDropdown('statusDropdown', ['All', 'Normal', 'Sick', 'Hospitalized']);
+    });
+</script>
+
+<!-- Dropdown Functions for Health Details Table -->
+<script>
+    function toggleDropdown(column) {
+        var dropdown = document.getElementById(column + 'Dropdown');
+        if (dropdown.style.display === "none") {
+            dropdown.style.display = "block";
+        } else {
+            dropdown.style.display = 'none';
+        }
+    }
+
+    function applyFilter(column, filterValue) {
+        // Get the table body
+        var tableBody = document.querySelector('#healthDetailsTable tbody');
+        // Get all rows in the table
+        var rows = tableBody.querySelectorAll('tr');
+
+        // Loop through each row and check if it should be shown or hidden based on the filter
+        rows.forEach(function(row) {
+            var cell = row.querySelector('td:nth-child(' + (getColumnIndex(column) + 1) + ')');
+            if (filterValue === 'All' || cell.innerText === filterValue) {
+                row.style.display = '';
+            } else {
+                row.style.display = 'none';
+            }
+        });
+
+        // Hide the dropdown after applying filter
+        document.getElementById(column + 'Dropdown').style.display = "none";
+    }
+
+    function getColumnIndex(column) {
+        // This function returns the index of the column
+        // Add more cases for additional columns if needed
+        switch (column) {
+            case 'date':
+                return 0;
+            case 'temperature':
+                return 1;
+            case 'bloodPressure':
+                return 2;
+            case 'heartRate':
+                return 3;
+            case 'symptoms':
+                return 4;
+            case 'status':
+                return 5;
+            default:
+                return -1; // Return -1 if column not found
+        }
+    }
+
+    function applySymptomsFilter(symptom) {
+    // Get the table body
+    var tableBody = document.querySelector('#healthDetailsTable tbody');
+    // Get all rows in the table
+    var rows = tableBody.querySelectorAll('tr');
+
+    // Loop through each row and apply the filter
+    rows.forEach(function(row) {
+        var symptomCell = row.querySelector('td:nth-child(' + (getColumnIndex('symptoms') + 1) + ')');
+        var symptoms = symptomCell.innerText.split(',').map(symptom => symptom.trim()); // Split the symptoms string into an array and trim each symptom
+
+        // Check if any symptom in the row matches the filtered symptom
+        var matchesFilter = symptoms.includes(symptom);
+
+        // Show or hide the row based on whether it matches the filtered symptom
+        if (matchesFilter) {
+            row.style.display = '';
+        } else {
+            row.style.display = 'none';
+        }
+    });
+
+    // Hide the dropdown after applying filter
+    document.getElementById('symptomsDropdown').style.display = "none";
+}
+
+
+</script>
+
+<!-- Ascending and Descending Function for Health Details Table-->
+<script>
+   function applyFilter(column, filterValue) {
+    // Get the table body
+    var tableBody = document.querySelector('#healthDetailsTable tbody');
+    // Get all rows in the table
+    var rows = Array.from(tableBody.querySelectorAll('tr'));
+
+    // Check if sorting is based on temperature, blood pressure, or heart rate column
+    if (column === 'temperature' || column === 'bloodPressure' || column === 'heartRate') {
+        // Sort rows based on the selected column
+        if (filterValue === 'Ascending' || filterValue === 'Descending') {
+            var ascending = filterValue === 'Ascending';
+            rows.sort(function(a, b) {
+                var valueA = parseFloat(a.cells[getColumnIndex(column)].textContent);
+                var valueB = parseFloat(b.cells[getColumnIndex(column)].textContent);
+                return ascending ? valueA - valueB : valueB - valueA;
+            });
+            // Re-append sorted rows to table body
+            rows.forEach(function(row) {
+                tableBody.appendChild(row);
+            });
+        }
+    } else {
+        // Loop through each row and check if it should be shown or hidden based on the filter
+        rows.forEach(function(row) {
+            var cell = row.querySelector('td:nth-child(' + (getColumnIndex(column) + 1) + ')');
+            if (filterValue === 'All' || cell.innerText === filterValue) {
+                row.style.display = '';
+            } else {
+                row.style.display = 'none';
+            }
+        });
+    }
+
+    // Hide the dropdown after applying filter
+    document.getElementById(column + 'Dropdown').style.display = "none";
+}
+</script>
+
+<!-- Populate dummy data -->
+<script>
+    // Function to add a new row to the health details table
+    function addHealthDetailRow(date, temperature, bloodPressure, heartRate, otherSymptoms, status) {
+        var tableBody = document.getElementById("healthDetailsTable").getElementsByTagName("tbody")[0];
+        var newRow = tableBody.insertRow();
+
+        var dateCell = newRow.insertCell(0);
+        var temperatureCell = newRow.insertCell(1);
+        var bloodPressureCell = newRow.insertCell(2);
+        var heartRateCell = newRow.insertCell(3);
+        var otherSymptomsCell = newRow.insertCell(4);
+        var statusCell = newRow.insertCell(5);
+
+        dateCell.textContent = date;
+        temperatureCell.textContent = temperature;
+        bloodPressureCell.textContent = bloodPressure;
+        heartRateCell.textContent = heartRate;
+        otherSymptomsCell.textContent = otherSymptoms;
+        statusCell.textContent = status;
+    }
+
+    // Function to generate dummy data
+    function generateHealthDummyData() {
+        const statuses = ['Normal', 'Sick', 'Hospitalized'];
+        const symptoms = ['Nausea', 'Vomiting', 'Headache', 'Stomachache', 'Cough with phlegm', 'Dizziness', 'Pain in the heart'];
+
+        for (let i = 0; i < 50; i++) {
+            const temperature = (Math.random() * (38.5 - 36) + 36).toFixed(1); // Random temperature between 36 and 38.5
+            const bloodPressure = `${Math.floor(Math.random() * (130 - 90) + 90)}/${Math.floor(Math.random() * (85 - 60) + 60)}`; // Random blood pressure
+            const heartRate = Math.floor(Math.random() * (100 - 60) + 60); // Random heart rate between 60 and 100
+            const status = statuses[Math.floor(Math.random() * statuses.length)]; // Random status
+            const selectedSymptoms = [];
+            const numSymptoms = Math.floor(Math.random() * 3) + 1; // Randomly choose 1-3 symptoms
+            for (let j = 0; j < numSymptoms; j++) {
+                const symptomIndex = Math.floor(Math.random() * symptoms.length);
+                selectedSymptoms.push(symptoms[symptomIndex]);
+            }
+            const otherSymptoms = selectedSymptoms.join(', '); // Combine selected symptoms into a string
+
+            addHealthDetailRow(`2024-03-${Math.floor(Math.random() * 30) + 1}`, temperature, bloodPressure, heartRate, otherSymptoms, status);
+        }
+    }
+
+    // Ensure the table exists before generating data
+    document.addEventListener("DOMContentLoaded", function() {
+        const tableExists = document.getElementById("healthDetailsTable");
+        if (tableExists) {
+            generateHealthDummyData();
+        }
+    });
+</script>
+
+
+
+
+
 
 <!-- modal for upload academic -->
 <div class="modal fade" id="addHealthDetailsModal" tabindex="-1" aria-labelledby="addHealthDetailsModalLabel"
