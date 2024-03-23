@@ -78,8 +78,6 @@
             </div>
 
 
-            
-
             <div class="col-sm m-3 vh-100 overflow-auto bg-light rounded-4">
                 <!-- content -->
                 <div>
@@ -105,53 +103,346 @@
                 
                 <hr class="mt-3">
 
-                <!-- Academic Details -->
-                <div class="d-flex justify-content-between mb-3">
-                    <div class="d-flex align-items-center">
-                        <label for="entriesSelect" class="form-label me-2 mb-0">Show</label>
-                        <select class="form-select form-select-sm me-2" id="entriesSelect" style="width: 60px;">
-                            <option value="10">10</option>
-                            <option value="25">25</option>
-                            <option value="50">50</option>
-                            <option value="100">100</option>
-                        </select>
-                        <span class="me-2">entries</span>
+<!-- Academic Details -->
+
+<!-- Show number of Entries -->
+<div class="d-flex justify-content-between mb-3">
+    <div class="d-flex align-items-center">
+        <label for="entriesSelect" class="form-label me-2 mb-0">Show</label>
+        <select class="form-select form-select-sm me-2" id="entriesSelect" style="width: 100px;">
+            <option value="all">All</option>
+            <option value="5">5</option>
+            <option value="10" selected>10</option>
+            <option value="15">15</option>
+            <option value="20">20</option>
+            <option value="25">25</option>
+            <option value="30">30</option>
+            <option value="35">35</option>
+            <option value="40">40</option>
+            <option value="45">45</option>
+            <option value="50">50</option>
+            
+        </select>
+        <span class="me-2">entries</span>
+    </div>
+    <div class="d-flex align-items-center">
+    </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Get the select element
+        var entriesSelect = document.getElementById("entriesSelect");
+
+        // Add event listener for change
+        entriesSelect.addEventListener("change", function() {
+            // Get the selected value
+            var selectedValue = entriesSelect.value;
+            // Call a function to update the table with the selected number of entries
+            updateTableEntries(selectedValue);
+        });
+    });
+
+    function updateTableEntries(entries) {
+        // Get the table body
+        var tableBody = document.querySelector('#academicDetailsTable tbody');
+        // Get all rows in the table
+        var rows = tableBody.querySelectorAll('tr');
+
+        // Show all rows if 'All' is selected
+        if (entries === 'all') {
+            rows.forEach(function(row) {
+                row.style.display = '';
+            });
+            return;
+        }
+
+        // Hide all rows
+        rows.forEach(function(row) {
+            row.style.display = 'none';
+        });
+
+        // Show only the specified number of entries
+        for (var i = 0; i < entries; i++) {
+            if (rows[i]) {
+                rows[i].style.display = '';
+            }
+        }
+    }
+</script>
+
+
+
+<!-- Table -->
+
+            <table id="academicDetailsTable" class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Date <button class="btn btn-sm me-2" onclick="toggleDropdown('date')"><i
+                            class="bi bi-filter"></i></button>
+                    <!-- Date filter dropdown -->
+                    <div id="dateDropdown" class="dropdown-menu" style="display: none;">
                     </div>
-                    <div class="d-flex align-items-center">
-                        <button class="btn btn-sm me-2"><i class="bi bi-filter"></i></button>
-                        <label for="statusFilter" class="form-label me-2 mb-0">Status</label>
-                        <select class="form-select form-select-sm me-2" id="statusFilter" style="width: 100px;">
-                            <option value="">All</option>
-                            <option value="Passed">Passed</option>
-                            <option value="Failed">Failed</option>
-                        </select>
-                    </div>
+                </th>
+                <th scope="col">Year Level <button class="btn btn-sm me-2"
+                    onclick="toggleDropdown('yearLevel')"><i class="bi bi-filter"></i></button>
+                <!-- Year Level filter dropdown -->
+                <div id="yearLevelDropdown" class="dropdown-menu" style="display: none; max-height: 200px; overflow-y: auto;">
                 </div>
+            </th>
+        
+            <th scope="col">Grading Period <button class="btn btn-sm me-2"
+                    onclick="toggleDropdown('gradingPeriod')"><i class="bi bi-filter"></i></button>
+                <!-- Grading Period filter dropdown -->
+                <div id="gradingPeriodDropdown" class="dropdown-menu" style="display: none;">
+                </div>
+            </th>
+            <th scope="col">Subject <button class="btn btn-sm me-2"
+                onclick="toggleDropdown('subject')"><i class="bi bi-filter"></i></button>
+            <!-- Subject filter dropdown -->
+            <div id="subjectDropdown" class="dropdown-menu" style="display: none; max-height: 200px; overflow-y: auto;">
+            </div>
+        </th>
 
-
-    <!-- Table -->
-    <div class="mb-3">
-        <table id="academicDetailsTable" class="table table-striped">
-            <thead>
-                <tr>
-                    <th scope="col">Date</th>
-                    <th scope="col">Year Level</th>
-                    <th scope="col">Grading Period</th>
-                    <th scope="col">Subject</th>
-                    <th scope="col">Grades</th>
-                    <th scope="col">Status</th>
-                </tr>
-            </thead>
-            <tbody>
-        <!-- Table body will be dynamically populated -->
+            <th scope="col">Grades <button class="btn btn-sm me-2"
+                    onclick="toggleDropdown('grades')"><i class="bi bi-filter"></i></button>
+                <!-- Grades filter dropdown -->
+                <div id="gradesDropdown" class="dropdown-menu" style="display: none;">
+                    
+                </div>
+            </th>
+            <th scope="col">Status <button class="btn btn-sm me-2"
+                    onclick="toggleDropdown('status')"><i class="bi bi-filter"></i></button>
+                <!-- Status filter dropdown -->
+                <div id="statusDropdown" class="dropdown-menu" style="display: none;">
+                </div>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- Add more rows -->
     </tbody>
 </table>
 </div>
-                </div>
+</div>
+</div>
+
+<!-- Populating Dropdown -->
+<script>
+    // Function to populate filter dropdown menus
+    function populateFilterDropdown(dropdownId, items) {
+        const dropdown = document.getElementById(dropdownId);
+        if (dropdown) {
+            items.forEach(item => {
+                const button = document.createElement('button');
+                button.classList.add('dropdown-item');
+                button.type = 'button';
+                button.textContent = item;
+                button.addEventListener('click', () => applyFilter(dropdownId.slice(0, -8), item)); // Removing 'Dropdown' from the end of dropdownId
+                dropdown.appendChild(button);
+            });
+        }
+    }
+
+    // Populate filter dropdown menus
+    document.addEventListener('DOMContentLoaded', function () {
+        populateFilterDropdown('dateDropdown', ['All', 'Ascending', 'Descending']);
+        populateFilterDropdown('yearLevelDropdown', ['All', 'Grade 1', 'Grade 2', 'Grade 3', 'Grade 4', 'Grade 5', 'Grade 6', 'Grade 7', 'Grade 8', 'Grade 9', 'Grade 10', 'Grade 11', 'Grade 12']);
+        populateFilterDropdown('gradingPeriodDropdown', ['All', '1st Grading', '2nd Grading', '3rd Grading', '4th Grading']);
+        populateFilterDropdown('subjectDropdown', ['Mathematics', 'Science', 'English', 'Filipino', 'Araling Panlipunan', 'Edukasyon sa Pagpapakatao (EsP)', 'Music', 'Arts', 'Physical Education', 'Health', 
+    'Edukasyong Pantahanan at Pangkabuhayan (EPP)', 'Technology and Livelihood Education (TLE)', 'Oral Communication', 'Reading and Writing', 
+    'Komunikasyon at Pananaliksik sa Wika at Kulturang Pilipino', 'Pagbasa at Pagsusuri ng Iba’t-Ibang Teksto Tungo sa Pananaliksik', '21st Century Literature from the Philippines and the World', 
+    'Contemporary Philippine Arts from the Regions', 'Media and Information Literacy', 'General Math', 'Statistics and Probability', 'Earth and Life Science', 'Physical Science', 'Introduction to the Philosophy of the Human Person', 
+    'Physical Education and Health', 'Personal Development', 'Understanding Culture, Society and Politics', 'Earth Science', 'Disaster Readiness and Risk Reduction', 'English for Academic and Professional Purposes', 'Practical Research 1', 
+    'Practical Research 2', 'Filipino sa Piling Larang', 'Empowerment Technologies', 'Entrepreneurship', 'Immersion']);
+        populateFilterDropdown('gradesDropdown', ['All', 'Ascending', 'Descending']);
+        populateFilterDropdown('statusDropdown', ['All', 'Passed', 'Failed']);
+    });
+</script>
+
+
+<!-- Dropdown Functions -->
+<script>
+    function toggleDropdown(column) {
+        var dropdown = document.getElementById(column + 'Dropdown');
+        if (dropdown.style.display === "none") {
+            dropdown.style.display = "block";
+        } else {
+            dropdown.style.display = "none";
+        }
+    }
+
+    function applyFilter(column, filterValue) {
+        // Get the table body
+        var tableBody = document.querySelector('#academicDetailsTable tbody');
+        // Get all rows in the table
+        var rows = tableBody.querySelectorAll('tr');
+
+        // Loop through each row and check if it should be shown or hidden based on the filter
+        rows.forEach(function(row) {
+            var cell = row.querySelector('td:nth-child(' + (getColumnIndex(column) + 1) + ')');
+            if (filterValue === 'All' || cell.innerText === filterValue) {
+                row.style.display = '';
+            } else {
+                row.style.display = 'none';
+            }
+        });
+
+        // Hide the dropdown after applying filter
+        document.getElementById(column + 'Dropdown').style.display = "none";
+    }
+
+    function getColumnIndex(column) {
+        // This function returns the index of the column
+        // Add more cases for additional columns if needed
+        switch (column) {
+            case 'date':
+                return 0;
+            case 'yearLevel':
+                return 1;
+            case 'gradingPeriod':
+                return 2;
+            case 'subject':
+                return 3;
+            case 'grades':
+                return 4;
+            case 'status':
+                return 5;
+            default:
+                return -1; // Return -1 if column not found
+        }
+    }
+</script>
+
+<!-- Ascending and Descending Function-->
+<script>
+   function applyFilter(column, filterValue) {
+    // Get the table body
+    var tableBody = document.querySelector('#academicDetailsTable tbody');
+    // Get all rows in the table
+    var rows = Array.from(tableBody.querySelectorAll('tr'));
+
+    // Check if sorting is based on grades or date column
+    if (column === 'grades') {
+        // Sort rows based on grades column
+        if (filterValue === 'Ascending' || filterValue === 'Descending') {
+            var ascending = filterValue === 'Ascending';
+            rows.sort(function(a, b) {
+                var gradeA = parseInt(a.cells[getColumnIndex(column)].textContent);
+                var gradeB = parseInt(b.cells[getColumnIndex(column)].textContent);
+                return ascending ? gradeA - gradeB : gradeB - gradeA;
+            });
+            // Re-append sorted rows to table body
+            rows.forEach(function(row) {
+                tableBody.appendChild(row);
+            });
+        }
+    } else if (column === 'date') {
+        // Sort rows based on date column
+        if (filterValue === 'Ascending' || filterValue === 'Descending') {
+            var ascending = filterValue === 'Ascending';
+            rows.sort(function(a, b) {
+                var dateA = new Date(a.cells[getColumnIndex(column)].textContent);
+                var dateB = new Date(b.cells[getColumnIndex(column)].textContent);
+                return ascending ? dateA - dateB : dateB - dateA;
+            });
+            // Re-append sorted rows to table body
+            rows.forEach(function(row) {
+                tableBody.appendChild(row);
+            });
+        }
+    } else {
+        // Loop through each row and check if it should be shown or hidden based on the filter
+        rows.forEach(function(row) {
+            var cell = row.querySelector('td:nth-child(' + (getColumnIndex(column) + 1) + ')');
+            if (filterValue === 'All' || cell.innerText === filterValue) {
+                row.style.display = '';
+            } else {
+                row.style.display = 'none';
+            }
+        });
+    }
+
+    // Hide the dropdown after applying filter
+    document.getElementById(column + 'Dropdown').style.display = "none";
+}
+ 
+</script>
+
+<!-- Ensure the script is placed after the table in the HTML -->
+<!-- Populate dummy data -->
+<script>
+    // Function to add a new row to the academic details table
+    function addAcademicDetailRow(date, yearLevel, gradingPeriod, subject, grades, status) {
+        var tableBody = document.getElementById("academicDetailsTable").getElementsByTagName("tbody")[0];
+        var newRow = tableBody.insertRow();
+
+        var dateCell = newRow.insertCell(0);
+        var yearLevelCell = newRow.insertCell(1);
+        var gradingPeriodCell = newRow.insertCell(2);
+        var subjectCell = newRow.insertCell(3);
+        var gradesCell = newRow.insertCell(4);
+        var statusCell = newRow.insertCell(5);
+
+        dateCell.textContent = date;
+        yearLevelCell.textContent = yearLevel;
+        gradingPeriodCell.textContent = gradingPeriod;
+        subjectCell.textContent = subject;
+        gradesCell.textContent = grades;
+        statusCell.textContent = status;
+    }
+
+    // Function to generate dummy data
+    function generateDummyData() {
+        const subjects = ['Mathematics', 'Science', 'English', 'Filipino', 'Araling Panlipunan', 'Edukasyon sa Pagpapakatao (EsP)', 'Music', 'Arts', 'Physical Education', 'Health', 
+            'Edukasyong Pantahanan at Pangkabuhayan (EPP)', 'Technology and Livelihood Education (TLE)', 'Oral Communication', 'Reading and Writing', 
+            'Komunikasyon at Pananaliksik sa Wika at Kulturang Pilipino', 'Pagbasa at Pagsusuri ng Iba’t-Ibang Teksto Tungo sa Pananaliksik', '21st Century Literature from the Philippines and the World', 
+            'Contemporary Philippine Arts from the Regions', 'Media and Information Literacy', 'General Math', 'Statistics and Probability', 'Earth and Life Science', 'Physical Science', 'Introduction to the Philosophy of the Human Person', 
+            'Physical Education and Health', 'Personal Development', 'Understanding Culture, Society and Politics', 'Earth Science', 'Disaster Readiness and Risk Reduction', 'English for Academic and Professional Purposes', 'Practical Research 1', 
+            'Practical Research 2', 'Filipino sa Piling Larang', 'Empowerment Technologies', 'Entrepreneurship', 'Immersion'];
+
+        const yearLevels = ['Grade 1', 'Grade 2', 'Grade 3', 'Grade 4', 'Grade 5', 'Grade 6', 'Grade 7', 'Grade 8', 'Grade 9', 'Grade 10', 'Grade 11', 'Grade 12'];
+        const gradingPeriods = ['1st Grading', '2nd Grading', '3rd Grading', '4th Grading'];
+        const statuses = ['Passed', 'Failed'];
+
+        for (let i = 0; i < 50; i++) {
+            const subjectIndex = Math.floor(Math.random() * subjects.length);
+            const yearLevelIndex = Math.floor(Math.random() * yearLevels.length);
+            const gradingPeriodIndex = Math.floor(Math.random() * gradingPeriods.length);
+            const statusIndex = Math.floor(Math.random() * statuses.length);
+            const subject = subjects[subjectIndex];
+            const yearLevel = yearLevels[yearLevelIndex];
+            const gradingPeriod = gradingPeriods[gradingPeriodIndex];
+            let grades;
+            let status;
+
+            // Generate grades and status based on the rules
+            if (statuses[statusIndex] === 'Passed') {
+                grades = Math.floor(Math.random() * 25) + 75; // Grades between 75 and 99
+                status = 'Passed';
+            } else {
+                grades = Math.floor(Math.random() * 15) + 60; // Grades between 60 and 74
+                status = 'Failed';
+            }
+
+            addAcademicDetailRow(`2024-02-13`, yearLevel, gradingPeriod, subject, grades, status);
+        }
+    }
+
+    // Ensure the table exists before generating data
+    document.addEventListener("DOMContentLoaded", function() {
+        const tableExists = document.getElementById("academicDetailsTable");
+        if (tableExists) {
+            generateDummyData();
+        }
+    });
+</script>
+
+
+
 
 <!-- Modal for uploading academic details -->
-<div class="modal fade" id="addAcademicDetailsModal" tabindex="-1" aria-labelledby="addAcademicDetailsModalLabel"
-    aria-hidden="true">
+<div class="modal fade" id="addAcademicDetailsModal" tabindex="-1" aria-labelledby="addAcademicDetailsModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
@@ -170,26 +461,7 @@
                     <div class="mb-3">
                         <label for="yearLevelInput" class="form-label">Year Level</label>
                         <select class="form-select" id="yearLevelInput" aria-describedby="yearLevelHelp" required>
-                            <option value="">Select Year Level</option>
-                            <option value="Grade 1">Grade 1</option>
-                            <option value="Grade 2">Grade 2</option>
-                            <option value="Grade 3">Grade 3</option>
-                            <option value="Grade 4">Grade 4</option>
-                            <option value="Grade 5">Grade 5</option>
-                            <option value="Grade 6">Grade 6</option>
-                            <option value="Grade 7">Grade 7</option>
-                            <option value="Grade 8">Grade 8</option>
-                            <option value="Grade 9">Grade 9</option>
-                            <option value="Grade 10">Grade 10</option>
-                            <option value="Grade 11">Grade 11</option>
-                            <option value="Grade 12">Grade 12</option>
-                            <option value="1st Year College">1st Year College</option>
-                            <option value="2nd Year College">2nd Year College</option>
-                            <option value="3rd Year College">3rd Year College</option>
-                            <option value="4th Year College">4th Year College</option>
-                            <option value="5th Year College">5th Year College</option>
-                            <option value="6th Year College">6th Year College</option>
-                            <option value="7th Year College">7th Year College</option>
+                            <!-- Options for year level -->
                         </select>
                         <small id="yearLevelHelp" class="form-text text-muted">Select your year level.</small>
                     </div>
@@ -197,37 +469,21 @@
                     <div class="mb-3">
                         <label for="gradingPeriodInput" class="form-label">Grading Period</label>
                         <select class="form-select" id="gradingPeriodInput" aria-describedby="gradingPeriodHelp" required>
-                            <option value="">Select Grading Period</option>
-                            <option value="1st Grading">1st Grading</option>
-                            <option value="2nd Grading">2nd Grading</option>
-                            <option value="3rd Grading">3rd Grading</option>
-                            <option value="4th Grading">4th Grading</option>
-                            <option value="1st Semester">1st Semester</option>
-                            <option value="2nd Semester">2nd Semester</option>
-                            <option value="College">Summer</option>
+                            <!-- Options for grading period -->
                         </select>
                         <small id="gradingPeriodHelp" class="form-text text-muted">Select the grading period.</small>
                     </div>
-                        <!-- Subject and Grade -->
-                        <div id="subjectFields" class="row">
-                            <div class="mb-3 col-6">
-                                <label class="form-label">Subject</label>
-                                <input type="text" class="form-control mb-3 subject-input" placeholder="Subject" required>
-                            </div>
-                            <div class="mb-3 col-6">
-                                <label class="form-label">Grade</label>
-                                <input type="number" class="form-control mb-3 grade-input" placeholder="Grade" min="0" max="100" required>
-                            </div>
-                        </div>
-                        <button type="button" class="btn btn-primary mt-3" onclick="addSubjectField()">Add Subject</button>
-
-
-                    <!-- GWA -->
-                    <div class="mb-3">
-                        <label for="gwaInput" class="form-label">GWA</label>
-                        <input type="number" class="form-control" id="gwaInput" aria-describedby="gwaHelp" min="0" max="100" placeholder="General Weighted Average" required>
-
-                    </div>
+                    <!-- Subject and Grade Dropdown -->
+                <!-- Subject and Grade Dropdown -->
+                <div id="subjectFields" class="mb-3">
+                    <label for="subjectDropdownInput" class="form-label">Subject and Grade</label>
+                    <select class="form-select subject-dropdown" id="subjectDropdownInput" aria-describedby="subjectHelp" required>
+                        <!-- Options for subjects will be added dynamically -->
+                    </select>
+                    <small id="subjectHelp" class="form-text text-muted">Select the subject.</small>
+                    <input type="text" class="form-control mt-2" id="gradeInput" placeholder="Grade (60-99)" required>
+                    <small id="gradeHelp" class="form-text text-muted">Enter a grade between 60 and 99.</small>
+                </div>
                 </form>
             </div>
             <div class="modal-footer">
@@ -238,9 +494,60 @@
     </div>
 </div>
 
-            </div>
-        </div>
-    </div>
+</body>
+
+<!-- Populate dropdown -->
+<script>
+    // Data for year levels, grading periods, and subjects
+    const yearLevels = ['Grade 1', 'Grade 2', 'Grade 3', 'Grade 4', 'Grade 5', 'Grade 6', 'Grade 7', 'Grade 8', 'Grade 9', 'Grade 10', 'Grade 11', 'Grade 12'];
+    const gradingPeriods = ['1st Grading', '2nd Grading', '3rd Grading', '4th Grading'];
+    const subjects = ['Mathematics', 'Science', 'English', 'Filipino', 'Araling Panlipunan', 'Edukasyon sa Pagpapakatao (EsP)', 'Music', 'Arts', 'Physical Education', 'Health', 
+    'Edukasyong Pantahanan at Pangkabuhayan (EPP)', 'Technology and Livelihood Education (TLE)', 'Oral Communication', 'Reading and Writing', 
+    'Komunikasyon at Pananaliksik sa Wika at Kulturang Pilipino', 'Pagbasa at Pagsusuri ng Iba’t-Ibang Teksto Tungo sa Pananaliksik', '21st Century Literature from the Philippines and the World', 
+    'Contemporary Philippine Arts from the Regions', 'Media and Information Literacy', 'General Math', 'Statistics and Probability', 'Earth and Life Science', 'Physical Science', 'Introduction to the Philosophy of the Human Person', 
+    'Physical Education and Health', 'Personal Development', 'Understanding Culture, Society and Politics', 'Earth Science', 'Disaster Readiness and Risk Reduction', 'English for Academic and Professional Purposes', 'Practical Research 1', 
+    'Practical Research 2', 'Filipino sa Piling Larang', 'Empowerment Technologies', 'Entrepreneurship', 'Immersion'];
+
+    // Function to populate dropdown options
+    function populateDropdownOptions(selectId, optionsArray) {
+        const selectElement = document.getElementById(selectId);
+        optionsArray.forEach(option => {
+            const optionElement = document.createElement('option');
+            optionElement.value = option;
+            optionElement.textContent = option;
+            selectElement.appendChild(optionElement);
+        });
+    }
+
+    // Populate dropdown options for year levels
+    populateDropdownOptions('yearLevelInput', yearLevels);
+
+    // Populate dropdown options for grading periods
+    populateDropdownOptions('gradingPeriodInput', gradingPeriods);
+
+    // Populate dropdown options for subjects
+    populateDropdownOptions('subjectDropdownInput', subjects);
+
+    //Restrict grade input to numbers between 60 and 99
+    const gradeInput = document.getElementById('gradeInput');
+    gradeInput.addEventListener('input', function () {
+        // Remove non-numeric characters from input
+        this.value = this.value.replace(/\D/g, '');
+
+        // Ensure the value is between 60 and 99
+        const value = parseInt(this.value);
+        if (isNaN(value) || value < 60 || value > 99) {
+            this.setCustomValidity('Grade must be a number between 60 and 99');
+        } else {
+            this.setCustomValidity('');
+        }
+    });
+</script>
+
+
+</div>
+</div>
+</div>
 
 
 </body>
