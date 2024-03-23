@@ -77,44 +77,39 @@
       </div>
 
 
-
-      <div class=" col-sm m-3 vh-100 overflow-auto bg-light rounded-4 ">
-        <!-- content -->
-        <div class="">
-          <form class="">
+<!-- Buttons -->
+<div class="col-sm m-3 vh-100 overflow-auto bg-light rounded-4">
+    <!-- content -->
+    <div class="">
+        <form class="">
             <div class="container-fluid m-2">
-              <div class="">
-                <a href="./Orphan.html" class="btn btn-primary mt-3">
-                  <i class="fa-solid fa-arrow-left"></i>
-                </a>
-              </div>
-              <div class="row info ">
-                <img class="col-3 file-icon fs-1 img-fluid picsize" src="../image/Profpic (7).png" height="100px"
-                  width="100px" alt="File Icon">
-                <div class="col-5 mt-3">
-                  <h3>Bakit Ganito Podcast</h3>
-                  <span class="badge bg-success rounded-pill">Admitted</span>
+                <div class="">
+                    <a href="./Orphan.html" class="btn btn-primary mt-3">
+                        <i class="fa-solid fa-arrow-left"></i>
+                    </a>
                 </div>
-                <div class="col text-end align-items-end justify-content-end">
-                  <div class="row mt-3 text-end px-0 mx-5">
-                    <a class="btn btn-primary" href="./academic.html">Academic Information</a>
-                  </div>
-                  <div class="row mt-3 text-end px-0 mx-5 info-icon">
-                    <a class="btn btn-primary" href="./health.html">Health Information</a>
-                  </div>
-                  <div class="row mt-3 info-icon text-end px-0 mx-5">
-                    <a class="btn btn-primary" href="./orphanSentiment_detail.html">See Notes</a>
-                  </div>
-                  <div class="row mt-3 info-icon text-end px-0 mx-5">
-                    <a class="btn btn-primary" href="#" data-bs-toggle="modal"
-                      data-bs-target="#changeProfilePictureModal">Change Profile Picture</a>
-
-                  </div>
+                <div class="row info">
+                    <img class="col-3 file-icon fs-1 img-fluid picsize" src="../image/Profpic (7).png" height="100px" width="100px" alt="File Icon">
+                    <div class="col-5 mt-3">
+                        <h3>Bakit Ganito Podcast</h3>
+                        <span class="badge bg-success rounded-pill">Admitted</span>
+                    </div>
+                    <div class="col text-end align-items-end justify-content-end">
+                        <div class="row mt-3 text-end px-1 mx-2"> <!-- Adjusted padding -->
+                            <a class="btn btn-primary btn-sm" href="./academic.html">Academic Information</a>
+                        </div>
+                        <div class="row mt-3 text-end px-1 mx-2 info-icon"> <!-- Adjusted padding -->
+                            <a class="btn btn-primary btn-sm" href="./health.html">Health Information</a>
+                        </div>
+                        <div class="row mt-3 info-icon text-end px-1 mx-2"> <!-- Adjusted padding -->
+                            <a class="btn btn-primary btn-sm" href="./orphanSentiment_detail.html">Behavior Notes</a>
+                        </div>
+                        <div class="row mt-3 info-icon text-end px-1 mx-2"> <!-- Adjusted padding -->
+                            <a class="btn btn-primary btn-sm" href="#" data-bs-toggle="modal" data-bs-target="#changeProfilePictureModal">Change Profile Picture</a>
+                        </div>
+                    </div>
                 </div>
-
-
-              </div>
-
+            </div>
 
               <!-- Change Profile Picture Modal -->
               <div class="modal fade" id="changeProfilePictureModal" tabindex="-1"
@@ -142,6 +137,7 @@
                 </div>
               </div>
 
+              <!-- Script for Changing Profile Picture -->
               <script>
                 document.addEventListener("DOMContentLoaded", function () {
                   // Handle profile picture upload
@@ -169,10 +165,7 @@
               </script>
 
 
-
-
-
-
+<!-- Personal Information -->
               <hr class="mt-2">
               <div class="container-fluid row">
                 <div class="row">
@@ -196,14 +189,12 @@
                     aria-label="Disabled input example" readonly></p>
               </div>
 
-
-
-
+<!-- Additional Information -->
               <hr class="mt-2" />
               <div class="container-fluid row">
                 <div class="row ">
                   <div class="col-10 me-5">
-                    <h2>Adittional Information</h2>
+                    <h2>Additional Information</h2>
                   </div>
                   <div class="col-lg-1 text-center align-items-end justify-content-end btn btn-primary m-1"
                     data-bs-toggle="modal" data-bs-target="#additionalInfoModal">
@@ -258,11 +249,12 @@
              
               </div>
 
+<!-- Body Mass Index -->
               <hr class="mt-2" />
               <div class="container-fluid  row">
                 <div class="row ">
                   <div class="col-10 me-5">
-                    <h2>BMI</h2>
+                    <h2>Body Mass Index </h2>
                   </div>
                   <div class="col-lg-1 text-center align-items-end justify-content-end btn btn-primary m-1">
                     <a href="./bmi.html" class="text-decoration-none text-white">BMI History</a>
@@ -279,15 +271,12 @@
                     aria-label="Disabled input example" readonly></p>
               </div>
 
-
-
-
-
+<!-- Orphan Documents -->
               <hr class="mt-2" />
               <div class="container-fluid row">
                 <div class="row ">
                   <div class="col-10 me-5">
-                    <h2>Adittional Information</h2>
+                    <h2>Orphan Documents</h2>
                   </div>
                   <div class="col-lg-1 text-center align-items-end justify-content-end btn btn-primary m-1"
                     data-bs-toggle="modal" data-bs-target="#additionalFilesModal">
@@ -295,31 +284,357 @@
                   </div>
                 </div>
 
-                <div class=" col-lg-3 card file-card m-1">
-                  <div class="card-body">
-                    <h5 class="card-title">Birth Certificate</h5>
-                    <p class="card-text">File description goes here...</p>
-                    <a class="btn btn-primary" href="../files/BirthCert.pdf" target="_blank">Open File</a>
-                  </div>
+                <!-- Show number of Entries -->
+                <div class="d-flex justify-content-between mb-3">
+                    <div class="d-flex align-items-center">
+                        <label for="entriesSelect" class="form-label me-2 mb-0">Show</label>
+                        <select class="form-select form-select-sm me-2" id="entriesSelect" style="width: 100px;">
+                            <option value="all">All</option>
+                            <option value="5">5</option>
+                            <option value="10" selected>10</option>
+                            <option value="15">15</option>
+                            <option value="20">20</option>
+                            <option value="25">25</option>
+                            <option value="30">30</option>
+                            <option value="35">35</option>
+                            <option value="40">40</option>
+                            <option value="45">45</option>
+                            <option value="50">50</option>
+                            
+                        </select>
+                        <span class="me-2">entries</span>
+                    </div>
+                    <div class="d-flex align-items-center">
+                    </div>
                 </div>
+                
+                <script>
+                    document.addEventListener("DOMContentLoaded", function() {
+                        // Get the select element
+                        var entriesSelect = document.getElementById("entriesSelect");
+                
+                        // Add event listener for change
+                        entriesSelect.addEventListener("change", function() {
+                            // Get the selected value
+                            var selectedValue = entriesSelect.value;
+                            // Call a function to update the table with the selected number of entries
+                            updateTableEntries(selectedValue);
+                        });
+                    });
+                
+                    function updateTableEntries(entries) {
+                        // Get the table body
+                        var tableBody = document.querySelector('#orphanDocumentsTable tbody');
+                        // Get all rows in the table
+                        var rows = tableBody.querySelectorAll('tr');
+                
+                        // Show all rows if 'All' is selected
+                        if (entries === 'all') {
+                            rows.forEach(function(row) {
+                                row.style.display = '';
+                            });
+                            return;
+                        }
+                
+                        // Hide all rows
+                        rows.forEach(function(row) {
+                            row.style.display = 'none';
+                        });
+                
+                        // Show only the specified number of entries
+                        for (var i = 0; i < entries; i++) {
+                            if (rows[i]) {
+                                rows[i].style.display = '';
+                            }
+                        }
+                    }
+                </script>
 
-                <div class=" col-lg-3 card file-card m-1">
-                  <div class="card-body">
-                    <h5 class="card-title">Birth Certificate</h5>
-                    <p class="card-text">File description goes here...</p>
-                    <a class="btn btn-primary" href="../files/ReportCard.pdf" target="_blank">Open File</a>
+  <div class="col-sm m-3 border vh-100 bg-light rounded-4 overflow-auto">
+  <!-- Table -->
+  <table id="orphanDocumentsTable" class="table table-striped">
+      <thead>
+          <tr>
+              <th scope="col">
+                  <div class="dropdown">
+                      Date
+                      <button class="btn btn-sm me-2" onclick="toggleDropdown('date')">
+                          <i class="bi bi-filter"></i>
+                      </button>
+                      <!-- Date filter dropdown -->
+                      <div id="dateDropdown" class="dropdown-menu" style="display: none;">
+                          <button class="dropdown-item" type="button" onclick="applyFilter('date', 'All')">All</button>
+                          <button class="dropdown-item" type="button" onclick="applyFilter('date', 'Ascending')">Ascending</button>
+                          <button class="dropdown-item" type="button" onclick="applyFilter('date', 'Descending')">Descending</button>
+                      </div>
                   </div>
-                </div>
+              </th>
+              <th scope="col">
+                  <div class="dropdown">
+                      File Name
+                      <button class="btn btn-sm me-2" onclick="toggleDropdown('fileName')">
+                          <i class="bi bi-filter"></i>
+                      </button>
+                      <!-- File Name filter dropdown -->
+                      <div id="fileNameDropdown" class="dropdown-menu" style="display: none;">
+                          <button class="dropdown-item" type="button" onclick="applyFilter('fileName', 'All')">All</button>
+                          <button class="dropdown-item" type="button" onclick="applyFilter('fileName', 'Ascending')">Ascending</button>
+                          <button class="dropdown-item" type="button" onclick="applyFilter('fileName', 'Descending')">Descending</button>
+                      </div>
+                  </div>
+              </th>
+              <th scope="col">Description</th>
+              <th scope="col">
+                  <div class="dropdown">
+                      File Type
+                      <button class="btn btn-sm me-2" onclick="toggleDropdown('fileType')">
+                          <i class="bi bi-filter"></i>
+                      </button>
+                      <!-- File Type filter dropdown -->
+                      <div id="fileTypeDropdown" class="dropdown-menu" style="display: none;">
+                          <button class="dropdown-item" type="button" onclick="applyFilter('fileType', 'All')">All</button>  
+                          <button class="dropdown-item" type="button" onclick="applyFilter('fileType', 'Important Documents')">Important Documents</button>
+                          <button class="dropdown-item" type="button" onclick="applyFilter('fileType', 'Medical Certificates')">Medical Certificates</button>
+                          <button class="dropdown-item" type="button" onclick="applyFilter('fileType', 'Grade Cards')">Grade Cards</button>
+                          <button class="dropdown-item" type="button" onclick="applyFilter('fileType', 'Others')">Others</button>
+                      </div>
+                  </div>
+              </th>
+              <th scope="col">Actions</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr>
+              <td>2024-03-23</td>
+              <td>Birth Certificate</td>
+              <td>File description goes here...</td>
+              <td>Important Documents</td>
+              <td>
+                  <a class="btn btn-primary" href="../files/BirthCert.pdf" target="_blank">Open File</a>
+              </td>
+          </tr>
+          <tr>
+              <td>2024-03-24</td>
+              <td>Report Card</td>
+              <td>File description goes here...</td>
+              <td>Grade Cards</td>
+              <td>
+                  <a class="btn btn-primary" href="../files/ReportCard.pdf" target="_blank">Open File</a>
+              </td>
+          </tr>
+          <tr>
+              <td>2024-03-25</td>
+              <td>Medical Certificate</td>
+              <td>File description goes here...</td>
+              <td>Medical Certificates</td>
+              <td>
+                  <a class="btn btn-primary" href="../files/Sample.pdf" target="_blank">Open File</a>
+              </td>
+          </tr>
+          <tr>
+              <td>2024-03-26</td>
+              <td>Another File</td>
+              <td>File description goes here...</td>
+              <td>Others</td>
+              <td>
+                <a class="btn btn-primary" href="../files/Sample.pdf" target="_blank">Open File</a>
+              </td>
+          </tr>
+          <tr>
+            <td>2024-03-27</td>
+            <td>Document 1</td>
+            <td>File description goes here...</td>
+            <td>Important Documents</td>
+            <td>
+              <a class="btn btn-primary" href="../files/Sample.pdf" target="_blank">Open File</a>
+            </td>
+          </tr>
+          <tr>
+            <td>2024-03-28</td>
+            <td>Document 2</td>
+            <td>File description goes here...</td>
+            <td>Grade Cards</td>
+            <td>
+              <a class="btn btn-primary" href="../files/Sample.pdf" target="_blank">Open File</a>
+            </td>
+          </tr>
+          <tr>
+            <td>2024-03-29</td>
+            <td>Document 3</td>
+            <td>File description goes here...</td>
+            <td>Medical Certificates</td>
+            <td>
+              <a class="btn btn-primary" href="../files/Sample.pdf" target="_blank">Open File</a>
+            </td>
+          </tr>
+          <tr>
+            <td>2024-03-30</td>
+            <td>Document 4</td>
+            <td>File description goes here...</td>
+            <td>Important Documents</td>
+            <td>
+              <a class="btn btn-primary" href="../files/Sample.pdf" target="_blank">Open File</a>
+            </td>
+          </tr>
+          <tr>
+            <td>2024-03-31</td>
+            <td>Document 5</td>
+            <td>File description goes here...</td>
+            <td>Grade Cards</td>
+            <td>
+              <a class="btn btn-primary" href="../files/Sample.pdf" target="_blank">Open File</a>
+            </td>
+          </tr>
+          <tr>
+            <td>2024-04-01</td>
+            <td>Document 6</td>
+            <td>File description goes here...</td>
+            <td>Medical Certificates</td>
+            <td>
+              <a class="btn btn-primary" href="../files/Sample.pdf" target="_blank">Open File</a>
+            </td>
+          </tr>
+          <tr>
+            <td>2024-03-31</td>
+            <td>Document 7</td>
+            <td>File description goes here...</td>
+            <td>Grade Cards</td>
+            <td>
+              <a class="btn btn-primary" href="../files/Sample.pdf" target="_blank">Open File</a>
+            </td>
+          </tr>
+          <tr>
+            <td>2024-03-27</td>
+            <td>Document 8</td>
+            <td>File description goes here...</td>
+            <td>Important Documents</td>
+            <td>
+              <a class="btn btn-primary" href="../files/Sample.pdf" target="_blank">Open File</a>
+            </td>
+          </tr>
+          <tr>
+            <td>2024-03-28</td>
+            <td>Document 9</td>
+            <td>File description goes here...</td>
+            <td>Grade Cards</td>
+            <td>
+              <a class="btn btn-primary" href="../files/Sample.pdf" target="_blank">Open File</a>
+            </td>
+          </tr>
+          <tr>
+            <td>2024-03-29</td>
+            <td>Document 10</td>
+            <td>File description goes here...</td>
+            <td>Medical Certificates</td>
+            <td>
+              <a class="btn btn-primary" href="../files/Sample.pdf" target="_blank">Open File</a>
+            </td>
+          </tr>
+          <tr>
+            <td>2024-03-30</td>
+            <td>Document 11</td>
+            <td>File description goes here...</td>
+            <td>Important Documents</td>
+            <td>
+              <a class="btn btn-primary" href="../files/Sample.pdf" target="_blank">Open File</a>
+            </td>
+          </tr>
+          <tr>
+            <td>2024-03-31</td>
+            <td>Document 12</td>
+            <td>File description goes here...</td>
+            <td>Grade Cards</td>
+            <td>
+              <a class="btn btn-primary" href="../files/Sample.pdf" target="_blank">Open File</a>
+            </td>
+          </tr>
+          <tr>
+            <td>2024-04-01</td>
+            <td>Document 13</td>
+            <td>File description goes here...</td>
+            <td>Medical Certificates</td>
+            <td>
+              <a class="btn btn-primary" href="../files/Sample.pdf" target="_blank">Open File</a>
+            </td>
+          </tr>
+          <tr>
+            <td>2024-03-31</td>
+            <td>Document 14</td>
+            <td>File description goes here...</td>
+            <td>Grade Cards</td>
+            <td>
+              <a class="btn btn-primary" href="../files/Sample.pdf" target="_blank">Open File</a>
+            </td>
+          </tr>
+      </tbody>
+  </table>
+</div>
 
-                <div class=" col-lg-3 card file-card m-1">
-                  <div class="card-body">
-                    <h5 class="card-title">Birth Certificate</h5>
-                    <p class="card-text">File description goes here...</p>
-                    <a class="btn btn-primary" href="#" target="_blank">Open File</a>
-                  </div>
-                </div>
-              </div>
-              
+<script>
+  function toggleDropdown(dropdownId) {
+      var dropdownMenu = document.getElementById(dropdownId + 'Dropdown');
+      if (dropdownMenu.style.display === "none" || dropdownMenu.style.display === "") {
+          hideAllDropdowns();
+          dropdownMenu.style.display = "block";
+      } else {
+          dropdownMenu.style.display = "none";
+      }
+  }
+
+  function applyFilter(filterType, filterValue) {
+      hideAllDropdowns();
+      
+      var tableBody = document.querySelector('#orphanDocumentsTable tbody');
+      var tableRows = Array.from(tableBody.querySelectorAll('tr'));
+
+      if (filterType === 'date' || filterType === 'fileName') {
+          tableRows.sort(function (a, b) {
+              var aValue = a.cells[filterType === 'date' ? 0 : 1].textContent.trim(); // Date or File Name value
+              var bValue = b.cells[filterType === 'date' ? 0 : 1].textContent.trim(); // Date or File Name value
+
+              if (filterType === 'date') {
+                  if (filterValue === 'Ascending') {
+                      return new Date(aValue) - new Date(bValue);
+                  } else if (filterValue === 'Descending') {
+                      return new Date(bValue) - new Date(aValue);
+                  }
+              } else if (filterType === 'fileName') {
+                  if (filterValue === 'Ascending') {
+                      return aValue.localeCompare(bValue);
+                  } else if (filterValue === 'Descending') {
+                      return bValue.localeCompare(aValue);
+                  }
+              }
+
+              return 0;
+          });
+
+          // Re-append sorted rows to the table
+          tableRows.forEach(function (row) {
+              tableBody.appendChild(row);
+          });
+      } else if (filterType === 'fileType') {
+          tableRows.forEach(function (row) {
+              var cellText = row.querySelector('td:nth-child(4)').textContent.trim(); // Index of the File Type column is 4
+
+              if (filterValue === 'All' || cellText === filterValue) {
+                  row.style.display = '';
+              } else {
+                  row.style.display = 'none';
+              }
+          });
+      }
+  }
+
+  function hideAllDropdowns() {
+      var dropdowns = document.querySelectorAll('.dropdown-menu');
+      dropdowns.forEach(function (dropdown) {
+          dropdown.style.display = 'none';
+      });
+  }
+</script>
+
+
 
   <!-- edit personal info modal -->
   <div class="modal fade" id="personalInfoModal" tabindex="-1" aria-labelledby="personalInfoModalLabel"
@@ -523,6 +838,7 @@ aria-labelledby="additionalFilesModalLabel" aria-hidden="true">
 <script src="../js/profile_calendar.js"></script>
 <script src="../js/orphan-content-personalinfo.js"></script>
 <script src="../js/orphan-content-additionalinfo.js"></script>
+
 
 
 </html>
