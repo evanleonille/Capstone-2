@@ -258,7 +258,7 @@
                   </div>
                   <div class="col-lg-1 text-center align-items-end justify-content-end btn btn-primary m-1">
                     <a href="../html/bmi.html" class="text-decoration-none text-white">BMI History</a>
-                  </div>
+                  </div> 
                 </div>
                 <p class="col-6"><strong>Height:</strong> <input class="form-control" value="Male" type="text"
                     aria-label="Disabled input example" readonly>
@@ -280,7 +280,7 @@
                   </div>
                   <div class="col-lg-1 text-center align-items-end justify-content-end btn btn-primary m-1"
                     data-bs-toggle="modal" data-bs-target="#additionalFilesModal">
-                    <a>Edit</a>
+                    <a>Add File</a>
                   </div>
                 </div>
 
@@ -351,6 +351,7 @@
                 </script>
 
   <div class="col-sm m-3 border vh-100 bg-light rounded-4 overflow-auto">
+  
   <!-- Table -->
   <table id="orphanDocumentsTable" class="table table-striped">
       <thead>
@@ -403,7 +404,7 @@
               <th scope="col">Actions</th>
           </tr>
       </thead>
-            <tbody>
+      <tbody>
         <tr>
             <td>2024-03-23</td>
             <td>Birth Certificate</td>
@@ -496,6 +497,8 @@
       </tr>
       <!-- Add more rows as needed -->
       </tbody>
+      
+    
   </table>
 </div>
 
@@ -712,6 +715,16 @@ aria-labelledby="additionalFilesModalLabel" aria-hidden="true">
         <div class="mb-3">
           <label for="fileNameInput" class="form-label">File Name (Format: OrphanName_File))</label>
           <input type="text" class="form-control" id="fileNameInput">
+        </div>
+        <div class="mb-3">
+          <label for="typeOfDocumentInput" class="form-label">Type of Document</label>
+          <select class="form-select" id="typeOfDocumentInput">
+            <option selected disabled>Select type of document</option>
+            <option value="Identification">Identification</option>
+            <option value="Medical Certificates">Medical Certificates</option>
+            <option value="Grade Cards">Grade Cards</option>
+            <option value="Other Documents">Other Documents</option>
+          </select>
         </div>
         <div class="mb-3">
           <label for="descriptionInput" class="form-label">Description</label>
