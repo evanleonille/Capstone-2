@@ -171,10 +171,7 @@
     }
 </script>
 
-
-
 <!-- Table -->
-
             <table id="academicDetailsTable" class="table table-striped">
                 <thead>
                     <tr>
@@ -249,7 +246,7 @@
         populateFilterDropdown('dateDropdown', ['All', 'Ascending', 'Descending']);
         populateFilterDropdown('yearLevelDropdown', ['All', 'Grade 1', 'Grade 2', 'Grade 3', 'Grade 4', 'Grade 5', 'Grade 6', 'Grade 7', 'Grade 8', 'Grade 9', 'Grade 10', 'Grade 11', 'Grade 12']);
         populateFilterDropdown('gradingPeriodDropdown', ['All', '1st Grading', '2nd Grading', '3rd Grading', '4th Grading']);
-        populateFilterDropdown('subjectDropdown', ['Mathematics', 'Science', 'English', 'Filipino', 'Araling Panlipunan', 'Edukasyon sa Pagpapakatao (EsP)', 'Music', 'Arts', 'Physical Education', 'Health', 
+        populateFilterDropdown('subjectDropdown', ['All','Mathematics', 'Science', 'English', 'Filipino', 'Araling Panlipunan', 'Edukasyon sa Pagpapakatao (EsP)', 'Music', 'Arts', 'Physical Education', 'Health', 
     'Edukasyong Pantahanan at Pangkabuhayan (EPP)', 'Technology and Livelihood Education (TLE)', 'Oral Communication', 'Reading and Writing', 
     'Komunikasyon at Pananaliksik sa Wika at Kulturang Pilipino', 'Pagbasa at Pagsusuri ng Iba’t-Ibang Teksto Tungo sa Pananaliksik', '21st Century Literature from the Philippines and the World', 
     'Contemporary Philippine Arts from the Regions', 'Media and Information Literacy', 'General Math', 'Statistics and Probability', 'Earth and Life Science', 'Physical Science', 'Introduction to the Philosophy of the Human Person', 
@@ -416,6 +413,12 @@
             let grades;
             let status;
 
+            // Generate random date within a range
+            const startDate = new Date(2022, 0, 1); // January 1, 2022
+            const endDate = new Date(2024, 2, 31); // March 31, 2024
+            const randomDate = new Date(startDate.getTime() + Math.random() * (endDate.getTime() - startDate.getTime()));
+            const formattedDate = randomDate.toISOString().split('T')[0];
+
             // Generate grades and status based on the rules
             if (statuses[statusIndex] === 'Passed') {
                 grades = Math.floor(Math.random() * 25) + 75; // Grades between 75 and 99
@@ -425,7 +428,7 @@
                 status = 'Failed';
             }
 
-            addAcademicDetailRow(`2024-02-13`, yearLevel, gradingPeriod, subject, grades, status);
+            addAcademicDetailRow(formattedDate, yearLevel, gradingPeriod, subject, grades, status);
         }
     }
 
@@ -437,6 +440,7 @@
         }
     });
 </script>
+
 
 
 
@@ -548,6 +552,7 @@
 </div>
 </div>
 </div>
+
 
 
 </body>
