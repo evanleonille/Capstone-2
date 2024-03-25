@@ -103,7 +103,7 @@
                     <a class="btn btn-primary" href="./health.html">Health Information</a>
                   </div>
                   <div class="row mt-3 info-icon text-end px-0 mx-5">
-                    <a class="btn btn-primary" href="./orphanSentiment_detail.html">See Notes</a>
+                    <a class="btn btn-primary" href="./orphanSentiment_detail.html">Behavior Notes</a>
                   </div>
                   <div class="row mt-3 info-icon text-end px-0 mx-5">
                     <a class="btn btn-primary" href="#" data-bs-toggle="modal"
@@ -172,7 +172,7 @@
 
 
 
-
+<!-- Personal Info -->
               <hr class="mt-2">
               <div class="container-fluid row">
                 <div class="row">
@@ -198,12 +198,12 @@
 
 
 
-
+<!-- Parental Info-->
               <hr class="mt-2" />
               <div class="container-fluid row">
                 <div class="row ">
                   <div class="col-10 me-5">
-                    <h2>Adittional Information</h2>
+                    <h2>Parental Information</h2>
                   </div>
                   <div class="col-lg-1 text-center align-items-end justify-content-end btn btn-primary m-1"
                     data-bs-toggle="modal" data-bs-target="#additionalInfoModal">
@@ -255,17 +255,17 @@
                   <p class="col-12"><strong>Address:</strong> <input class="form-control" value="General Santos City"
                       type="text" aria-label="Disabled input example" readonly></p>
                 </div>
-             
               </div>
 
+<!-- Body Mass Index -->
               <hr class="mt-2" />
               <div class="container-fluid  row">
                 <div class="row ">
                   <div class="col-10 me-5">
-                    <h2>BMI</h2>
+                    <h2>Body Mass Index</h2>
                   </div>
                   <div class="col-lg-1 text-center align-items-end justify-content-end btn btn-primary m-1">
-                    <a href="./bmi.html" class="text-decoration-none text-white">BMI History</a>
+                    <a href="../html/bmi.html" class="text-decoration-none text-white">BMI History</a>
                   </div>
                 </div>
                 <p class="col-6"><strong>Height:</strong> <input class="form-control" value="Male" type="text"
@@ -279,47 +279,216 @@
                     aria-label="Disabled input example" readonly></p>
               </div>
 
-
-
-
-
+<!-- Orphan Documents -->
               <hr class="mt-2" />
               <div class="container-fluid row">
                 <div class="row ">
                   <div class="col-10 me-5">
-                    <h2>Adittional Information</h2>
+                    <h2>Orphan Documents</h2>
                   </div>
                   <div class="col-lg-1 text-center align-items-end justify-content-end btn btn-primary m-1"
                     data-bs-toggle="modal" data-bs-target="#additionalFilesModal">
-                    <a>Edit</a>
+                    <a>Add File</a>
                   </div>
                 </div>
 
-                <div class=" col-lg-3 card file-card m-1">
-                  <div class="card-body">
-                    <h5 class="card-title">Birth Certificate</h5>
-                    <p class="card-text">File description goes here...</p>
-                    <a class="btn btn-primary" href="../files/BirthCert.pdf" target="_blank">Open File</a>
-                  </div>
-                </div>
+<!-- Show number of Entries -->
+<div class="container-fluid">
+  <div class="d-flex justify-content-between mb-3">
+    <div class="d-flex align-items-center">
+      <label for="entriesSelect" class="form-label me-2 mb-0">Show</label>
+      <select class="form-select form-select-sm me-2" id="entriesSelect" style="width: 100px;">
+        <option value="all">All</option>
+        <option value="5">5</option>
+        <option value="10" selected>10</option>
+        <option value="15">15</option>
+        <option value="20">20</option>
+        <option value="25">25</option>
+        <option value="30">30</option>
+        <option value="35">35</option>
+        <option value="40">40</option>
+        <option value="45">45</option>
+        <option value="50">50</option>
+        <!-- Add more options if needed -->
+      </select>
+      <span class="me-2">entries</span>
+    </div>
+  </div>
+</div>
 
-                <div class=" col-lg-3 card file-card m-1">
-                  <div class="card-body">
-                    <h5 class="card-title">Birth Certificate</h5>
-                    <p class="card-text">File description goes here...</p>
-                    <a class="btn btn-primary" href="../files/ReportCard.pdf" target="_blank">Open File</a>
-                  </div>
-                </div>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    var entriesSelect = document.getElementById("entriesSelect");
+    entriesSelect.addEventListener("change", function() {
+      var selectedValue = entriesSelect.value;
+      updateTableEntries(selectedValue);
+    });
+  });
 
-                <div class=" col-lg-3 card file-card m-1">
-                  <div class="card-body">
-                    <h5 class="card-title">Birth Certificate</h5>
-                    <p class="card-text">File description goes here...</p>
-                    <a class="btn btn-primary" href="#" target="_blank">Open File</a>
-                  </div>
-                </div>
-              </div>
-              
+  function updateTableEntries(entries) {
+    var rows = document.querySelectorAll('#orphanDocumentsTable tbody tr');
+
+    rows.forEach(function(row, index) {
+      if (entries === 'all' || index < entries) {
+        row.style.display = '';
+      } else {
+        row.style.display = 'none';
+      }
+    });
+  }
+</script>
+
+
+<!-- Orphan Documents Table -->
+<table id="orphanDocumentsTable" class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">
+        <div class="dropdown">
+          Date
+          <button type="button" class="btn btn-sm me-2" onclick="toggleDropdown('date')">
+            <i class="bi bi-filter"></i>
+          </button>
+          <!-- Date filter dropdown -->
+          <div id="dateDropdown" class="dropdown-menu" style="display: none;">
+            <!-- Dropdown choices for Date -->
+            <button class="dropdown-item" type="button" onclick="applyFilter('date', 'All')">All</button>
+            <button class="dropdown-item" type="button" onclick="applyFilter('date', 'Ascending')">Ascending</button>
+            <button class="dropdown-item" type="button" onclick="applyFilter('date', 'Descending')">Descending</button>
+          </div>
+        </div>
+      </th>
+      <th scope="col">
+        <div class="dropdown">
+          File Name
+          <button type="button" class="btn btn-sm me-2" onclick="toggleDropdown('fileName')">
+            <i class="bi bi-filter"></i>
+          </button>
+          <!-- File Name filter dropdown -->
+          <div id="fileNameDropdown" class="dropdown-menu" style="display: none;">
+            <!-- Dropdown choices for File Name -->
+            <button class="dropdown-item" type="button" onclick="applyFilter('fileName', 'All')">All</button>
+            <button class="dropdown-item" type="button" onclick="applyFilter('fileName', 'Ascending')">Ascending</button>
+            <button class="dropdown-item" type="button" onclick="applyFilter('fileName', 'Descending')">Descending</button>
+          </div>
+        </div>
+      </th>
+      <th scope="col">Description</th>
+      <th scope="col">
+        <div class="dropdown">
+          File Type
+          <button type="button" class="btn btn-sm me-2" onclick="toggleDropdown('fileType')">
+            <i class="bi bi-filter"></i>
+          </button>
+          <!-- File Type filter dropdown -->
+          <div id="fileTypeDropdown" class="dropdown-menu" style="display: none;">
+            <!-- Dropdown choices for File Type -->
+            <button class="dropdown-item" type="button" onclick="applyFilter('fileType', 'All')">All</button>
+            <button class="dropdown-item" type="button" onclick="applyFilter('fileType', 'Identification')">Identifications</button>
+            <button class="dropdown-item" type="button" onclick="applyFilter('fileType', 'Medical Certificates')">Medical Certificates</button>
+            <button class="dropdown-item" type="button" onclick="applyFilter('fileType', 'Grade Cards')">Grade Cards</button>
+            <button class="dropdown-item" type="button" onclick="applyFilter('fileType', 'Others')">Others</button>
+          </div>
+        </div>
+      </th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody id="tableBody">
+    <!-- Table body content will be generated dynamically -->
+  </tbody>
+</table>
+
+<script>
+// Function to toggle dropdown menu display
+function toggleDropdown(dropdownId) {
+  var dropdownMenu = document.getElementById(dropdownId + "Dropdown");
+  var currentDisplay = window.getComputedStyle(dropdownMenu).display;
+  dropdownMenu.style.display = currentDisplay === "none" ? "block" : "none";
+}
+
+// Function to apply filter and sorting
+function applyFilter(filterType, filterValue, column) {
+  var tableBody = document.getElementById("tableBody");
+  var rows = tableBody.querySelectorAll("tr");
+
+  // Remove existing rows from the table
+  rows.forEach(function(row) {
+    tableBody.removeChild(row);
+  });
+
+  // Hide all dropdown menus
+  var dropdowns = document.querySelectorAll(".dropdown-menu");
+  dropdowns.forEach(function(dropdown) {
+    dropdown.style.display = "none";
+  });
+
+  // Get the dummy data and sort/filter accordingly
+  var dummyData = getDummyData();
+  var filteredData = dummyData;
+
+  if (filterType === "date") {
+    if (filterValue === "Ascending") {
+      filteredData.sort((a, b) => (a.date > b.date ? 1 : -1));
+    } else if (filterValue === "Descending") {
+      filteredData.sort((a, b) => (a.date < b.date ? 1 : -1));
+    }
+  } else if (filterType === "fileName") {
+    if (filterValue === "Ascending") {
+      filteredData.sort((a, b) => (a.fileName > b.fileName ? 1 : -1));
+    } else if (filterValue === "Descending") {
+      filteredData.sort((a, b) => (a.fileName < b.fileName ? 1 : -1));
+    }
+  } else if (filterType === "fileType") {
+    if (filterValue !== "All") {
+      filteredData = dummyData.filter(item => item.fileType === filterValue);
+    }
+  }
+
+  // Populate the table with filtered/sorted data
+  filteredData.forEach(function(data) {
+    var row = document.createElement("tr");
+    row.innerHTML = `
+      <td>${data.date}</td>
+      <td>${data.fileName}</td>
+      <td>${data.description}</td>
+      <td>${data.fileType}</td>
+      <td><button class="btn btn-secondary" onclick="openFile('${data.filePath}')">Open File</button></td>
+    `;
+    tableBody.appendChild(row);
+  });
+}
+
+// Function to retrieve dummy data
+function getDummyData() {
+  var dummyData = [];
+  var fileTypes = ["Identification", "Medical Certificates", "Grade Cards", "Others"];
+  for (var i = 1; i <= 50; i++) {
+    dummyData.push({
+      date: "2023-01-0" + i,
+      fileName: "Document " + i + ".pdf",
+      description: "Description of Document " + i,
+      fileType: fileTypes[i % fileTypes.length],
+      filePath: "../files/Sample.pdf"
+    });
+  }
+  return dummyData;
+}
+
+// Function to open a file
+function openFile(filePath) {
+  // This is a placeholder function. Replace it with your actual logic to open the file.
+  console.log("Opening file:", filePath);
+  window.open(filePath); // Open the provided file link
+}
+
+// Call the applyFilter function with default values when the DOM is loaded
+document.addEventListener("DOMContentLoaded", function() {
+  applyFilter("fileType", "All", "fileType");
+});
+
+</script>
+
 
   <!-- edit personal info modal -->
   <div class="modal fade" id="personalInfoModal" tabindex="-1" aria-labelledby="personalInfoModalLabel"
@@ -466,8 +635,18 @@ aria-labelledby="additionalFilesModalLabel" aria-hidden="true">
           <input type="file" class="form-control" id="fileInput" accept="*/*">
         </div>
         <div class="mb-3">
-          <label for="fileNameInput" class="form-label">File Name (Format: OrphanName_File))</label>
+          <label for="fileNameInput" class="form-label">File Name (Format: OrphanName_File)</label>
           <input type="text" class="form-control" id="fileNameInput">
+        </div>
+        <div class="mb-3">
+          <label for="typeOfDocumentInput" class="form-label">Type of Document</label>
+          <select class="form-select" id="typeOfDocumentInput">
+            <option selected disabled>Select type of document</option>
+            <option value="Identification">Identification</option>
+            <option value="Medical Certificates">Medical Certificates</option>
+            <option value="Grade Cards">Grade Cards</option>
+            <option value="Other Documents">Other Documents</option>
+          </select>
         </div>
         <div class="mb-3">
           <label for="descriptionInput" class="form-label">Description</label>
