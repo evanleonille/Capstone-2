@@ -79,36 +79,34 @@
 
 
 
-
-            <div class="col-sm m-3 border vh-100 overflow-auto bg-light rounded-4">
-                <!-- content -->
-                <div>
-                    <div class="m-2">
-                        <a href="./orphan-content.html" class="btn btn-primary mt-3">
-                            <i class="fa-solid fa-arrow-left"></i>
-                        </a>
+<!-- content -->
+<div class="col-sm m-3 border vh-100 overflow-auto bg-light rounded-4">
+     <div>
+         <div class="m-2">
+            <a href="./orphan-content.html" class="btn btn-primary mt-3">
+                <i class="fa-solid fa-arrow-left"></i>
+            </a>
+         </div>
+         <div class="row info mt-3">
+            <img class="col-3 file-icon fs-1 img-fluid picsize" src="../image/Profpic (7).png" height="100px" width="100px"
+                alt="File Icon">
+                    <div class="col-5 mt-3">
+                        <h3>Bakit Ganito Podcast</h3>
+                             <span class="badge bg-success rounded-pill">Admitted</span>
                     </div>
-                    <div class="row info mt-3">
-                        <img class="col-3 file-icon fs-1 img-fluid picsize" src="../image/Profpic (7).png" height="100px" width="100px"
-                            alt="File Icon">
-                            <div class="col-5 mt-3">
-                                <h3>Bakit Ganito Podcast</h3>
-                                <span class="badge bg-success rounded-pill">Admitted</span>
-                              </div>
-                        <div class="col text-end align-items-end justify-content-end">
-                            <div class="row mt-3 info-icon text-end px-0 mx-5">
-                                <button type="button" class="btn btn-primary mx-1" data-bs-toggle="modal" data-bs-target="#addHealthDetailsModal"><i class="ion ion-md-cloud-upload"></i>
-                                    Add Health Details</button>
-                            </div>
-                        </div>
-                    </div>
+         <div class="col text-end align-items-end justify-content-end">
+            <div class="row mt-3 info-icon text-end px-0 mx-5">
+                 <button type="button" class="btn btn-primary mx-1" data-bs-toggle="modal" data-bs-target="#addHealthDetailsModal"><i class="ion ion-md-cloud-upload"></i>
+                    Add Health Details</button>
                 </div>
+            </div>
+        </div>
+    </div>
                 
-                <hr class="mt-3">
 
-                <div>
- 
 <!-- Health Details Filter -->
+<hr class="mt-3">
+<div>
 <!-- Show number of Entries -->
 <div class="d-flex justify-content-between mb-3">
     <div class="d-flex align-items-center">
@@ -177,7 +175,6 @@
 
 <!-- Health Details Table -->
 <div class="col-sm m-3 vh-100 overflow-auto bg-light rounded-4">
-    <h2>Health Details</h2>
     <table id="healthDetailsTable" class="table table-striped">
         <thead>
             <tr>
@@ -322,75 +319,84 @@
                 return -1; // Return -1 if column not found
         }
     }
-
-    function applySymptomsFilter(symptom) {
+    function applyFilter(column, filterValue) {
     // Get the table body
     var tableBody = document.querySelector('#healthDetailsTable tbody');
     // Get all rows in the table
     var rows = tableBody.querySelectorAll('tr');
 
-    // Loop through each row and apply the filter
+    // Loop through each row and check if it should be shown or hidden based on the filter
     rows.forEach(function(row) {
-        var symptomCell = row.querySelector('td:nth-child(' + (getColumnIndex('symptoms') + 1) + ')');
-        var symptoms = symptomCell.innerText.split(',').map(symptom => symptom.trim()); // Split the symptoms string into an array and trim each symptom
-
-        // Check if any symptom in the row matches the filtered symptom
-        var matchesFilter = symptoms.includes(symptom);
-
-        // Show or hide the row based on whether it matches the filtered symptom
-        if (matchesFilter) {
-            row.style.display = '';
+        var cell = row.querySelector('td:nth-child(' + (getColumnIndex(column) + 1) + ')');
+        if (column === 'symptoms') {
+            // For symptoms, we need to check if the filterValue is included in the cell's content
+            var symptoms = cell.innerText.split(',').map(symptom => symptom.trim()); // Split the symptoms string into an array and trim each symptom
+            if (symptoms.includes(filterValue)) {
+                row.style.display = '';
+            } else {
+                row.style.display = 'none';
+            }
         } else {
-            row.style.display = 'none';
-        }
-    });
-
-    // Hide the dropdown after applying filter
-    document.getElementById('symptomsDropdown').style.display = "none";
-}
-
-
-</script>
-
-<!-- Ascending and Descending Function for Health Details Table-->
-<script>
-   function applyFilter(column, filterValue) {
-    // Get the table body
-    var tableBody = document.querySelector('#healthDetailsTable tbody');
-    // Get all rows in the table
-    var rows = Array.from(tableBody.querySelectorAll('tr'));
-
-    // Check if sorting is based on temperature, blood pressure, or heart rate column
-    if (column === 'temperature' || column === 'bloodPressure' || column === 'heartRate') {
-        // Sort rows based on the selected column
-        if (filterValue === 'Ascending' || filterValue === 'Descending') {
-            var ascending = filterValue === 'Ascending';
-            rows.sort(function(a, b) {
-                var valueA = parseFloat(a.cells[getColumnIndex(column)].textContent);
-                var valueB = parseFloat(b.cells[getColumnIndex(column)].textContent);
-                return ascending ? valueA - valueB : valueB - valueA;
-            });
-            // Re-append sorted rows to table body
-            rows.forEach(function(row) {
-                tableBody.appendChild(row);
-            });
-        }
-    } else {
-        // Loop through each row and check if it should be shown or hidden based on the filter
-        rows.forEach(function(row) {
-            var cell = row.querySelector('td:nth-child(' + (getColumnIndex(column) + 1) + ')');
             if (filterValue === 'All' || cell.innerText === filterValue) {
                 row.style.display = '';
             } else {
                 row.style.display = 'none';
             }
-        });
-    }
+        }
+    });
 
     // Hide the dropdown after applying filter
     document.getElementById(column + 'Dropdown').style.display = "none";
 }
+
 </script>
+
+<!-- Ascending and Descending Function for Health Details Table -->
+<script>
+    function applyFilter(column, filterValue) {
+     // Get the table body
+     var tableBody = document.querySelector('#healthDetailsTable tbody');
+     // Get all rows in the table
+     var rows = Array.from(tableBody.querySelectorAll('tr'));
+ 
+     // Check if sorting is based on temperature, blood pressure, heart rate, or date column
+     if (column === 'temperature' || column === 'bloodPressure' || column === 'heartRate' || column === 'date') {
+         // Sort rows based on the selected column
+         if (filterValue === 'Ascending' || filterValue === 'Descending') {
+             var ascending = filterValue === 'Ascending';
+             rows.sort(function(a, b) {
+                 if (column === 'date') {
+                     var dateA = new Date(a.cells[getColumnIndex(column)].textContent);
+                     var dateB = new Date(b.cells[getColumnIndex(column)].textContent);
+                     return ascending ? dateA - dateB : dateB - dateA;
+                 } else {
+                     var valueA = parseFloat(a.cells[getColumnIndex(column)].textContent);
+                     var valueB = parseFloat(b.cells[getColumnIndex(column)].textContent);
+                     return ascending ? valueA - valueB : valueB - valueA;
+                 }
+             });
+             // Re-append sorted rows to table body
+             rows.forEach(function(row) {
+                 tableBody.appendChild(row);
+             });
+         }
+     } else {
+         // Loop through each row and check if it should be shown or hidden based on the filter
+         rows.forEach(function(row) {
+             var cell = row.querySelector('td:nth-child(' + (getColumnIndex(column) + 1) + ')');
+             if (filterValue === 'All' || cell.innerText === filterValue) {
+                 row.style.display = '';
+             } else {
+                 row.style.display = 'none';
+             }
+         });
+     }
+ 
+     // Hide the dropdown after applying filter
+     document.getElementById(column + 'Dropdown').style.display = "none";
+ }
+ </script>
+ 
 
 <!-- Populate dummy data -->
 <script>
