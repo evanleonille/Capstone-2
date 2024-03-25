@@ -78,50 +78,39 @@
 
 
 <!-- Buttons -->
-<div class="col-sm m-3 vh-100 overflow-auto bg-light rounded-4">
+<div class=" col-sm m-3 vh-100 overflow-auto bg-light rounded-4 ">
   <!-- content -->
   <div class="">
-    <div class="container-fluid m-2">
-      <div class="">
-        <a href="./Orphan.html" class="btn btn-primary mt-3">
-          <i class="fa-solid fa-arrow-left"></i>
-        </a>
-      </div>
-      <div class="row info">
-        <img class="col-3 file-icon fs-1 img-fluid picsize" src="../image/Profpic (7).png" height="100px" width="100px" alt="File Icon">
-        <div class="col-5 mt-3">
-          <h3>Bakit Ganito Podcast</h3>
-          <span class="badge bg-success rounded-pill">Admitted</span>
+    <form class="">
+      <div class="container-fluid m-2">
+        <div class="">
+          <a href="./Orphan.html" class="btn btn-primary mt-3">
+            <i class="fa-solid fa-arrow-left"></i>
+          </a>
         </div>
-        <div class="col text-end" style="margin-top: 20px;"> <!-- Adjusted alignment and added margin-top -->
-          <!-- Button container aligned with the right edge -->
-          <div class="row mt-3 text-end px-1 mx-2 justify-content-end">
-            <a class="btn btn-primary btn-sm me-2" href="./academic.html" id="academicBtn">Academic Information</a>
+        <div class="row info ">
+          <img class="col-3 file-icon fs-1 img-fluid picsize" src="../image/Profpic (7).png" height="100px"
+            width="100px" alt="File Icon">
+          <div class="col-5 mt-3">
+            <h3>Bakit Ganito Podcast</h3>
+            <span class="badge bg-success rounded-pill">Admitted</span>
           </div>
-          <div class="row mt-3 text-end px-1 mx-2 info-icon justify-content-end">
-            <a class="btn btn-primary btn-sm me-2" href="./health.html" id="healthBtn">Health Information</a>
-          </div>
-          <div class="row mt-3 info-icon text-end px-1 mx-2 justify-content-end">
-            <a class="btn btn-primary btn-sm me-2" href="./orphanSentiment_detail.html" id="behaviorBtn">Behavior Notes</a>
-          </div>
-          <div class="row mt-3 info-icon text-end px-1 mx-2 justify-content-end">
-            <a class="btn btn-primary btn-sm me-2" href="#" data-bs-toggle="modal" data-bs-target="#changeProfilePictureModal" id="profilePictureBtn">Change Profile Picture</a>
+          <div class="col text-end align-items-end justify-content-end">
+            <div class="row mt-3 text-end px-0 mx-5">
+              <a class="btn btn-primary" href="./academic.html">Academic Information</a>
+            </div>
+            <div class="row mt-3 text-end px-0 mx-5 info-icon">
+              <a class="btn btn-primary" href="./health.html">Health Information</a>
+            </div>
+            <div class="row mt-3 info-icon text-end px-0 mx-5">
+              <a class="btn btn-primary" href="./orphanSentiment_detail.html">See Notes</a>
+            </div>
+            <div class="row mt-3 info-icon text-end px-0 mx-5">
+              <a class="btn btn-primary" href="#" data-bs-toggle="modal"
+                data-bs-target="#changeProfilePictureModal">Change Profile Picture</a>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
-
-<!-- Button Sizes -->
-<script>
-  // Get the width of the "Change Profile Picture" button
-  const profilePictureBtnWidth = document.getElementById('profilePictureBtn').offsetWidth;
-
-  // Apply the width to other buttons
-  document.getElementById('academicBtn').style.width = profilePictureBtnWidth + 'px';
-  document.getElementById('healthBtn').style.width = profilePictureBtnWidth + 'px';
-  document.getElementById('behaviorBtn').style.width = profilePictureBtnWidth + 'px';
-  document.getElementById('profilePictureBtn').style.width = profilePictureBtnWidth + 'px';
-</script>
 
 <!-- Change Profile Picture Modal -->
 <div class="modal fade" id="changeProfilePictureModal" tabindex="-1"
