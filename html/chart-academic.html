@@ -80,75 +80,475 @@
 
 
 
-            <div class="col-sm m-3 border vh-100 overflow-auto bg-light rounded-4">
-                <!-- content -->
-                <div class="m-2">
-                    <a href="./Dboard.html" class="btn btn-primary mt-3">
-                        <i class="fa-solid fa-arrow-left"></i>
-                    </a>
-                </div>
+<!-- Heading -->
+<div class="col-sm m-3 border vh-100 overflow-auto bg-light rounded-4">
+    <!-- content -->
+    <div class="m-2">
+        <a href="./Dboard.html" class="btn btn-primary mt-3">
+            <i class="fa-solid fa-arrow-left"></i>
+        </a>
+        <div class="text-center mx-auto">
+            <h1 class="mb-0">Orphan Academic Informations</h1>
+        </div>
+    </div>
             
-                <hr class="mt-3">
-                <div class="container">
-                    <div class="bg-white rounded-4 border">
-                        <!-- Academic Performance Details Filter -->
-                        <div class="mb-3 p-3" style="background-color: #f8f9fa;">
-                            <div class="d-flex justify-content-between">
-                                <div class="d-flex align-items-center">
-                                    <label for="entriesSelectAcademic" class="form-label me-2 mb-0">Show</label>
-                                    <select class="form-select form-select-sm me-2" id="entriesSelectAcademic" style="width: 60px;">
-                                        <option value="10">10</option>
-                                        <option value="25">25</option>
-                                        <option value="50">50</option>
-                                        <option value="100">100</option>
-                                    </select>
-                                    <span class="mb-0 me-2">entries</span>
-                                </div>
-                                <div class="d-flex align-items-center">
-                                    <label for="statusSelectAcademic" class="form-label me-2 mb-0">Status:</label>
-                                    <select class="form-select form-select-sm me-2" id="statusSelectAcademic">
-                                        <option value="">All</option>
-                                        <option value="Passed">Passed</option>
-                                        <option value="Failed">Failed</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Academic Performance Details Table -->
-                        <div class="mb-3">
-                            <table id="academicDetailsTable" class="table table-striped">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">#</th>
-                                        <th scope="col">Date</th>
-                                        <th scope="col">Name</th>
-                                        <th scope="col">Year Level</th>
-                                        <th scope="col">Subject</th>
-                                        <th scope="col">Grading</th>
-                                        <th scope="col">Grade</th>
-                                        <th scope="col">Status</th>
-                                        <th scope="col">Action</th> <!-- New Action column -->
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <th scope="row">1</th>
-                                        <td>2024-03-15</td>
-                                        <td>John Doe</td>
-                                        <td>Grade 10</td>
-                                        <td>Mathematics</td>
-                                        <td>Midterm</td>
-                                        <td>85</td>
-                                        <td><span class="badge bg-success">Passed</span></td>
-                                        <td><a href="../html/academic.html" class="btn btn-sm btn-light">View Details</a></td> <!-- Action column -->
-                                    </tr>
-                                    <!-- More table rows -->
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
+<hr class="mt-3">
+<div class="container">
+<div class="bg-white rounded-4 border">
+
+    <!-- Academic Details Filter -->
+    <div class="mb-3 p-3" style="background-color: #f8f9fa;">
+        <div class="d-flex justify-content-between mb-3">
+            <div class="d-flex align-items-center">
+                <label for="entriesSelect" class="form-label me-2 mb-0">Show</label>
+                <select class="form-select form-select-sm me-2" id="entriesSelect" style="width: 100px;">
+                    <option value="all">All</option>
+                    <option value="5">5</option>
+                    <option value="10" selected>10</option>
+                    <option value="15">15</option>
+                    <option value="20">20</option>
+                    <option value="25">25</option>
+                    <option value="30">30</option>
+                    <option value="35">35</option>
+                    <option value="40">40</option>
+                    <option value="45">45</option>
+                    <option value="50">50</option>
+                </select>
+                <span class="me-2">entries</span>
             </div>
+        </div>
+    </div>
+    
+    <script>
+         document.addEventListener("DOMContentLoaded", function() {
+        var entriesSelect = document.getElementById("entriesSelect");
+        
+        entriesSelect.addEventListener("change", function() {
+            var selectedValue = entriesSelect.value;
+            updateTableEntries(selectedValue);
+        });
+    });
+
+    function updateTableEntries(entries) {
+        var tableBody = document.querySelector('#academicDetailsTable tbody');
+        var rows = tableBody.querySelectorAll('tr');
+
+        if (entries === 'all') {
+            rows.forEach(function(row) {
+                row.style.display = '';
+            });
+            return;
+        }
+
+        rows.forEach(function(row, index) {
+            if (index < entries) {
+                row.style.display = '';
+            } else {
+                row.style.display = 'none';
+            }
+        });
+    }
+    </script>
+
+
+<!-- Academic Performance Details Table -->
+<div class="mb-3">
+    <table id="academicDetailsTable" class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">
+                    Date 
+                    <button class="btn btn-sm me-2" onclick="toggleDropdown('date')">
+                        <i class="bi bi-filter"></i>
+                    </button>
+                    <!-- Date filter dropdown -->
+                    <div id="dateDropdown" class="dropdown-menu" style="display: none;">
+                        <a class="dropdown-item" href="#" onclick="filterByDate('all')">All</a>
+                        <a class="dropdown-item" href="#" onclick="filterByDate('ascending')">Ascending</a>
+                        <a class="dropdown-item" href="#" onclick="filterByDate('descending')">Descending</a>
+                    </div>
+                </th>
+                <th scope="col">
+                    Name
+                    <button class="btn btn-sm me-2" onclick="toggleDropdown('name')">
+                        <i class="bi bi-filter"></i>
+                    </button>
+                    <!-- Name filter dropdown -->
+                    <div id="nameDropdown" class="dropdown-menu" style="display: none;">
+                        <a class="dropdown-item" href="#" onclick="filterByName('all')">All</a>
+                        <a class="dropdown-item" href="#" onclick="filterByName('ascending')">Ascending</a>
+                        <a class="dropdown-item" href="#" onclick="filterByName('descending')">Descending</a>
+                    </div>
+                </th>
+                <th scope="col">
+                    Year Level
+                    <button class="btn btn-sm me-2" onclick="toggleDropdown('year')">
+                        <i class="bi bi-filter"></i>
+                    </button>
+                    <!-- Year Level filter dropdown -->
+                    <div id="yearDropdown" class="dropdown-menu" style="display: none;">
+                        <a class="dropdown-item" href="#" onclick="filterByYear('all')">All</a>
+                        <a class="dropdown-item" href="#" onclick="filterByYear('grade1')">Grade 1</a>
+                        <a class="dropdown-item" href="#" onclick="filterByYear('grade2')">Grade 2</a>
+                        <a class="dropdown-item" href="#" onclick="filterByYear('grade3')">Grade 3</a>
+                        <a class="dropdown-item" href="#" onclick="filterByYear('grade4')">Grade 4</a>
+                        <a class="dropdown-item" href="#" onclick="filterByYear('grade5')">Grade 5</a>
+                        <a class="dropdown-item" href="#" onclick="filterByYear('grade6')">Grade 6</a>
+                        <a class="dropdown-item" href="#" onclick="filterByYear('grade7')">Grade 7</a>
+                        <a class="dropdown-item" href="#" onclick="filterByYear('grade8')">Grade 8</a>
+                        <a class="dropdown-item" href="#" onclick="filterByYear('grade9')">Grade 9</a>
+                        <a class="dropdown-item" href="#" onclick="filterByYear('grade10')">Grade 10</a>
+                        <a class="dropdown-item" href="#" onclick="filterByYear('grade11')">Grade 11</a>
+                        <a class="dropdown-item" href="#" onclick="filterByYear('grade12')">Grade 12</a>
+                    </div>
+                </th>
+                <th scope="col">
+                    Subject
+                    <button class="btn btn-sm me-2" onclick="toggleDropdown('subject')">
+                        <i class="bi bi-filter"></i>
+                    </button>
+                    <!-- Subject filter dropdown -->
+                    <div id="subjectDropdown" class="dropdown-menu" style="display: none;">
+                        <a class="dropdown-item" href="#" onclick="filterBySubject('all')">All</a>
+                        <a class="dropdown-item" href="#" onclick="filterBySubject('English')">English</a>
+                        <a class="dropdown-item" href="#" onclick="filterBySubject('Math')">Math</a>
+                        <a class="dropdown-item" href="#" onclick="filterBySubject('Science')">Science</a>
+                    </div>
+                </th>
+                <th scope="col">
+                    Grading
+                    <button class="btn btn-sm me-2" onclick="toggleDropdown('grading')">
+                        <i class="bi bi-filter"></i>
+                    </button>
+                    <!-- Grading filter dropdown -->
+                    <div id="gradingDropdown" class="dropdown-menu" style="display: none;">
+                        <a class="dropdown-item" href="#" onclick="filterByGrading('all')">All</a>
+                        <a class="dropdown-item" href="#" onclick="filterByGrading('1st')">1st Grading</a>
+                        <a class="dropdown-item" href="#" onclick="filterByGrading('2nd')">2nd Grading</a>
+                        <a class="dropdown-item" href="#" onclick="filterByGrading('3rd')">3rd Grading</a>
+                        <a class="dropdown-item" href="#" onclick="filterByGrading('4th')">4th Grading</a>
+                    </div>
+                </th>
+                <th scope="col">
+                    Grade
+                    <button class="btn btn-sm me-2" onclick="toggleDropdown('grade')">
+                        <i class="bi bi-filter"></i>
+                    </button>
+                    <!-- Grade filter dropdown -->
+                    <div id="gradeDropdown" class="dropdown-menu" style="display: none;">
+                        <a class="dropdown-item" href="#" onclick="filterByGrade('all')">All</a>
+                        <a class="dropdown-item" href="#" onclick="filterByGrade('ascending')">Ascending</a>
+                        <a class="dropdown-item" href="#" onclick="filterByGrade('descending')">Descending</a>
+                    </div>
+                </th>
+                <th scope="col">
+                    Status
+                    <button class="btn btn-sm me-2" onclick="toggleDropdown('status')">
+                        <i class="bi bi-filter"></i>
+                    </button>
+                    <!-- Status filter dropdown -->
+                    <div id="statusDropdown" class="dropdown-menu" style="display: none;">
+                        <a class="dropdown-item" href="#" onclick="filterByStatus('all')">All</a>
+                        <a class="dropdown-item" href="#" onclick="filterByStatus('passed')">Passed</a>
+                        <a class="dropdown-item" href="#" onclick="filterByStatus('failed')">Failed</a>
+                    </div>
+                </th>
+                <th scope="col">Details</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td>2024-03-01</td>
+                <td>John Doe</td>
+                <td>Grade 9</td>
+                <td>Math</td>
+                <td>1st Grading</td>
+                <td>85</td>
+                <td><span class="badge bg-success">Passed</span></td>
+                <td><a href="../html/academic.html" class="btn btn-sm btn-light">View Profile</a></td>
+            </tr>
+            <tr>
+                <td>2024-03-02</td>
+                <td>Jane Smith</td>
+                <td>Grade 7</td>
+                <td>English</td>
+                <td>2nd Grading</td>
+                <td>78</td>
+                <td><span class="badge bg-success">Passed</span></td>
+                <td><a href="../html/academic.html" class="btn btn-sm btn-light">View Profile</a></td>
+            </tr>
+            <tr>
+                <td>2024-03-03</td>
+                <td>Michael Johnson</td>
+                <td>Grade 10</td>
+                <td>Science</td>
+                <td>3rd Grading</td>
+                <td>92</td>
+                <td><span class="badge bg-danger">Failed</span></td>
+                <td><a href="../html/academic.html" class="btn btn-sm btn-light">View Profile</a></td>
+            </tr>
+            <tbody>
+                <tr>
+                    <td>2024-03-07</td>
+                    <td>Ethan Davis</td>
+                    <td>Grade 4</td>
+                    <td>English</td>
+                    <td>1st Grading</td>
+                    <td>70</td>
+                    <td><span class="badge bg-danger">Failed</span></td>
+                    <td><a href="../html/academic.html" class="btn btn-sm btn-light">View Profile</a></td>
+                </tr>
+                <tr>
+                    <td>2024-03-08</td>
+                    <td>Olivia Wilson</td>
+                    <td>Grade 12</td>
+                    <td>Math</td>
+                    <td>2nd Grading</td>
+                    <td>80</td>
+                    <td><span class="badge bg-success">Passed</span></td>
+                    <td><a href="../html/academic.html" class="btn btn-sm btn-light">View Profile</a></td>
+                </tr>
+                <tr>
+                    <td>2024-03-09</td>
+                    <td>Liam Taylor</td>
+                    <td>Grade 5</td>
+                    <td>Science</td>
+                    <td>3rd Grading</td>
+                    <td>65</td>
+                    <td><span class="badge bg-danger">Failed</span></td>
+                    <td><a href="../html/academic.html" class="btn btn-sm btn-light">View Profile</a></td>
+                </tr>
+                <tr>
+                    <td>2024-03-10</td>
+                    <td>Sophia Martinez</td>
+                    <td>Grade 3</td>
+                    <td>Math</td>
+                    <td>1st Grading</td>
+                    <td>73</td>
+                    <td><span class="badge bg-danger">Failed</span></td>
+                    <td><a href="../html/academic.html" class="btn btn-sm btn-light">View Profile</a></td>
+                </tr>
+                <tr>
+                    <td>2024-03-11</td>
+                    <td>James Anderson</td>
+                    <td>Grade 8</td>
+                    <td>English</td>
+                    <td>2nd Grading</td>
+                    <td>78</td>
+                    <td><span class="badge bg-success">Passed</span></td>
+                    <td><a href="../html/academic.html" class="btn btn-sm btn-light">View Profile</a></td>
+                </tr>
+                <tr>
+                    <td>2024-03-12</td>
+                    <td>Emily Garcia</td>
+                    <td>Grade 11</td>
+                    <td>Science</td>
+                    <td>3rd Grading</td>
+                    <td>80</td>
+                    <td><span class="badge bg-success">Passed</span></td>
+                    <td><a href="../html/academic.html" class="btn btn-sm btn-light">View Profile</a></td>
+                </tr>
+                <tr>
+                    <td>2024-03-13</td>
+                    <td>Michael Brown</td>
+                    <td>Grade 6</td>
+                    <td>English</td>
+                    <td>1st Grading</td>
+                    <td>68</td>
+                    <td><span class="badge bg-danger">Failed</span></td>
+                    <td><a href="../html/academic.html" class="btn btn-sm btn-light">View Profile</a></td>
+                </tr>
+                <tr>
+                    <td>2024-03-14</td>
+                    <td>Isabella Taylor</td>
+                    <td>Grade 9</td>
+                    <td>Math</td>
+                    <td>2nd Grading</td>
+                    <td>82</td>
+                    <td><span class="badge bg-success">Passed</span></td>
+                    <td><a href="../html/academic.html" class="btn btn-sm btn-light">View Profile</a></td>
+                </tr>
+                <tr>
+                    <td>2024-03-15</td>
+                    <td>Noah Rodriguez</td>
+                    <td>Grade 7</td>
+                    <td>Science</td>
+                    <td>3rd Grading</td>
+                    <td>74</td>
+                    <td><span class="badge bg-danger">Failed</span></td>
+                    <td><a href="../html/academic.html" class="btn btn-sm btn-light">View Profile</a></td>
+                </tr>
+            </tbody>  
+     </table>
+</div>
+</div>
+</div>
+</div>
+
+<script>
+    function toggleDropdown(dropdownId) {
+        var dropdown = document.getElementById(dropdownId + 'Dropdown');
+        if (dropdown.style.display === 'none' || dropdown.style.display === '') {
+            dropdown.style.display = 'block';
+        } else {
+            dropdown.style.display = 'none';
+        }
+    }
+
+    function filterByDate(filterValue) {
+        console.log('Filter by date:', filterValue);
+        // Close dropdown after selection
+        document.getElementById('dateDropdown').style.display = 'none';
+        // Get all table rows
+        var rows = document.querySelectorAll('#academicDetailsTable tbody tr');
+        rows.forEach(function(row) {
+            row.style.display = ''; // Reset to show all rows
+        });
+        if (filterValue === 'ascending') {
+            // Code to sort by ascending date
+            rows = Array.from(rows).sort((a, b) => new Date(a.cells[0].textContent) - new Date(b.cells[0].textContent));
+        } else if (filterValue === 'descending') {
+            // Code to sort by descending date
+            rows = Array.from(rows).sort((a, b) => new Date(b.cells[0].textContent) - new Date(a.cells[0].textContent));
+        }
+        // Re-append sorted rows to the table
+        var tbody = document.querySelector('#academicDetailsTable tbody');
+        tbody.innerHTML = ''; // Clear existing rows
+        rows.forEach(function(row) {
+            tbody.appendChild(row);
+        });
+    }
+
+    function filterByName(filterValue) {
+        console.log('Filter by name:', filterValue);
+        // Close dropdown after selection
+        document.getElementById('nameDropdown').style.display = 'none';
+        // Get all table rows
+        var rows = document.querySelectorAll('#academicDetailsTable tbody tr');
+        rows.forEach(function(row) {
+            row.style.display = ''; // Reset to show all rows
+        });
+        if (filterValue === 'ascending') {
+            // Code to sort by ascending name
+            rows = Array.from(rows).sort((a, b) => a.cells[1].textContent.localeCompare(b.cells[1].textContent));
+        } else if (filterValue === 'descending') {
+            // Code to sort by descending name
+            rows = Array.from(rows).sort((a, b) => b.cells[1].textContent.localeCompare(a.cells[1].textContent));
+        }
+        // Re-append sorted rows to the table
+        var tbody = document.querySelector('#academicDetailsTable tbody');
+        tbody.innerHTML = ''; // Clear existing rows
+        rows.forEach(function(row) {
+            tbody.appendChild(row);
+        });
+    }
+
+
+    // Function to filter by subject
+    function filterBySubject(filterValue) {
+        console.log('Filter by subject:', filterValue);
+        // Close dropdown after selection
+        document.getElementById('subjectDropdown').style.display = 'none';
+        // Get all table rows
+        var rows = document.querySelectorAll('#academicDetailsTable tbody tr');
+        rows.forEach(function(row) {
+            row.style.display = ''; // Reset to show all rows
+        });
+        if (filterValue !== 'all') {
+            // Filter rows based on selected subject
+            rows.forEach(function(row) {
+                if (row.cells[3].textContent !== filterValue) {
+                    row.style.display = 'none';
+                }
+            });
+        }
+    }
+    
+
+    // Function to filter by grade
+    function filterByGrade(filterValue) {
+        console.log('Filter by grade:', filterValue);
+        // Close dropdown after selection
+        document.getElementById('gradeDropdown').style.display = 'none';
+        // Get all table rows
+        var rows = document.querySelectorAll('#academicDetailsTable tbody tr');
+        rows.forEach(function(row) {
+            row.style.display = ''; // Reset to show all rows
+        });
+        if (filterValue === 'ascending') {
+            // Code to sort by ascending grade
+            rows = Array.from(rows).sort((a, b) => parseFloat(a.cells[5].textContent) - parseFloat(b.cells[5].textContent));
+        } else if (filterValue === 'descending') {
+            // Code to sort by descending grade
+            rows = Array.from(rows).sort((a, b) => parseFloat(b.cells[5].textContent) - parseFloat(a.cells[5].textContent));
+        }
+        // Re-append sorted rows to the table
+        var tbody = document.querySelector('#academicDetailsTable tbody');
+        tbody.innerHTML = ''; // Clear existing rows
+        rows.forEach(function(row) {
+            tbody.appendChild(row);
+        });
+    }
+
+     // Function to filter by status
+     function filterByStatus(filterValue) {
+        console.log('Filter by status:', filterValue);
+        // Close dropdown after selection
+        document.getElementById('statusDropdown').style.display = 'none';
+        // Get all table rows
+        var rows = document.querySelectorAll('#academicDetailsTable tbody tr');
+        rows.forEach(function(row) {
+            row.style.display = ''; // Reset to show all rows
+        });
+        if (filterValue !== 'all') {
+            // Filter rows based on selected status
+            rows.forEach(function(row) {
+                if (row.cells[6].textContent.toLowerCase() !== filterValue) {
+                    row.style.display = 'none';
+                }
+            });
+        }
+    }
+
+
+    // Function to filter by grading
+    function filterByGrading(filterValue) {
+        console.log('Filter by grading:', filterValue);
+        // Close dropdown after selection
+        document.getElementById('gradingDropdown').style.display = 'none';
+        // Get all table rows
+        var rows = document.querySelectorAll('#academicDetailsTable tbody tr');
+        rows.forEach(function(row) {
+            var cellValue = row.cells[4].textContent.trim();
+            if (filterValue === 'all' || cellValue === filterValue) {
+                row.style.display = ''; // Show row if it matches the filter or if "All" is selected
+            } else {
+                row.style.display = 'none'; // Hide row otherwise
+            }
+        });
+    }
+
+    // Function to filter by year
+    function filterByYear(filterValue) {
+        console.log('Filter by year:', filterValue);
+        // Close dropdown after selection
+        document.getElementById('yearDropdown').style.display = 'none';
+        // Get all table rows
+        var rows = document.querySelectorAll('#academicDetailsTable tbody tr');
+        rows.forEach(function(row) {
+            var cellValue = row.cells[2].textContent.trim();
+            if (filterValue === 'all' || cellValue === filterValue) {
+                row.style.display = ''; // Show row if it matches the filter or if "All" is selected
+            } else {
+                row.style.display = 'none'; // Hide row otherwise
+            }
+        });
+    }
+
+
+</script>
+
             
             
                 
