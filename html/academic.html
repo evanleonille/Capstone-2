@@ -246,12 +246,7 @@
         populateFilterDropdown('dateDropdown', ['All', 'Ascending', 'Descending']);
         populateFilterDropdown('yearLevelDropdown', ['All', 'Grade 1', 'Grade 2', 'Grade 3', 'Grade 4', 'Grade 5', 'Grade 6', 'Grade 7', 'Grade 8', 'Grade 9', 'Grade 10', 'Grade 11', 'Grade 12']);
         populateFilterDropdown('gradingPeriodDropdown', ['All', '1st Grading', '2nd Grading', '3rd Grading', '4th Grading']);
-        populateFilterDropdown('subjectDropdown', ['All','Mathematics', 'Science', 'English', 'Filipino', 'Araling Panlipunan', 'Edukasyon sa Pagpapakatao (EsP)', 'Music', 'Arts', 'Physical Education', 'Health', 
-    'Edukasyong Pantahanan at Pangkabuhayan (EPP)', 'Technology and Livelihood Education (TLE)', 'Oral Communication', 'Reading and Writing', 
-    'Komunikasyon at Pananaliksik sa Wika at Kulturang Pilipino', 'Pagbasa at Pagsusuri ng Iba’t-Ibang Teksto Tungo sa Pananaliksik', '21st Century Literature from the Philippines and the World', 
-    'Contemporary Philippine Arts from the Regions', 'Media and Information Literacy', 'General Math', 'Statistics and Probability', 'Earth and Life Science', 'Physical Science', 'Introduction to the Philosophy of the Human Person', 
-    'Physical Education and Health', 'Personal Development', 'Understanding Culture, Society and Politics', 'Earth Science', 'Disaster Readiness and Risk Reduction', 'English for Academic and Professional Purposes', 'Practical Research 1', 
-    'Practical Research 2', 'Filipino sa Piling Larang', 'Empowerment Technologies', 'Entrepreneurship', 'Immersion']);
+        populateFilterDropdown('subjectDropdown', ['All','Mathematics', 'Science', 'English']);
         populateFilterDropdown('gradesDropdown', ['All', 'Ascending', 'Descending']);
         populateFilterDropdown('statusDropdown', ['All', 'Passed', 'Failed']);
     });
@@ -391,12 +386,7 @@
 
     // Function to generate dummy data
     function generateDummyData() {
-        const subjects = ['Mathematics', 'Science', 'English', 'Filipino', 'Araling Panlipunan', 'Edukasyon sa Pagpapakatao (EsP)', 'Music', 'Arts', 'Physical Education', 'Health', 
-            'Edukasyong Pantahanan at Pangkabuhayan (EPP)', 'Technology and Livelihood Education (TLE)', 'Oral Communication', 'Reading and Writing', 
-            'Komunikasyon at Pananaliksik sa Wika at Kulturang Pilipino', 'Pagbasa at Pagsusuri ng Iba’t-Ibang Teksto Tungo sa Pananaliksik', '21st Century Literature from the Philippines and the World', 
-            'Contemporary Philippine Arts from the Regions', 'Media and Information Literacy', 'General Math', 'Statistics and Probability', 'Earth and Life Science', 'Physical Science', 'Introduction to the Philosophy of the Human Person', 
-            'Physical Education and Health', 'Personal Development', 'Understanding Culture, Society and Politics', 'Earth Science', 'Disaster Readiness and Risk Reduction', 'English for Academic and Professional Purposes', 'Practical Research 1', 
-            'Practical Research 2', 'Filipino sa Piling Larang', 'Empowerment Technologies', 'Entrepreneurship', 'Immersion'];
+        const subjects = ['Mathematics', 'Science', 'English'];
 
         const yearLevels = ['Grade 1', 'Grade 2', 'Grade 3', 'Grade 4', 'Grade 5', 'Grade 6', 'Grade 7', 'Grade 8', 'Grade 9', 'Grade 10', 'Grade 11', 'Grade 12'];
         const gradingPeriods = ['1st Grading', '2nd Grading', '3rd Grading', '4th Grading'];
