@@ -16,7 +16,6 @@
     <script src="https://kit.fontawesome.com/d050a6d764.js" crossorigin="anonymous"></script>
 </head>
 
-<!-- Sidebar -->
 <body>
     <div class="container-fluid ">
         <div class="row ">
@@ -72,35 +71,40 @@
                         <ul class="dropdown-menu text-small shadow  " aria-labelledby="dropdownUser3">
                             <li><a class="dropdown-item" href="./Login.html">Logout</a></li>
                             <li><a class="dropdown-item" href="#">Settings</a></li>
-                            <li><a class="dropdown-item" href="./orphan_profile.html">Profile</a></li>
+                            <li><a class="dropdown-item" href="./profile.html">Profile</a></li>
                         </ul>
                     </div>
                 </div>
             </div>
 
-            <div class="col-sm m-3 border vh-100 overflow-auto bg-light rounded-4">
-                <!-- content -->
-                <div class="m-2">
-                    <a href="./orphan-content.html" class="btn btn-primary mt-3">
-                        <i class="fa-solid fa-arrow-left"></i>
-                    </a>
-                </div>
-                <div class="row info mt-3">
-                    <img class="col-3 file-icon fs-1 img-fluid picsize" src="../image/Profpic (7).png" height="100px" width="100px"
-                        alt="File Icon">
-                        <div class="col-5 mt-3">
-                            <h3>Bakit Ganito Podcast</h3>
-                            <span class="badge bg-success rounded-pill">Admitted</span>
-                          </div>
-                    <div class="col text-end align-items-end justify-content-end">
-                        <div class="row mt-3 info-icon text-end px-0 mx-5">
-                            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#bmiModal">Add BMI</button>
-                        </div>
-                    </div>
-                </div>
-            
 
-<!-- BMI Details Filter -->
+
+<!-- content -->
+<div class="col-sm m-3 border vh-100 overflow-auto bg-light rounded-4">
+     <div>
+         <div class="m-2">
+            <a href="./orphan-content.html" class="btn btn-primary mt-3">
+                <i class="fa-solid fa-arrow-left"></i>
+            </a>
+         </div>
+         <div class="row info mt-3">
+            <img class="col-3 file-icon fs-1 img-fluid picsize" src="../image/Profpic (7).png" height="100px" width="100px"
+                alt="File Icon">
+                    <div class="col-5 mt-3">
+                        <h3>Bakit Ganito Podcast</h3>
+                             <span class="badge bg-success rounded-pill">Admitted</span>
+                    </div>
+         <div class="col text-end align-items-end justify-content-end">
+            <div class="row mt-3 info-icon text-end px-0 mx-5">
+                 <button type="button" class="btn btn-primary mx-1" data-bs-toggle="modal" data-bs-target="#addHealthDetailsModal"><i class="ion ion-md-cloud-upload"></i>
+                    Add Health Details</button>
+                </div>
+            </div>
+        </div>
+    </div>
+                
+
+<!-- Health Details Filter -->
 <hr class="mt-3">
 <div>
 <!-- Show number of Entries -->
@@ -143,7 +147,7 @@
 
     function updateTableEntries(entries) {
         // Get the table body
-        var tableBody = document.querySelector('#bmiDetailsTable tbody');
+        var tableBody = document.querySelector('#healthDetailsTable tbody');
         // Get all rows in the table
         var rows = tableBody.querySelectorAll('tr');
 
@@ -169,8 +173,9 @@
     }
 </script>
 
-<!-- BMI Details Table -->
-    <table id="bmiDetailsTable" class="table table-striped">
+<!-- Health Details Table -->
+
+    <table id="healthDetailsTable" class="table table-striped">
         <thead>
             <tr>
                 <th scope="col">Date 
@@ -182,30 +187,39 @@
                         <!-- Dropdown content here -->
                     </div>
                 </th>
-                <th scope="col">Height (in cm) 
-                    <button class="btn btn-sm me-2" onclick="toggleDropdown('height')">
+                <th scope="col">Temperature (°C) 
+                    <button class="btn btn-sm me-2" onclick="toggleDropdown('temperature')">
                         <i class="bi bi-filter"></i>
                     </button>
-                    <!-- Height filter dropdown -->
-                    <div id="heightDropdown" class="dropdown-menu" style="display: none;">
+                    <!-- Temperature filter dropdown -->
+                    <div id="temperatureDropdown" class="dropdown-menu" style="display: none;">
                         <!-- Dropdown content here -->
                     </div>
                 </th>
-                <th scope="col">Weight (in kg) 
-                    <button class="btn btn-sm me-2" onclick="toggleDropdown('weight')">
+                <th scope="col">Blood Pressure (mmHg) 
+                    <button class="btn btn-sm me-2" onclick="toggleDropdown('bloodPressure')">
                         <i class="bi bi-filter"></i>
                     </button>
-                    <!-- Weight filter dropdown -->
-                    <div id="weightDropdown" class="dropdown-menu" style="display: none;">
+                    <!-- Blood Pressure filter dropdown -->
+                    <div id="bloodPressureDropdown" class="dropdown-menu" style="display: none;">
                         <!-- Dropdown content here -->
                     </div>
                 </th>
-                <th scope="col">BMI 
-                    <button class="btn btn-sm me-2" onclick="toggleDropdown('bmi')">
+                <th scope="col">Heart Rate (bpm) 
+                    <button class="btn btn-sm me-2" onclick="toggleDropdown('heartRate')">
                         <i class="bi bi-filter"></i>
                     </button>
-                    <!-- BMI filter dropdown -->
-                    <div id="bmiDropdown" class="dropdown-menu" style="display: none;">
+                    <!-- Heart Rate filter dropdown -->
+                    <div id="heartRateDropdown" class="dropdown-menu" style="display: none;">
+                        <!-- Dropdown content here -->
+                    </div>
+                </th>
+                <th scope="col">Symptoms 
+                    <button class="btn btn-sm me-2" onclick="toggleDropdown('symptoms')">
+                        <i class="bi bi-filter"></i>
+                    </button>
+                    <!-- Symptoms filter dropdown -->
+                    <div id="symptomsDropdown" class="dropdown-menu" style="display: none;">
                         <!-- Dropdown content here -->
                     </div>
                 </th>
@@ -246,92 +260,91 @@
     // Populate filter dropdown menus
     document.addEventListener('DOMContentLoaded', function () {
         populateFilterDropdown('dateDropdown', ['All', 'Ascending', 'Descending']);
-        populateFilterDropdown('heightDropdown', ['All', 'Ascending', 'Descending']);
-        populateFilterDropdown('weightDropdown', ['All', 'Ascending', 'Descending']);
-        populateFilterDropdown('bmiDropdown', ['All', 'Ascending', 'Descending']);
-        populateFilterDropdown('statusDropdown', ['All', 'Underweight', 'Normal', 'Overweight', 'Obese']);
+        populateFilterDropdown('temperatureDropdown', ['All', 'Ascending', 'Descending']);
+        populateFilterDropdown('bloodPressureDropdown', ['All', 'Ascending', 'Descending']);
+        populateFilterDropdown('heartRateDropdown', ['All', 'Ascending', 'Descending']);
+        populateFilterDropdown('symptomsDropdown', ['All', 'Nausea', 'Vomiting', 'Headache', 'Stomachache', 'Cough with phlegm', 'Dizziness', 'Pain in the heart']);
+        populateFilterDropdown('statusDropdown', ['All', 'Normal', 'Sick', 'Hospitalized']);
     });
 </script>
 
-<!-- Dropdown Functions for BMI Table -->
+<!-- Dropdown Functions for Health Details Table -->
 <script>
-    // Function to toggle dropdown visibility
     function toggleDropdown(column) {
         var dropdown = document.getElementById(column + 'Dropdown');
-        if (dropdown.style.display === 'none') {
-            dropdown.style.display = 'block';
+        if (dropdown.style.display === "none") {
+            dropdown.style.display = "block";
         } else {
             dropdown.style.display = 'none';
         }
     }
 
-    // Function to apply filter or sorting based on selected option
     function applyFilter(column, filterValue) {
-        if (column === 'bmi' && (filterValue === 'Ascending' || filterValue === 'Descending')) {
-            applyBMISort(filterValue);
-        } else {
-            // Get the table body
-            var tableBody = document.querySelector('#bmiDetailsTable tbody');
-            // Get all rows in the table
-            var rows = tableBody.querySelectorAll('tr');
+        // Get the table body
+        var tableBody = document.querySelector('#healthDetailsTable tbody');
+        // Get all rows in the table
+        var rows = tableBody.querySelectorAll('tr');
 
-            // Loop through each row and check if it should be shown or hidden based on the filter
-            rows.forEach(function(row) {
-                var cell = row.querySelector('td:nth-child(' + (getColumnIndex(column) + 1) + ')');
-                if (filterValue === 'All' || cell.innerText === filterValue) {
-                    row.style.display = '';
-                } else {
-                    row.style.display = 'none';
-                }
-            });
+        // Loop through each row and check if it should be shown or hidden based on the filter
+        rows.forEach(function(row) {
+            var cell = row.querySelector('td:nth-child(' + (getColumnIndex(column) + 1) + ')');
+            if (filterValue === 'All' || cell.innerText === filterValue) {
+                row.style.display = '';
+            } else {
+                row.style.display = 'none';
+            }
+        });
 
-            // Hide the dropdown after applying filter
-            document.getElementById(column + 'Dropdown').style.display = "none";
-        }
+        // Hide the dropdown after applying filter
+        document.getElementById(column + 'Dropdown').style.display = "none";
     }
 
-    // Function to get the index of the column
     function getColumnIndex(column) {
         // This function returns the index of the column
         // Add more cases for additional columns if needed
         switch (column) {
             case 'date':
                 return 0;
-            case 'height':
+            case 'temperature':
                 return 1;
-            case 'weight':
+            case 'bloodPressure':
                 return 2;
-            case 'bmi':
+            case 'heartRate':
                 return 3;
-            case 'status':
+            case 'symptoms':
                 return 4;
+            case 'status':
+                return 5;
             default:
                 return -1; // Return -1 if column not found
         }
-    }
+   
+
+    // Hide the dropdown after applying filter
+    document.getElementById(column + 'Dropdown').style.display = "none";
+}
+
 </script>
 
-<!-- Ascending and Descending Function for BMI Details Table -->
+<!-- Ascending and Descending Function for Health Details Table -->
 <script>
     function applyFilter(column, filterValue) {
      // Get the table body
-     var tableBody = document.querySelector('#bmiDetailsTable tbody');
+     var tableBody = document.querySelector('#healthDetailsTable tbody');
      // Get all rows in the table
      var rows = Array.from(tableBody.querySelectorAll('tr'));
  
-     // Check if sorting is based on height, weight, bmi, or date column
-     if (column === 'height' || column === 'weight' || column === 'bmi' || column === 'date') {
+     // Check if sorting is based on temperature, blood pressure, heart rate, or date column
+     if (column === 'temperature' || column === 'bloodPressure' || column === 'heartRate' || column === 'date') {
          // Sort rows based on the selected column
          if (filterValue === 'Ascending' || filterValue === 'Descending') {
              var ascending = filterValue === 'Ascending';
              rows.sort(function(a, b) {
-                 // If sorting by date, parse the dates for comparison
                  if (column === 'date') {
                      var dateA = new Date(a.cells[getColumnIndex(column)].textContent);
                      var dateB = new Date(b.cells[getColumnIndex(column)].textContent);
                      return ascending ? dateA - dateB : dateB - dateA;
                  } else {
-                     // For other columns, parse values as floats for numeric comparison
                      var valueA = parseFloat(a.cells[getColumnIndex(column)].textContent);
                      var valueB = parseFloat(b.cells[getColumnIndex(column)].textContent);
                      return ascending ? valueA - valueB : valueB - valueA;
@@ -357,179 +370,160 @@
      // Hide the dropdown after applying filter
      document.getElementById(column + 'Dropdown').style.display = "none";
  }
+
+
  </script>
  
 
 <!-- Populate dummy data -->
 <script>
-    // Function to generate random BMI data
-    function generateDummyData() {
-        var tableBody = document.querySelector('#bmiDetailsTable tbody');
-        
-        // Clear existing rows
-        tableBody.innerHTML = '';
+    // Function to add a new row to the health details table
+    function addHealthDetailRow(date, temperature, bloodPressure, heartRate, otherSymptoms, status) {
+        var tableBody = document.getElementById("healthDetailsTable").getElementsByTagName("tbody")[0];
+        var newRow = tableBody.insertRow();
 
-        // Generate 50 dummy data entries
-        for (var i = 0; i < 50; i++) {
-            var date = getRandomDate();
-            var height = getRandomNumber(140, 200); // Random height between 140 and 200 cm
-            var weight = getRandomNumber(40, 120); // Random weight between 40 and 120 kg
-            var bmi = calculateBMI(height, weight).toFixed(1);
-            var status = getStatus(bmi);
+        var dateCell = newRow.insertCell(0);
+        var temperatureCell = newRow.insertCell(1);
+        var bloodPressureCell = newRow.insertCell(2);
+        var heartRateCell = newRow.insertCell(3);
+        var otherSymptomsCell = newRow.insertCell(4);
+        var statusCell = newRow.insertCell(5);
 
-            // Create table row
-            var row = document.createElement('tr');
-            row.innerHTML = `
-                <td>${date}</td>
-                <td>${height}</td>
-                <td>${weight}</td>
-                <td>${bmi}</td>
-                <td>${status}</td>
-            `;
+        dateCell.textContent = date;
+        temperatureCell.textContent = temperature;
+        bloodPressureCell.textContent = bloodPressure;
+        heartRateCell.textContent = heartRate;
+        otherSymptomsCell.textContent = otherSymptoms;
+        statusCell.textContent = status;
+    }
 
-            // Append row to table body
-            tableBody.appendChild(row);
+    // Function to generate dummy data
+    function generateHealthDummyData() {
+        const statuses = ['Normal', 'Sick', 'Hospitalized'];
+        const symptoms = ['Nausea', 'Vomiting', 'Headache', 'Stomachache', 'Cough with phlegm', 'Dizziness', 'Pain in the heart'];
+
+        for (let i = 0; i < 50; i++) {
+            const temperature = (Math.random() * (38.5 - 36) + 36).toFixed(1); // Random temperature between 36 and 38.5
+            const bloodPressure = `${Math.floor(Math.random() * (130 - 90) + 90)}/${Math.floor(Math.random() * (85 - 60) + 60)}`; // Random blood pressure
+            const heartRate = Math.floor(Math.random() * (100 - 60) + 60); // Random heart rate between 60 and 100
+            const status = statuses[Math.floor(Math.random() * statuses.length)]; // Random status
+            const selectedSymptoms = [];
+            const numSymptoms = Math.floor(Math.random() * 3) + 1; // Randomly choose 1-3 symptoms
+            for (let j = 0; j < numSymptoms; j++) {
+                const symptomIndex = Math.floor(Math.random() * symptoms.length);
+                selectedSymptoms.push(symptoms[symptomIndex]);
+            }
+            const otherSymptoms = selectedSymptoms.join(', '); // Combine selected symptoms into a string
+
+            addHealthDetailRow(`2024-03-${Math.floor(Math.random() * 30) + 1}`, temperature, bloodPressure, heartRate, otherSymptoms, status);
         }
     }
 
-    // Function to get a random date in YYYY-MM-DD format
-    function getRandomDate() {
-        var startDate = new Date(2010, 0, 1); // Start date
-        var endDate = new Date(); // Current date
-        var randomDate = new Date(startDate.getTime() + Math.random() * (endDate.getTime() - startDate.getTime()));
-
-        var year = randomDate.getFullYear();
-        var month = randomDate.getMonth() + 1;
-        var day = randomDate.getDate();
-
-        return year + '-' + (month < 10 ? '0' + month : month) + '-' + (day < 10 ? '0' + day : day);
-    }
-
-    // Function to generate a random number within a range
-    function getRandomNumber(min, max) {
-        return Math.floor(Math.random() * (max - min + 1)) + min;
-    }
-
-    // Function to calculate BMI
-    function calculateBMI(height, weight) {
-        var heightMeters = height / 100; // Convert height to meters
-        return weight / (heightMeters * heightMeters);
-    }
-
-    // Function to determine BMI status
-    function getStatus(bmi) {
-        if (bmi < 18.5) {
-            return 'Underweight';
-        } else if (bmi >= 18.5 && bmi < 25) {
-            return 'Normal';
-        } else if (bmi >= 25 && bmi < 30) {
-            return 'Overweight';
-        } else {
-            return 'Obese';
+    // Ensure the table exists before generating data
+    document.addEventListener("DOMContentLoaded", function() {
+        const tableExists = document.getElementById("healthDetailsTable");
+        if (tableExists) {
+            generateHealthDummyData();
         }
-    }
-
-    // Populate table with dummy data on page load
-    document.addEventListener('DOMContentLoaded', function() {
-        generateDummyData();
     });
 </script>
 
-<!-- Modal for BMI add -->
-<div class="modal fade" id="bmiModal" tabindex="-1" aria-labelledby="bmiModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg">
+
+
+
+
+
+<!-- modal for upload academic -->
+<div class="modal fade" id="addHealthDetailsModal" tabindex="-1" aria-labelledby="addHealthDetailsModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="bmiModalLabel">Enter BMI Details</h5>
+                <h5 class="modal-title" id="addHealthDetailsModalLabel">Add Health Details</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form id="bmiForm">
-                    <!-- Date -->
-                    <div class="mb-3 text-start">
+                <form id="addHealthDetailsForm">
+                    <div class="mb-3">
                         <label for="dateInput" class="form-label">Date</label>
                         <input type="date" class="form-control" id="dateInput" aria-describedby="dateHelp" required>
                         <small id="dateHelp" class="form-text text-muted">Enter the date of measurement.</small>
                     </div>
-                    <!-- Height -->
-                    <div class="mb-3 text-start">
-                        <label for="heightInput" class="form-label">Height (cm)</label>
-                        <input type="number" class="form-control" id="heightInput" aria-describedby="heightHelp" required>
-                        <small id="heightHelp" class="form-text text-muted">Enter your height in centimeters.</small>
+                    <div class="mb-3">
+                        <label for="temperatureInput" class="form-label">Temperature (°C)</label>
+                        <div class="input-group">
+                            <input type="number" step="0.1" class="form-control" id="temperatureInput"
+                                aria-describedby="temperatureHelp" required>
+                            <span class="input-group-text">°C</span>
+                        </div>
+                        <small id="temperatureHelp" class="form-text text-muted">Enter your body temperature.</small>
                     </div>
-                    <!-- Weight -->
-                    <div class="mb-3 text-start">
-                        <label for="weightInput" class="form-label">Weight (kg)</label>
-                        <input type="number" class="form-control" id="weightInput" aria-describedby="weightHelp" required>
-                        <small id="weightHelp" class="form-text text-muted">Enter your weight in kilograms.</small>
+                    <div class="mb-3">
+                        <label for="bloodPressureInput" class="form-label">Blood Pressure (mmHg)</label>
+                        <input type="number" class="form-control" id="bloodPressureInput"
+                            aria-describedby="bloodPressureHelp" placeholder="e.g., 120/80" required>
+                        <small id="bloodPressureHelp" class="form-text text-muted">Enter your systolic and diastolic
+                            blood pressure separated by a slash.</small>
+                    </div>
+                    <div class="mb-3">
+                        <label for="heartRateInput" class="form-label">Heart Rate (bpm)</label>
+                        <input type="number" class="form-control" id="heartRateInput" aria-describedby="heartRateHelp"
+                            required>
+                        <small id="heartRateHelp" class="form-text text-muted">Enter your resting heart rate.</small>
+                    </div>
+                    <div class="mb-3">
+                        <div class="row">
+                            <label class="form-label">Symptoms</label>
+                            <div class="col-6">
+                                <input type="checkbox" id="nauseaCheckbox" name="symptom" value="nausea">
+                                <label for="nauseaCheckbox">Nausea</label>
+                            </div>
+                            <div class="col-6">
+                                <input type="checkbox" id="vomitingCheckbox" name="symptom" value="vomiting">
+                                <label for="vomitingCheckbox">Vomiting</label>
+                            </div>
+                            <!-- Add more checkboxes here -->
+                            <div class="col-6">
+                                <input type="checkbox" id="headacheCheckbox" name="symptom" value="headache">
+                                <label for="headacheCheckbox">Headache</label>
+                            </div>
+                            <div class="col-6">
+                                <input type="checkbox" id="stomachacheCheckbox" name="symptom" value="stomachache">
+                                <label for="stomachacheCheckbox">Stomachache</label>
+                            </div>
+                            <div class="col-6">
+                                <input type="checkbox" id="coughCheckbox" name="symptom" value="cough">
+                                <label for="coughCheckbox">Cough with phlegm</label>
+                            </div>
+                            <div class="col-6">
+                                <input type="checkbox" id="dizzinessCheckbox" name="symptom" value="dizziness">
+                                <label for="dizzinessCheckbox">Dizziness</label>
+                            </div>
+                            <div class="col-6">
+                                <input type="checkbox" id="painCheckbox" name="symptom" value="pain">
+                                <label for="painCheckbox">Pain in the heart</label>
+                            </div>
+    
+                        </div>
+                    </div>
+                    <div class="mb-1">
+                        <label for="otherDetailsInput" class="form-label">Other Details</label>
+                        <textarea class="form-control" id="otherDetailsInput" rows="3"
+                            aria-describedby="otherDetailsHelp"></textarea>
+                        <small id="otherDetailsHelp" class="form-text text-muted">Add any additional notes or
+                            symptoms.</small>
                     </div>
                 </form>
             </div>
-            <div class="modal-footer">
+            <div class="container mb-2">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" id="calculateBMIButton" class="btn btn-primary">Calculate</button>
+                <button type="submit" form="addHealthDetailsForm" class="btn btn-primary">Save Details</button>
             </div>
         </div>
     </div>
 </div>
 
-<!-- Calculating the BMI -->
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        // Define the calculateBMI function
-        function calculateBMI() {
-            // Get the input values
-            var height = parseFloat(document.getElementById("heightInput").value);
-            var weight = parseFloat(document.getElementById("weightInput").value);
-    
-            // Check if height and weight are valid numbers
-            if (isNaN(height) || isNaN(weight) || height <= 0 || weight <= 0) {
-                alert("Please enter valid height and weight values.");
-                return;
-            }
-    
-            // Calculate BMI
-            var bmi = weight / ((height / 100) * (height / 100));
-    
-            // Round BMI to two decimal places
-            bmi = bmi.toFixed(2);
-    
-            // Determine status based on BMI value
-            var status;
-            if (bmi < 18.5) {
-                status = "Underweight";
-            } else if (bmi >= 18.5 && bmi < 25) {
-                status = "Normal";
-            } else if (bmi >= 25 && bmi < 30) {
-                status = "Overweight";
-            } else {
-                status = "Obese";
-            }
-    
-            // Display BMI and status within the modal
-            var resultMessage = "Your BMI is: " + bmi + "\nYour BMI status is: " + status;
-            alert(resultMessage); // Display BMI and status in an alert (you can change this to display it differently)
-    
-            // Redirect to BMI page
-            window.location.href = "bmi.html";
-        }
-    
-        // Attach the event listener when the modal is shown
-        $('#bmiModal').on('shown.bs.modal', function () {
-            // Attach the calculateBMI function to the click event of the "Calculate" button within the modal
-            $('#calculateBMIButton').on('click', calculateBMI);
-        });
-    });
-    </script>
-    
-    
-
-
-
 
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<!-- <script src="../js/bmi.js"></script> -->
-
 </html>
