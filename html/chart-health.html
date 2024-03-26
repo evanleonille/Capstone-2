@@ -80,81 +80,592 @@
 
 
 
-            <div class="col-sm m-3 border vh-100 overflow-auto bg-light rounded-4">
-                <!-- content -->
-                <div class="m-2">
-                    <a href="./Dboard.html" class="btn btn-primary mt-3">
-                        <i class="fa-solid fa-arrow-left"></i>
-                    </a>
-                </div>
+<!-- Heading -->
+<div class="col-sm m-3 border vh-100 overflow-auto bg-light rounded-4">
+    <!-- content -->
+    <div class="m-2">
+        <a href="./Dboard.html" class="btn btn-primary mt-3">
+            <i class="fa-solid fa-arrow-left"></i>
+        </a>
+        <div class="text-center mx-auto">
+            <h1 class="mb-0">Orphan Health Informations</h1>
+        </div>
+    </div>
             
-                <hr class="mt-3">
-                <div class="container">
-                    <div class="bg-white rounded-4 border">
-                        <!-- Health Details Filter -->
-                        <div class="mb-3 p-3" style="background-color: #f8f9fa;">
-                            <div class="d-flex justify-content-between">
-                                <div class="d-flex align-items-center">
-                                    <label for="entriesSelectHealth" class="form-label me-2 mb-0">Show</label>
-                                    <select class="form-select form-select-sm me-2" id="entriesSelectHealth" style="width: 60px;">
-                                        <option value="10">10</option>
-                                        <option value="25">25</option>
-                                        <option value="50">50</option>
-                                        <option value="100">100</option>
-                                    </select>
-                                    <span class="mb-0 me-2">entries</span>
-                                </div>
-                                <div class="d-flex align-items-center">
-                                    <label for="statusSelectHealth" class="form-label me-2 mb-0">Status:</label>
-                                    <select class="form-select form-select-sm me-2" id="statusSelectHealth">
-                                        <option value="">All</option>
-                                        <option value="Normal">Normal</option>
-                                        <option value="Sick">Sick</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Health Details Table -->
-                        <div class="mb-3">
-                            <table id="healthDetailsTable" class="table table-striped">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">#</th>
-                                        <th scope="col">Date</th>
-                                        <th scope="col">Name</th>
-                                        <th scope="col">Temperature (°C)</th>
-                                        <th scope="col">Blood Pressure (mmHg)</th>
-                                        <th scope="col">Heart Rate (bpm)</th>
-                                        <th scope="col">Other Symptoms</th>
-                                        <th scope="col">Status</th>
-                                        <th scope="col">Action</th> <!-- New Action column -->
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <th scope="row">1</th>
-                                        <td>2024-03-18</td>
-                                        <td>John Doe</td>
-                                        <td>37.5</td>
-                                        <td>120/80</td>
-                                        <td>80</td>
-                                        <td>Cough</td>
-                                        <td><span class="badge bg-success">Normal</span></td>
-                                        <td><a href="../html/health.html" class="btn btn-sm btn-light">View</a></td> <!-- Action column -->
-                                    </tr>
-                                    <!-- More table rows -->
-                                </tbody>
-                            </table>
-                        </div>
+    <hr class="mt-3">
+    <div class="container">
+        <div class="bg-white rounded-4 border">
+            
+    <!-- Health Details Filter -->
+<div class="mb-3 p-3" style="background-color: #f8f9fa;">
+    <div class="d-flex justify-content-between mb-3">
+        <div class="d-flex align-items-center">
+            <label for="entriesSelect" class="form-label me-2 mb-0">Show</label>
+            <select class="form-select form-select-sm me-2" id="entriesSelect" style="width: 100px;">
+                <option value="all">All</option>
+                <option value="5">5</option>
+                <option value="10" selected>10</option>
+                <option value="15">15</option>
+                <option value="20">20</option>
+                <option value="25">25</option>
+                <option value="30">30</option>
+                <option value="35">35</option>
+                <option value="40">40</option>
+                <option value="45">45</option>
+                <option value="50">50</option>
+            </select>
+            <span class="me-2">entries</span>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Get the select element
+        var entriesSelect = document.getElementById("entriesSelect");
+
+        // Add event listener for change
+        entriesSelect.addEventListener("change", function() {
+            // Get the selected value
+            var selectedValue = entriesSelect.value;
+            // Call a function to update the table with the selected number of entries
+            updateTableEntries(selectedValue);
+        });
+    });
+
+    function updateTableEntries(entries) {
+        // Get the table body
+        var tableBody = document.querySelector('#healthdetailsTable tbody');
+        // Get all rows in the table
+        var rows = tableBody.querySelectorAll('tr');
+
+        // Show all rows if 'All' is selected
+        if (entries === 'all') {
+            rows.forEach(function(row) {
+                row.style.display = '';
+            });
+            return;
+        }
+
+        // Hide all rows
+        rows.forEach(function(row) {
+            row.style.display = 'none';
+        });
+
+        // Show only the specified number of entries
+        for (var i = 0; i < entries; i++) {
+            if (rows[i]) {
+                rows[i].style.display = '';
+            }
+        }
+    }
+</script>
+
+
+
+<!-- Health Details Table -->
+<div class="mb-3">
+    <table id="healthdetailsTable" class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">
+                    Date 
+                    <button class="btn btn-sm me-2" onclick="toggleDropdown('date')">
+                        <i class="bi bi-filter"></i>
+                    </button>
+                    <!-- Date filter dropdown -->
+                    <div id="dateDropdown" class="dropdown-menu" style="display: none;">
+                        <a class="dropdown-item" href="#" onclick="filterByDate('all')">All</a>
+                        <a class="dropdown-item" href="#" onclick="filterByDate('ascending')">Ascending</a>
+                        <a class="dropdown-item" href="#" onclick="filterByDate('descending')">Descending</a>
                     </div>
-                </div>
+                </th>
+                <th scope="col">
+                    Name
+                    <button class="btn btn-sm me-2" onclick="toggleDropdown('name')">
+                        <i class="bi bi-filter"></i>
+                    </button>
+                    <!-- Name filter dropdown -->
+                    <div id="nameDropdown" class="dropdown-menu" style="display: none;">
+                        <a class="dropdown-item" href="#" onclick="filterByName('all')">All</a>
+                        <a class="dropdown-item" href="#" onclick="filterByName('ascending')">Ascending</a>
+                        <a class="dropdown-item" href="#" onclick="filterByName('descending')">Descending</a>
+                    </div>
+                </th>
+                <th scope="col">
+                    Temperature (°C)
+                    <button class="btn btn-sm me-2" onclick="toggleDropdown('temperature')">
+                        <i class="bi bi-filter"></i>
+                    </button>
+                    <!-- Temperature filter dropdown -->
+                    <div id="temperatureDropdown" class="dropdown-menu" style="display: none;">
+                        <a class="dropdown-item" href="#" onclick="filterByTemperature('all')">All</a>
+                        <a class="dropdown-item" href="#" onclick="filterByTemperature('ascending')">Ascending</a>
+                        <a class="dropdown-item" href="#" onclick="filterByTemperature('descending')">Descending</a>
+                    </div>
+                </th>
+                <th scope="col">
+                    Blood Pressure (mmHg)
+                    <button class="btn btn-sm me-2" onclick="toggleDropdown('bloodPressure')">
+                        <i class="bi bi-filter"></i>
+                    </button>
+                    <!-- Blood Pressure filter dropdown -->
+                    <div id="bloodPressureDropdown" class="dropdown-menu" style="display: none;">
+                        <a class="dropdown-item" href="#" onclick="filterByBloodPressure('all')">All</a>
+                        <a class="dropdown-item" href="#" onclick="filterByBloodPressure('ascending')">Ascending</a>
+                        <a class="dropdown-item" href="#" onclick="filterByBloodPressure('descending')">Descending</a>
+                    </div>
+                </th>
+                <th scope="col">
+                    Heart Rate (bpm)
+                    <button class="btn btn-sm me-2" onclick="toggleDropdown('heartRate')">
+                        <i class="bi bi-filter"></i>
+                    </button>
+                    <!-- Heart Rate filter dropdown -->
+                    <div id="heartRateDropdown" class="dropdown-menu" style="display: none;">
+                        <a class="dropdown-item" href="#" onclick="filterByHeartRate('all')">All</a>
+                        <a class="dropdown-item" href="#" onclick="filterByHeartRate('ascending')">Ascending</a>
+                        <a class="dropdown-item" href="#" onclick="filterByHeartRate('descending')">Descending</a>
+                    </div>
+                </th>
+                <th scope="col">
+                    Other Symptoms
+                    <button class="btn btn-sm me-2" onclick="toggleDropdown('otherSymptoms')">
+                        <i class="bi bi-filter"></i>
+                    </button>
+                    <!-- Other Symptoms filter dropdown -->
+                    <div id="otherSymptomsDropdown" class="dropdown-menu" style="display: none;">
+                        <a class="dropdown-item" href="#" onclick="filterByOtherSymptoms('all')">All</a>
+                        <a class="dropdown-item" href="#" onclick="filterByOtherSymptoms('nausea')">Nausea</a>
+                        <a class="dropdown-item" href="#" onclick="filterByOtherSymptoms('vomiting')">Vomiting</a>
+                        <a class="dropdown-item" href="#" onclick="filterByOtherSymptoms('headache')">Headache</a>
+                        <a class="dropdown-item" href="#" onclick="filterByOtherSymptoms('stomachache')">Stomachache</a>
+                        <a class="dropdown-item" href="#" onclick="filterByOtherSymptoms('coughWithPhlegm')">Cough with Phlegm</a>
+                        <a class="dropdown-item" href="#" onclick="filterByOtherSymptoms('dizziness')">Dizziness</a>
+                        <a class="dropdown-item" href="#" onclick="filterByOtherSymptoms('painInTheHeart')">Pain in the Heart</a>
+                    </div>
+                </th>
+                <th scope="col">
+                    Status
+                    <button class="btn btn-sm me-2" onclick="toggleDropdown('status')">
+                        <i class="bi bi-filter"></i>
+                    </button>
+                    <!-- Status filter dropdown -->
+                    <div id="statusDropdown" class="dropdown-menu" style="display: none;">
+                        <a class="dropdown-item" href="#" onclick="filterByStatus('all')">All</a>
+                        <a class="dropdown-item" href="#" onclick="filterByStatus('normal')">Normal</a>
+                        <a class="dropdown-item" href="#" onclick="filterByStatus('sick')">Sick</a>
+                        <a class="dropdown-item" href="#" onclick="filterByStatus('hospitalized')">Hospitalized</a>
+                    </div>
+                </th>
+                <th scope="col">Details</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>2024-03-01</td>
+                <td>John Doe</td>
+                <td>37.0°C</td>
+                <td>120/80 mmHg</td>
+                <td>72 bpm</td>
+                <td>Nausea, Headache</td>
+                <td><span class="badge bg-success">Normal</span></td>
+                <td><a href="../html/health.html" class="btn btn-sm btn-light">View Profile</a></td>
+            </tr>
+            <tr>
+                <td>2024-03-02</td>
+                <td>Jane Smith</td>
+                <td>37.3°C</td>
+                <td>130/85 mmHg</td>
+                <td>75 bpm</td>
+                <td>Vomiting, Stomachache</td>
+                <td><span class="badge bg-success">Normal</span></td>
+                <td><a href="../html/health.html" class="btn btn-sm btn-light">View Profile</a></td>
+            </tr>
+            <tr>
+                <td>2024-03-03</td>
+                <td>Michael Johnson</td>
+                <td>36.6°C</td>
+                <td>140/90 mmHg</td>
+                <td>80 bpm</td>
+                <td>Cough with phlegm, Dizziness, Pain in the heart</td>
+                <td><span class="badge bg-warning">Sick</span></td>
+                <td><a href="../html/health.html" class="btn btn-sm btn-light">View Profile</a></td>
+            </tr>
+            <tr>
+                <td>2024-03-04</td>
+                <td>Emily Brown</td>
+                <td>36.8°C</td>
+                <td>125/85 mmHg</td>
+                <td>70 bpm</td>
+                <td>Headache</td>
+                <td><span class="badge bg-success">Normal</span></td>
+                <td><a href="../html/health.html" class="btn btn-sm btn-light">View Profile</a></td>
+            </tr>
+            <tr>
+                <td>2024-03-05</td>
+                <td>William Davis</td>
+                <td>37.5°C</td>
+                <td>130/95 mmHg</td>
+                <td>78 bpm</td>
+                <td>Nausea, Vomiting, Stomachache</td>
+                <td><span class="badge bg-danger">Hospitalized</span></td>
+                <td><a href="../html/health.html" class="btn btn-sm btn-light">View Profile</a></td>
+            </tr>
+            <tr>
+                <td>2024-03-01</td>
+                <td>John Doe</td>
+                <td>37.0°C</td>
+                <td>120/80 mmHg</td>
+                <td>72 bpm</td>
+                <td>Nausea, Headache</td>
+                <td><span class="badge bg-success">Normal</span></td>
+                <td><a href="../html/health.html" class="btn btn-sm btn-light">View Profile</a></td>
+            </tr>
+            <tr>
+                <td>2024-03-02</td>
+                <td>Jane Smith</td>
+                <td>37.3°C</td>
+                <td>130/85 mmHg</td>
+                <td>75 bpm</td>
+                <td>Vomiting, Stomachache</td>
+                <td><span class="badge bg-success">Normal</span></td>
+                <td><a href="../html/health.html" class="btn btn-sm btn-light">View Profile</a></td>
+            </tr>
+            <tr>
+                <td>2024-03-03</td>
+                <td>Michael Johnson</td>
+                <td>36.6°C</td>
+                <td>140/90 mmHg</td>
+                <td>80 bpm</td>
+                <td>Cough with phlegm, Dizziness, Pain in the heart</td>
+                <td><span class="badge bg-warning">Sick</span></td>
+                <td><a href="../html/health.html" class="btn btn-sm btn-light">View Profile</a></td>
+            </tr>
+            <tr>
+                <td>2024-03-04</td>
+                <td>Emily Brown</td>
+                <td>36.8°C</td>
+                <td>125/85 mmHg</td>
+                <td>70 bpm</td>
+                <td>Headache</td>
+                <td><span class="badge bg-success">Normal</span></td>
+                <td><a href="../html/health.html" class="btn btn-sm btn-light">View Profile</a></td>
+            </tr>
+            <tr>
+                <td>2024-03-05</td>
+                <td>William Davis</td>
+                <td>37.5°C</td>
+                <td>130/95 mmHg</td>
+                <td>78 bpm</td>
+                <td>Nausea, Vomiting, Stomachache</td>
+                <td><span class="badge bg-danger">Hospitalized</span></td>
+                <td><a href="../html/health.html" class="btn btn-sm btn-light">View Profile</a></td>
+            </tr>
+            <tr>
+                <td>2024-03-06</td>
+                <td>Alice Johnson</td>
+                <td>37.8°C</td>
+                <td>118/76 mmHg</td>
+                <td>68 bpm</td>
+                <td>Stomachache, Cough with phlegm</td>
+                <td><span class="badge bg-success">Normal</span></td>
+                <td><a href="../html/health.html" class="btn btn-sm btn-light">View Profile</a></td>
+            </tr>
+            <tr>
+                <td>2024-03-07</td>
+                <td>David Wilson</td>
+                <td>38.2°C</td>
+                <td>122/78 mmHg</td>
+                <td>74 bpm</td>
+                <td>Headache, Dizziness</td>
+                <td><span class="badge bg-success">Normal</span></td>
+                <td><a href="../html/health.html" class="btn btn-sm btn-light">View Profile</a></td>
+            </tr>
+            <tr>
+                <td>2024-03-08</td>
+                <td>Emma Martinez</td>
+                <td>37.4°C</td>
+                <td>125/82 mmHg</td>
+                <td>70 bpm</td>
+                <td>Nausea, Vomiting, Stomachache</td>
+                <td><span class="badge bg-warning">Sick</span></td>
+                <td><a href="../html/health.html" class="btn btn-sm btn-light">View Profile</a></td>
+            </tr>
+            <tr>
+                <td>2024-03-09</td>
+                <td>James Thompson</td>
+                <td>38.0°C</td>
+                <td>128/85 mmHg</td>
+                <td>76 bpm</td>
+                <td>Pain in the heart</td>
+                <td><span class="badge bg-success">Normal</span></td>
+                <td><a href="../html/health.html" class="btn btn-sm btn-light">View Profile</a></td>
+            </tr>
+            <tr>
+                <td>2024-03-10</td>
+                <td>Sophia Lee</td>
+                <td>37.9°C</td>
+                <td>130/88 mmHg</td>
+                <td>72 bpm</td>
+                <td>Headache, Stomachache, Dizziness</td>
+                <td><span class="badge bg-danger">Hospitalized</span></td>
+                <td><a href="../html/health.html" class="btn btn-sm btn-light">View Profile</a></td>
+            </tr>
+            <tr>
+                <td>2024-03-11</td>
+                <td>Oliver Harris</td>
+                <td>37.2°C</td>
+                <td>115/78 mmHg</td>
+                <td>68 bpm</td>
+                <td>Cough with phlegm, Dizziness, Pain in the heart</td>
+                <td><span class="badge bg-warning">Sick</span></td>
+                <td><a href="../html/health.html" class="btn btn-sm btn-light">View Profile</a></td>
+            </tr>
+            <tr>
+                <td>2024-03-12</td>
+                <td>Isabella Taylor</td>
+                <td>38.5°C</td>
+                <td>132/90 mmHg</td>
+                <td>80 bpm</td>
+                <td>Vomiting, Stomachache, Headache</td>
+                <td><span class="badge bg-danger">Hospitalized</span></td>
+                <td><a href="../html/health.html" class="btn btn-sm btn-light">View Profile</a></td>
+            </tr>
+            <tr>
+                <td>2024-03-13</td>
+                <td>William Thomas</td>
+                <td>37.6°C</td>
+                <td>126/84 mmHg</td>
+                <td>75 bpm</td>
+                <td>Nausea, Cough with phlegm, Dizziness</td>
+                <td><span class="badge bg-warning">Sick</span></td>
+                <td><a href="../html/health.html" class="btn btn-sm btn-light">View Profile</a></td>
+            </tr>
+            <tr>
+                <td>2024-03-14</td>
+                <td>Charlotte White</td>
+                <td>38.3°C</td>
+                <td>130/86 mmHg</td>
+                <td>78 bpm</td>
+                <td>Headache, Dizziness, Pain in the heart</td>
+                <td><span class="badge bg-danger">Hospitalized</span></td>
+                <td><a href="../html/health.html" class="btn btn-sm btn-light">View Profile</a></td>
+            </tr>
+            <tr>
+                <td>2024-03-15</td>
+                <td>Mason Rodriguez</td>
+                <td>37.7°C</td>
+                <td>124/82 mmHg</td>
+                <td>70 bpm</td>
+                <td>Vomiting, Stomachache, Cough with phlegm</td>
+                <td><span class="badge bg-warning">Sick</span></td>
+                <td><a href="../html/health.html" class="btn btn-sm btn-light">View Profile</a></td>
+            </tr>
+            <tr>
+                <td>2024-03-16</td>
+                <td>Sophia Martinez</td>
+                <td>38.1°C</td>
+                <td>127/84 mmHg</td>
+                <td>72 bpm</td>
+                <td>Dizziness, Pain in the heart</td>
+                <td><span class="badge bg-success">Normal</span></td>
+                <td><a href="../html/health.html" class="btn btn-sm btn-light">View Profile</a></td>
+            </tr>
+            <tr>
+                <td>2024-03-17</td>
+                <td>Lucas Hernandez</td>
+                <td>37.5°C</td>
+                <td>123/80 mmHg</td>
+                <td>68 bpm</td>
+                <td>Nausea, Headache, Dizziness</td>
+                <td><span class="badge bg-success">Normal</span></td>
+                <td><a href="../html/health.html" class="btn btn-sm btn-light">View Profile</a></td>
+            </tr>
+        </tbody>
+               
+                </table>
             </div>
-            
-                
-                   
+         </div>
+    </div>
+</div>
+
+<script>
+    function toggleDropdown(dropdownId) {
+        var dropdown = document.getElementById(dropdownId + 'Dropdown');
+        if (dropdown.style.display === 'none' || dropdown.style.display === '') {
+            dropdown.style.display = 'block';
+        } else {
+            dropdown.style.display = 'none';
+        }
+    }
+
+    function filterByDate(filterValue) {
+        console.log('Filter by date:', filterValue);
+        // Close dropdown after selection
+        document.getElementById('dateDropdown').style.display = 'none';
+        // Get all table rows
+        var rows = document.querySelectorAll('#healthdetailsTable tbody tr');
+        rows.forEach(function(row) {
+            row.style.display = ''; // Reset to show all rows
+        });
+        if (filterValue === 'ascending') {
+            // Code to sort by ascending date
+            rows = Array.from(rows).sort((a, b) => new Date(a.cells[0].textContent) - new Date(b.cells[0].textContent));
+        } else if (filterValue === 'descending') {
+            // Code to sort by descending date
+            rows = Array.from(rows).sort((a, b) => new Date(b.cells[0].textContent) - new Date(a.cells[0].textContent));
+        }
+        // Re-append sorted rows to the table
+        var tbody = document.querySelector('#healthdetailsTable tbody');
+        tbody.innerHTML = ''; // Clear existing rows
+        rows.forEach(function(row) {
+            tbody.appendChild(row);
+        });
+    }
+
+    function filterByName(filterValue) {
+        console.log('Filter by name:', filterValue);
+        // Close dropdown after selection
+        document.getElementById('nameDropdown').style.display = 'none';
+        // Get all table rows
+        var rows = document.querySelectorAll('#healthdetailsTable tbody tr');
+        rows.forEach(function(row) {
+            row.style.display = ''; // Reset to show all rows
+        });
+        if (filterValue === 'ascending') {
+            // Code to sort by ascending name
+            rows = Array.from(rows).sort((a, b) => a.cells[1].textContent.localeCompare(b.cells[1].textContent));
+        } else if (filterValue === 'descending') {
+            // Code to sort by descending name
+            rows = Array.from(rows).sort((a, b) => b.cells[1].textContent.localeCompare(a.cells[1].textContent));
+        }
+        // Re-append sorted rows to the table
+        var tbody = document.querySelector('#healthdetailsTable tbody');
+        tbody.innerHTML = ''; // Clear existing rows
+        rows.forEach(function(row) {
+            tbody.appendChild(row);
+        });
+    }
+
+    function filterByTemperature(filterValue) {
+        console.log('Filter by temperature:', filterValue);
+        // Close dropdown after selection
+        document.getElementById('temperatureDropdown').style.display = 'none';
+        // Get all table rows
+        var rows = document.querySelectorAll('#healthdetailsTable tbody tr');
+        rows.forEach(function(row) {
+            row.style.display = ''; // Reset to show all rows
+        });
+        if (filterValue === 'ascending') {
+            // Code to sort by ascending temperature
+            rows = Array.from(rows).sort((a, b) => parseFloat(a.cells[2].textContent) - parseFloat(b.cells[2].textContent));
+        } else if (filterValue === 'descending') {
+            // Code to sort by descending temperature
+            rows = Array.from(rows).sort((a, b) => parseFloat(b.cells[2].textContent) - parseFloat(a.cells[2].textContent));
+        }
+        // Re-append sorted rows to the table
+        var tbody = document.querySelector('#healthdetailsTable tbody');
+        tbody.innerHTML = ''; // Clear existing rows
+        rows.forEach(function(row) {
+            tbody.appendChild(row);
+        });
+    }
+
+    function filterByBloodPressure(filterValue) {
+        console.log('Filter by blood pressure:', filterValue);
+        // Close dropdown after selection
+        document.getElementById('bloodPressureDropdown').style.display = 'none';
+        // Get all table rows
+        var rows = document.querySelectorAll('#healthdetailsTable tbody tr');
+        rows.forEach(function(row) {
+            row.style.display = ''; // Reset to show all rows
+        });
+        if (filterValue === 'ascending') {
+            // Code to sort by ascending blood pressure
+            rows = Array.from(rows).sort((a, b) => {
+                const [systolicA, diastolicA] = a.cells[3].textContent.split('/');
+                const [systolicB, diastolicB] = b.cells[3].textContent.split('/');
+                return (parseInt(systolicA) + parseInt(diastolicA)) - (parseInt(systolicB) + parseInt(diastolicB));
+            });
+        } else if (filterValue === 'descending') {
+            // Code to sort by descending blood pressure
+            rows = Array.from(rows).sort((a, b) => {
+                const [systolicA, diastolicA] = a.cells[3].textContent.split('/');
+                const [systolicB, diastolicB] = b.cells[3].textContent.split('/');
+                return (parseInt(systolicB) + parseInt(diastolicB)) - (parseInt(systolicA) + parseInt(diastolicA));
+            });
+        }
+        // Re-append sorted rows to the table
+        var tbody = document.querySelector('#healthdetailsTable tbody');
+        tbody.innerHTML = ''; // Clear existing rows
+        rows.forEach(function(row) {
+            tbody.appendChild(row);
+        });
+    }
+
+    function filterByHeartRate(filterValue) {
+        console.log('Filter by heart rate:', filterValue);
+        // Close dropdown after selection
+        document.getElementById('heartRateDropdown').style.display = 'none';
+        // Get all table rows
+        var rows = document.querySelectorAll('#healthdetailsTable tbody tr');
+        rows.forEach(function(row) {
+            row.style.display = ''; // Reset to show all rows
+        });
+        if (filterValue === 'ascending') {
+            // Code to sort by ascending heart rate
+            rows = Array.from(rows).sort((a, b) => parseInt(a.cells[4].textContent) - parseInt(b.cells[4].textContent));
+        } else if (filterValue === 'descending') {
+            // Code to sort by descending heart rate
+            rows = Array.from(rows).sort((a, b) => parseInt(b.cells[4].textContent) - parseInt(a.cells[4].textContent));
+        }
+        // Re-append sorted rows to the table
+        var tbody = document.querySelector('#healthdetailsTable tbody');
+        tbody.innerHTML = ''; // Clear existing rows
+        rows.forEach(function(row) {
+            tbody.appendChild(row);
+        });
+    }
+
+    function filterByOtherSymptoms(filterValue) {
+        console.log('Filter by symptoms:', filterValue);
+        // Close dropdown after selection
+        document.getElementById('otherSymptomsDropdown').style.display = 'none';
+        // Get all table rows
+        var rows = document.querySelectorAll('#healthdetailsTable tbody tr');
+        rows.forEach(function(row) {
+            console.log(row.cells[5].textContent.toLowerCase()); // Log the content of the symptoms cell
+            row.style.display = ''; // Reset to show all rows
+        });
+        if (filterValue !== 'all') {
+            rows.forEach(function(row) {
+                if (!row.cells[5].textContent.toLowerCase().includes(filterValue)) {
+                    row.style.display = 'none'; // Hide rows not matching the selected status
+                }
+            });
+        }
+    }
 
 
-
+    function filterByStatus(filterValue) {
+        console.log('Filter by status:', filterValue);
+        // Close dropdown after selection
+        document.getElementById('statusDropdown').style.display = 'none';
+        // Get all table rows
+        var rows = document.querySelectorAll('#healthdetailsTable tbody tr');
+        rows.forEach(function(row) {
+            row.style.display = ''; // Reset to show all rows
+        });
+        if (filterValue !== 'all') {
+            rows.forEach(function(row) {
+                if (!row.cells[6].textContent.toLowerCase().includes(filterValue)) {
+                    row.style.display = 'none'; // Hide rows not matching the selected status
+                }
+            });
+        }
+    }
+</script>
 
             </div>
         </div>
