@@ -79,84 +79,334 @@
 
 
 
-
-            <div class="col-sm m-3 border vh-100 overflow-auto bg-light rounded-4">
-                <!-- content -->
-                <div class="m-2">
-                    <a href="./Dboard.html" class="btn btn-primary mt-3">
-                        <i class="fa-solid fa-arrow-left"></i>
-                    </a>
-                </div>
-            
-                <hr class="mt-3">
-                <div class="container">
-                    <div class="bg-white rounded-4 border">
-                        <!-- Sentiments Details Filter -->
-                        <div class="mb-3 p-3" style="background-color: #f8f9fa;">
-                            <div class="d-flex justify-content-between">
-                                <div class="d-flex align-items-center">
-                                    <label for="entriesSelectSentiments" class="form-label me-2 mb-0">Show</label>
-                                    <select class="form-select form-select-sm me-2" id="entriesSelectSentiments" style="width: 60px;">
-                                        <option value="10">10</option>
-                                        <option value="25">25</option>
-                                        <option value="50">50</option>
-                                        <option value="100">100</option>
-                                    </select>
-                                    <span class="mb-0 me-2">entries</span>
-                                </div>
-                                <div class="d-flex align-items-center">
-                                    <label for="sortSelectSentiments" class="form-label me-2 mb-0">Sort:</label>
-                                    <select class="form-select form-select-sm me-2" id="sortSelectSentiments">
-                                        <option value="asc">Ascending</option>
-                                        <option value="desc">Descending</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Sentiments Details Table -->
-                        <div class="mb-3">
-                            <table id="sentimentsDetailsTable" class="table table-striped">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">#</th>
-                                        <th scope="col">Date</th>
-                                        <th scope="col">Name</th>
-                                        <th scope="col">Note Title</th>
-                                        <th scope="col">Note Description</th>
-                                        <th scope="col">Status</th>
-                                        <th scope="col">Action</th> <!-- New Action column -->
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <th scope="row">1</th>
-                                        <td>2024-03-18</td>
-                                        <td>John Doe</td>
-                                        <td>Happy Thoughts</td>
-                                        <td>Feeling optimistic about the future</td>
-                                        <td><span class="badge bg-success">Positive</span></td>
-                                        <td><a href="../html/orphanSentiment_detail.html" class="btn btn-sm btn-light">View Detail</a></td> <!-- Action column -->
-                                    </tr>
-                                    <!-- More table rows -->
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-
-
-
-
-            </div>
+<!-- Heading -->
+<div class="col-sm m-3 border vh-100 overflow-auto bg-light rounded-4">
+    <!-- content -->
+    <div class="m-2">
+        <a href="./Dboard.html" class="btn btn-primary mt-3">
+            <i class="fa-solid fa-arrow-left"></i>
+        </a>
+        <div class="text-center mx-auto">
+            <h1 class="mb-0">Orphan Behavioral Manifestation Log</h1>
         </div>
     </div>
+
+ 
+    
+
+<hr class="mt-3">
+    <div class="container">
+        <div class="bg-white rounded-4 border">
+
+<!-- Sentiments Details Filter -->
+<div class="mb-3 p-3" style="background-color: #f8f9fa;">
+<div class="d-flex justify-content-between mb-3">
+    <div class="d-flex align-items-center">
+        <label for="entriesSelect" class="form-label me-2 mb-0">Show</label>
+        <select class="form-select form-select-sm me-2" id="entriesSelect" style="width: 100px;">
+            <option value="all">All</option>
+            <option value="5">5</option>
+            <option value="10" selected>10</option>
+            <option value="15">15</option>
+            <option value="20">20</option>
+            <option value="25">25</option>
+            <option value="30">30</option>
+            <option value="35">35</option>
+            <option value="40">40</option>
+            <option value="45">45</option>
+            <option value="50">50</option>
+        </select>
+        <span class="me-2">entries</span>
+    </div>
+    <div class="d-flex align-items-center">
+    </div>
+</div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Get the select element
+        var entriesSelect = document.getElementById("entriesSelect");
+
+        // Add event listener for change
+        entriesSelect.addEventListener("change", function() {
+            // Get the selected value
+            var selectedValue = entriesSelect.value;
+            // Call a function to update the table with the selected number of entries
+            updateTableEntries(selectedValue);
+        });
+    });
+
+    function updateTableEntries(entries) {
+        // Get the table body
+        var tableBody = document.querySelector('#sentimentDetailsTable tbody');
+        // Get all rows in the table
+        var rows = tableBody.querySelectorAll('tr');
+
+        // Show all rows if 'All' is selected
+        if (entries === 'all') {
+            rows.forEach(function(row) {
+                row.style.display = '';
+            });
+            return;
+        }
+
+        // Hide all rows
+        rows.forEach(function(row) {
+            row.style.display = 'none';
+        });
+
+        // Show only the specified number of entries
+        for (var i = 0; i < entries; i++) {
+            if (rows[i]) {
+                rows[i].style.display = '';
+            }
+        }
+    }
+</script>
+
+                        
+<!-- Sentiments Details Table -->
+<div class="mb-3">
+    <table id="sentimentDetailsTable" class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">
+                    Date 
+                    <button class="btn btn-sm me-2" onclick="toggleDropdown('date')">
+                        <i class="bi bi-filter"></i>
+                    </button>
+                    <!-- Date filter dropdown -->
+                    <div id="dateDropdown" class="dropdown-menu" style="display: none;">
+                        <a class="dropdown-item" href="#" onclick="filterByDate('all')">All</a>
+                        <a class="dropdown-item" href="#" onclick="filterByDate('ascending')">Ascending</a>
+                        <a class="dropdown-item" href="#" onclick="filterByDate('descending')">Descending</a>
+                    </div>
+                </th>
+                <th scope="col">
+                    Name 
+                    <button class="btn btn-sm me-2" onclick="toggleDropdown('name')">
+                        <i class="bi bi-filter"></i>
+                    </button>
+                    <!-- Name filter dropdown -->
+                    <div id="nameDropdown" class="dropdown-menu" style="display: none;">
+                        <a class="dropdown-item" href="#" onclick="filterByName('all')">All</a>
+                        <a class="dropdown-item" href="#" onclick="filterByName('ascending')">Ascending</a>
+                        <a class="dropdown-item" href="#" onclick="filterByName('descending')">Descending</a>
+                    </div>
+                </th>
+                <th scope="col">Note Title</th>
+                <th scope="col">Note Description</th>
+                <th scope="col">
+                    Status 
+                    <button class="btn btn-sm me-2" onclick="toggleDropdown('status')">
+                        <i class="bi bi-filter"></i>
+                    </button>
+                    <!-- Status filter dropdown -->
+                    <div id="statusDropdown" class="dropdown-menu" style="display: none;">
+                        <a class="dropdown-item" href="#" onclick="filterByStatus('all')">All</a>
+                        <a class="dropdown-item" href="#" onclick="filterByStatus('positive')">Positive</a>
+                        <a class="dropdown-item" href="#" onclick="filterByStatus('neutral')">Neutral</a>
+                        <a class="dropdown-item" href="#" onclick="filterByStatus('negative')">Negative</a>
+                    </div>
+                </th>
+                <th scope="col">Details</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Dummy data -->
+            <tr>
+                <td>2024-03-18</td>
+                <td>John Doe</td>
+                <td>Happy Thoughts</td>
+                <td>Feeling optimistic about the future</td>
+                <td><span class="badge bg-success">Positive</span></td>
+                <td><a href="../html/orphanSentiment_detail.html" class="btn btn-sm btn-light">View Profile</a></td>
+            </tr>
+            <!-- More dummy data for positive status -->
+            <tr>
+                <td>2024-03-19</td>
+                <td>Jane Smith</td>
+                <td>Excited News</td>
+                <td>Received great news today!</td>
+                <td><span class="badge bg-success">Positive</span></td>
+                <td><a href="../html/orphanSentiment_detail.html" class="btn btn-sm btn-light">View Profile</a></td>
+            </tr>
+            <tr>
+                <td>2024-03-20</td>
+                <td>Michael Johnson</td>
+                <td>Inspiring Day</td>
+                <td>Had an inspiring conversation with a friend.</td>
+                <td><span class="badge bg-success">Positive</span></td>
+                <td><a href="../html/orphanSentiment_detail.html" class="btn btn-sm btn-light">View Profile</a></td>
+            </tr>
+            <!-- More dummy data for neutral status -->
+            <tr>
+                <td>2024-03-21</td>
+                <td>Susan Lee</td>
+                <td>Neutral Thoughts</td>
+                <td>Feeling neither happy nor sad today.</td>
+                <td><span class="badge bg-warning text-dark">Neutral</span></td>
+                <td><a href="../html/orphanSentiment_detail.html" class="btn btn-sm btn-light">View Profile</a></td>
+            </tr>
+            <tr>
+                <td>2024-03-22</td>
+                <td>David Brown</td>
+                <td>Neutral Observations</td>
+                <td>Observing the world with a neutral perspective.</td>
+                <td><span class="badge bg-warning text-dark">Neutral</span></td>
+                <td><a href="../html/orphanSentiment_detail.html" class="btn btn-sm btn-light">View Profile</a></td>
+            </tr>
+            <!-- More dummy data for negative status -->
+            <tr>
+                <td>2024-03-23</td>
+                <td>Linda Williams</td>
+                <td>Disappointed Meeting</td>
+                <td>Had a disappointing meeting with the client.</td>
+                <td><span class="badge bg-danger">Negative</span></td>
+                <td><a href="../html/orphanSentiment_detail.html" class="btn btn-sm btn-light">View Profile</a></td>
+            </tr>
+            <tr>
+                <td>2024-03-24</td>
+                <td>Christopher Davis</td>
+                <td>Unfortunate Event</td>
+                <td>Experienced an unfortunate event today.</td>
+                <td><span class="badge bg-danger">Negative</span></td>
+                <td><a href="../html/orphanSentiment_detail.html" class="btn btn-sm btn-light">View Profile</a></td>
+            </tr>
+            <tr>
+                <td>2024-03-25</td>
+                <td>Amy Taylor</td>
+                <td>Feeling Down</td>
+                <td>Feeling down due to recent events.</td>
+                <td><span class="badge bg-danger">Negative</span></td>
+                <td><a href="../html/orphanSentiment_detail.html" class="btn btn-sm btn-light">View Profile</a></td>
+            </tr>                     
+             <!-- More table rows -->
+            </tbody>
+        </table>
+    </div>
+</div>
+</div>
+</div>
+ 
+<!-- Dropdown Functions -->
+<script>
+    function toggleDropdown(dropdownId) {
+        var dropdown = document.getElementById(dropdownId + 'Dropdown');
+        if (dropdown.style.display === 'none' || dropdown.style.display === '') {
+            dropdown.style.display = 'block';
+        } else {
+            dropdown.style.display = 'none';
+        }
+    }
+
+    function filterByDate(filterValue) {
+        // Implement filtering logic based on the filterValue (all, ascending, descending)
+        console.log('Filter by date:', filterValue);
+    }
+
+    function filterByName(filterValue) {
+        // Implement filtering logic based on the filterValue (all, ascending, descending)
+        console.log('Filter by name:', filterValue);
+    }
+
+    function filterByStatus(filterValue) {
+        // Implement filtering logic based on the filterValue (all, positive, neutral, negative)
+        console.log('Filter by status:', filterValue);
+    }
+</script>
+
+<script>
+    function toggleDropdown(dropdownId) {
+        var dropdown = document.getElementById(dropdownId + 'Dropdown');
+        if (dropdown.style.display === 'none' || dropdown.style.display === '') {
+            dropdown.style.display = 'block';
+        } else {
+            dropdown.style.display = 'none';
+        }
+    }
+
+    function filterByDate(filterValue) {
+        console.log('Filter by date:', filterValue);
+        // Close dropdown after selection
+        document.getElementById('dateDropdown').style.display = 'none';
+        // Get all table rows
+        var rows = document.querySelectorAll('#sentimentDetailsTable tbody tr');
+        rows.forEach(function(row) {
+            row.style.display = ''; // Reset to show all rows
+        });
+        if (filterValue === 'ascending') {
+            // Code to sort by ascending date
+            // Example: Sort the rows by date in ascending order
+            rows = Array.from(rows).sort((a, b) => new Date(a.cells[0].textContent) - new Date(b.cells[0].textContent));
+        } else if (filterValue === 'descending') {
+            // Code to sort by descending date
+            // Example: Sort the rows by date in descending order
+            rows = Array.from(rows).sort((a, b) => new Date(b.cells[0].textContent) - new Date(a.cells[0].textContent));
+        }
+        // Re-append sorted rows to the table
+        var tbody = document.querySelector('#sentimentDetailsTable tbody');
+        tbody.innerHTML = ''; // Clear existing rows
+        rows.forEach(function(row) {
+            tbody.appendChild(row);
+        });
+    }
+
+    function filterByName(filterValue) {
+        console.log('Filter by name:', filterValue);
+        // Close dropdown after selection
+        document.getElementById('nameDropdown').style.display = 'none';
+        // Get all table rows
+        var rows = document.querySelectorAll('#sentimentDetailsTable tbody tr');
+        rows.forEach(function(row) {
+            row.style.display = ''; // Reset to show all rows
+        });
+        if (filterValue === 'ascending') {
+            // Code to sort by ascending name
+            // Example: Sort the rows by name in ascending order
+            rows = Array.from(rows).sort((a, b) => a.cells[1].textContent.localeCompare(b.cells[1].textContent));
+        } else if (filterValue === 'descending') {
+            // Code to sort by descending name
+            // Example: Sort the rows by name in descending order
+            rows = Array.from(rows).sort((a, b) => b.cells[1].textContent.localeCompare(a.cells[1].textContent));
+        }
+        // Re-append sorted rows to the table
+        var tbody = document.querySelector('#sentimentDetailsTable tbody');
+        tbody.innerHTML = ''; // Clear existing rows
+        rows.forEach(function(row) {
+            tbody.appendChild(row);
+        });
+    }
+
+    function filterByStatus(filterValue) {
+        console.log('Filter by status:', filterValue);
+        // Close dropdown after selection
+        document.getElementById('statusDropdown').style.display = 'none';
+        // Get all table rows
+        var rows = document.querySelectorAll('#sentimentDetailsTable tbody tr');
+        rows.forEach(function(row) {
+            row.style.display = ''; // Reset to show all rows
+        });
+        if (filterValue !== 'all') {
+            // Filter rows by status
+            rows.forEach(function(row) {
+                if (row.cells[4].textContent.toLowerCase() !== filterValue) {
+                    row.style.display = 'none'; // Hide rows that do not match the selected status
+                }
+            });
+        }
+    }
+</script>
+
+
+</div>
+</div>
+</div>
 
 
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-<!-- Bootstrap JS (Optional, if you want to include JavaScript functionality) -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
 integrity="sha384-k0o3DwR4PRc2N9O2zu3f+9z0WMDrmsy+44lOv2Y/mzO+g4nDkhzL/KLrLmB0ES9k"
 crossorigin="anonymous"></script>
