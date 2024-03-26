@@ -78,15 +78,17 @@
             </div>
 
 
-
-
-            <div class="col-sm m-3 border vh-100 overflow-auto bg-light rounded-4">
-                <!-- content -->
-                <div class="m-2">
-                    <a href="./Dboard.html" class="btn btn-primary mt-3">
-                        <i class="fa-solid fa-arrow-left"></i>
-                    </a>
-                </div>
+<!-- Heading -->
+<div class="col-sm m-3 border vh-100 overflow-auto bg-light rounded-4">
+    <!-- content -->
+    <div class="m-2">
+        <a href="./Dboard.html" class="btn btn-primary mt-3">
+            <i class="fa-solid fa-arrow-left"></i>
+        </a>
+        <div class="text-center mx-auto">
+            <h1 class="mb-0">Orphan Age Range</h1>
+        </div>
+    </div>
 
 
 <!-- Age -->
@@ -94,62 +96,404 @@
 <hr class="mt-3">
 <div class="container">
     <div class="bg-white rounded-4 border">
-        <!-- Age Details Filter -->
-        <div class="mb-3 p-3" style="background-color: #f8f9fa;">
-            <div class="d-flex justify-content-between">
-                <div class="d-flex align-items-center">
-                    <label for="entriesSelectAge" class="form-label me-2 mb-0">Show</label>
-                    <select class="form-select form-select-sm me-2" id="entriesSelectAge" style="width: 60px;">
-                        <option value="10">10</option>
-                        <option value="25">25</option>
-                        <option value="50">50</option>
-                        <option value="100">100</option>
-                    </select>
-                    <span class="mb-0 me-2">entries</span>
-                </div>
-                <div class="d-flex align-items-center">
-                    <label for="ageRangeSelect" class="form-label me-2 mb-0">Age Range:</label>
-                    <select class="form-select form-select-sm me-2" id="ageRangeSelect">
-                        <option value="">All</option>
-                        <option value="0-5">0-5</option>
-                        <option value="6-10">6-10</option>
-                        <option value="11-15">11-15</option>
-                        <option value="16-20">16-20</option>
-                        <option value="21-25">21-25</option>
-                        <!-- Add more appropriate age ranges as needed -->
-                    </select>
-                </div>
-            </div>
+        
+<!-- Age Details Filter -->
+<div class="mb-3 p-3" style="background-color: #f8f9fa;">
+    <div class="d-flex justify-content-between mb-3">
+        <div class="d-flex align-items-center">
+            <label for="entriesSelect" class="form-label me-2 mb-0">Show</label>
+            <select class="form-select form-select-sm me-2" id="entriesSelect" style="width: 100px;">
+                <option value="all">All</option>
+                <option value="5">5</option>
+                <option value="10" selected>10</option>
+                <option value="15">15</option>
+                <option value="20">20</option>
+                <option value="25">25</option>
+                <option value="30">30</option>
+                <option value="35">35</option>
+                <option value="40">40</option>
+                <option value="45">45</option>
+                <option value="50">50</option>
+            </select>
+            <span class="me-2">entries</span>
         </div>
-        <!-- Age Details Table -->
-        <div class="mb-3">
-            <table id="ageDetailsTable" class="table table-striped">
-                <thead>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">Birthdate</th>
-                        <th scope="col">Age</th>
-                        <th scope="col">Age Range</th>
-                        <th scope="col">Action</th> <!-- New Action column -->
-                    </tr>
-                </thead>
+        <div class="d-flex align-items-center">
+        </div>
+    </div>
+    </div>
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Get the select element
+            var entriesSelect = document.getElementById("entriesSelect");
+    
+            // Add event listener for change
+            entriesSelect.addEventListener("change", function() {
+                // Get the selected value
+                var selectedValue = entriesSelect.value;
+                // Call a function to update the table with the selected number of entries
+                updateTableEntries(selectedValue);
+            });
+        });
+    
+        function updateTableEntries(entries) {
+            // Get the table body
+            var tableBody = document.querySelector('#ageDetailsTable tbody');
+            // Get all rows in the table
+            var rows = tableBody.querySelectorAll('tr');
+    
+            // Show all rows if 'All' is selected
+            if (entries === 'all') {
+                rows.forEach(function(row) {
+                    row.style.display = '';
+                });
+                return;
+            }
+    
+            // Hide all rows
+            rows.forEach(function(row) {
+                row.style.display = 'none';
+            });
+    
+            // Show only the specified number of entries
+            for (var i = 0; i < entries; i++) {
+                if (rows[i]) {
+                    rows[i].style.display = '';
+                }
+            }
+        }
+    </script>
+
+<!-- Age Details Table -->
+<div class="mb-3">
+    <table id="ageDetailsTable" class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">
+                    Name
+                    <button class="btn btn-sm me-2" onclick="toggleDropdown('name')">
+                        <i class="bi bi-filter"></i>
+                    </button>
+                    <!-- Name filter dropdown -->
+                    <div id="nameDropdown" class="dropdown-menu" style="display: none;">
+                        <a class="dropdown-item" href="#" onclick="filterByName('all')">All</a>
+                        <a class="dropdown-item" href="#" onclick="filterByName('ascending')">Ascending</a>
+                        <a class="dropdown-item" href="#" onclick="filterByName('descending')">Descending</a>
+                    </div>
+                </th>
+                <th scope="col">
+                    Birthdate
+                    <button class="btn btn-sm me-2" onclick="toggleDropdown('birthdate')">
+                        <i class="bi bi-filter"></i>
+                    </button>
+                    <!-- Birthdate filter dropdown -->
+                    <div id="birthdateDropdown" class="dropdown-menu" style="display: none;">
+                        <a class="dropdown-item" href="#" onclick="filterByBirthdate('all')">All</a>
+                        <a class="dropdown-item" href="#" onclick="filterByBirthdate('ascending')">Ascending</a>
+                        <a class="dropdown-item" href="#" onclick="filterByBirthdate('descending')">Descending</a>
+                    </div>
+                </th>
+                <th scope="col">
+                    Age
+                    <button class="btn btn-sm me-2" onclick="toggleDropdown('age')">
+                        <i class="bi bi-filter"></i>
+                    </button>
+                    <!-- Age filter dropdown -->
+                    <div id="ageDropdown" class="dropdown-menu" style="display: none;">
+                        <a class="dropdown-item" href="#" onclick="filterByAge('all')">All</a>
+                        <a class="dropdown-item" href="#" onclick="filterByAge('ascending')">Ascending</a>
+                        <a class="dropdown-item" href="#" onclick="filterByAge('descending')">Descending</a>
+                    </div>
+                </th>
+                <th scope="col">
+                    Age Range
+                    <button class="btn btn-sm me-2" onclick="toggleDropdown('ageRange')">
+                        <i class="bi bi-filter"></i>
+                    </button>
+                    <!-- Age range filter dropdown -->
+                    <div id="ageRangeDropdown" class="dropdown-menu" style="display: none;">
+                        <a class="dropdown-item" href="#" onclick="filterByAgeRange('all')">All</a>
+                        <a class="dropdown-item" href="#" onclick="filterByAgeRange('0-1')">0-1 year old</a>
+                        <a class="dropdown-item" href="#" onclick="filterByAgeRange('2-5')">2-5 years old</a>
+                        <a class="dropdown-item" href="#" onclick="filterByAgeRange('6-10')">6-10 years old</a>
+                        <a class="dropdown-item" href="#" onclick="filterByAgeRange('10-15')">10-15 years old</a>
+                        <a class="dropdown-item" href="#" onclick="filterByAgeRange('15-20')">15-20 years old</a>
+                        <a class="dropdown-item" href="#" onclick="filterByAgeRange('20-25')">20-25 years old</a>
+                    </div>
+                </th>
+                <th scope="col">Details</th>
+            </tr>
+        </thead>
                 <tbody>
                     <tr>
-                        <th scope="row">1</th>
-                        <td>Jane Doe</td>
-                        <td>2000-05-15</td>
-                        <td>24</td>
-                        <td><span class="badge bg-success">21-25</span></td>
-                        <td><a href="..\html\orphan-content.html" class="btn btn-sm btn-light">View Details</a></td> <!-- Action column -->
+                        <td>John Doe</td>
+                        <td>2023-03-15</td>
+                        <td>1</td>
+                        <td><span class="badge bg-info text-dark">0-1 year old</span></td>
+                        <td><a href="..\html\orphan-content.html" class="btn btn-sm btn-light">View Profile</a></td>
+                    </tr>
+                    <tr>
+                        <td>Jane Smith</td>
+                        <td>2020-05-20</td>
+                        <td>4</td>
+                        <td><span class="badge bg-info text-dark">2-5 years old</span></td>
+                        <td><a href="..\html\orphan-content.html" class="btn btn-sm btn-light">View Profile</a></td>
+                    </tr>
+                    <tr>
+                        <td>Michael Johnson</td>
+                        <td>2018-08-10</td>
+                        <td>7</td>
+                        <td><span class="badge bg-info text-dark">6-10 years old</span></td>
+                        <td><a href="..\html\orphan-content.html" class="btn btn-sm btn-light">View Profile</a></td>
+                    </tr>
+                    <tr>
+                        <td>Emily Brown</td>
+                        <td>2015-12-05</td>
+                        <td>10</td>
+                        <td><span class="badge bg-info text-dark">10-15 years old</span></td>
+                        <td><a href="..\html\orphan-content.html" class="btn btn-sm btn-light">View Profile</a></td>
+                    </tr>
+                    <tr>
+                        <td>Matthew Wilson</td>
+                        <td>2010-06-18</td>
+                        <td>15</td>
+                        <td><span class="badge bg-info text-dark">15-20 years old</span></td>
+                        <td><a href="..\html\orphan-content.html" class="btn btn-sm btn-light">View Profile</a></td>
+                    </tr>
+                    <tr>
+                        <td>Olivia Garcia</td>
+                        <td>2005-09-30</td>
+                        <td>20</td>
+                        <td><span class="badge bg-info text-dark">20-25 years old</span></td>
+                        <td><a href="..\html\orphan-content.html" class="btn btn-sm btn-light">View Profile</a></td>
+                    </tr>
+                    <tr>
+                        <td>William Martinez</td>
+                        <td>2002-11-25</td>
+                        <td>23</td>
+                        <td><span class="badge bg-info text-dark">20-25 years old</span></td>
+                        <td><a href="..\html\orphan-content.html" class="btn btn-sm btn-light">View Profile</a></td>
+                    </tr>
+                    <tr>
+                        <td>Sophia Taylor</td>
+                        <td>1999-04-02</td>
+                        <td>25</td>
+                        <td><span class="badge bg-info text-dark">20-25 years old</span></td>
+                        <td><a href="..\html\orphan-content.html" class="btn btn-sm btn-light">View Profile</a></td>
+                    </tr>
+                    <tr>
+                        <td>Ethan Anderson</td>
+                        <td>1996-07-14</td>
+                        <td>28</td>
+                        <td><span class="badge bg-info text-dark">20-25 years old</span></td>
+                        <td><a href="..\html\orphan-content.html" class="btn btn-sm btn-light">View Profile</a></td>
+                    </tr>
+                    <tr>
+                        <td>Isabella Hernandez</td>
+                        <td>2019-02-28</td>
+                        <td>3</td>
+                        <td><span class="badge bg-info text-dark">2-5 years old</span></td>
+                        <td><a href="..\html\orphan-content.html" class="btn btn-sm btn-light">View Profile</a></td>
+                    </tr>
+                    <tr>
+                        <td>Aiden Miller</td>
+                        <td>2016-10-08</td>
+                        <td>8</td>
+                        <td><span class="badge bg-info text-dark">6-10 years old</span></td>
+                        <td><a href="..\html\orphan-content.html" class="btn btn-sm btn-light">View Profile</a></td>
+                    </tr>
+                    <tr>
+                        <td>Luna Rodriguez</td>
+                        <td>2022-11-10</td>
+                        <td>1</td>
+                        <td><span class="badge bg-info text-dark">0-1 year old</span></td>
+                        <td><a href="..\html\orphan-content.html" class="btn btn-sm btn-light">View Profile</a></td>
+                    </tr>
+                    <tr>
+                        <td>Elijah White</td>
+                        <td>2020-07-05</td>
+                        <td>3</td>
+                        <td><span class="badge bg-info text-dark">2-5 years old</span></td>
+                        <td><a href="..\html\orphan-content.html" class="btn btn-sm btn-light">View Profile</a></td>
+                    </tr>
+                    <tr>
+                        <td>Grace Thompson</td>
+                        <td>2017-04-15</td>
+                        <td>6</td>
+                        <td><span class="badge bg-info text-dark">6-10 years old</span></td>
+                        <td><a href="..\html\orphan-content.html" class="btn btn-sm btn-light">View Profile</a></td>
+                    </tr>
+                    <tr>
+                        <td>Liam Harris</td>
+                        <td>2012-09-20</td>
+                        <td>11</td>
+                        <td><span class="badge bg-info text-dark">10-15 years old</span></td>
+                        <td><a href="..\html\orphan-content.html" class="btn btn-sm btn-light">View Profile</a></td>
+                    </tr>
+                    <tr>
+                        <td>Emma Martinez</td>
+                        <td>2008-12-02</td>
+                        <td>15</td>
+                        <td><span class="badge bg-info text-dark">15-20 years old</span></td>
+                        <td><a href="..\html\orphan-content.html" class="btn btn-sm btn-light">View Profile</a></td>
+                    </tr>
+                    <tr>
+                        <td>Lucas Wilson</td>
+                        <td>2005-06-30</td>
+                        <td>18</td>
+                        <td><span class="badge bg-info text-dark">15-20 years old</span></td>
+                        <td><a href="..\html\orphan-content.html" class="btn btn-sm btn-light">View Profile</a></td>
                     </tr>
                     <!-- More table rows -->
                 </tbody>
             </table>
-        </div>
-    </div>
-</div>
 
+<script>
+    // Function to toggle dropdown menu visibility
+function toggleDropdown(dropdownId) {
+    var dropdownMenu = document.getElementById(dropdownId + 'Dropdown');
+    if (dropdownMenu.style.display === 'none' || dropdownMenu.style.display === '') {
+        dropdownMenu.style.display = 'block';
+    } else {
+        dropdownMenu.style.display = 'none';
+    }
+}
+
+</script>
+
+<script>
+    function filterByName(filterValue) {
+        console.log('Filter by name:', filterValue);
+        // Close dropdown after selection
+        document.getElementById('nameDropdown').style.display = 'none';
+        // Get all table rows
+        var rows = document.querySelectorAll('#ageDetailsTable tbody tr');
+        rows.forEach(function(row) {
+            row.style.display = ''; // Reset to show all rows
+        });
+        if (filterValue === 'ascending') {
+            // Code to sort by ascending name
+            // Example: Sort the rows by name in ascending order
+            rows = Array.from(rows).sort((a, b) => a.cells[0].textContent.localeCompare(b.cells[0].textContent));
+        } else if (filterValue === 'descending') {
+            // Code to sort by descending name
+            // Example: Sort the rows by name in descending order
+            rows = Array.from(rows).sort((a, b) => b.cells[0].textContent.localeCompare(a.cells[0].textContent));
+        }
+        // Re-append sorted rows to the table
+        var tbody = document.querySelector('#ageDetailsTable tbody');
+        tbody.innerHTML = ''; // Clear existing rows
+        rows.forEach(function(row) {
+            tbody.appendChild(row);
+        });
+    }
+
+    function filterByBirthdate(filterValue) {
+        console.log('Filter by birthdate:', filterValue);
+        // Close dropdown after selection
+        document.getElementById('birthdateDropdown').style.display = 'none';
+        // Get all table rows
+        var rows = document.querySelectorAll('#ageDetailsTable tbody tr');
+        rows.forEach(function(row) {
+            row.style.display = ''; // Reset to show all rows
+        });
+        if (filterValue === 'ascending') {
+            // Code to sort by ascending name
+            // Example: Sort the rows by name in ascending order
+            rows = Array.from(rows).sort((a, b) => a.cells[1].textContent.localeCompare(b.cells[1].textContent));
+        } else if (filterValue === 'descending') {
+            // Code to sort by descending name
+            // Example: Sort the rows by name in descending order
+            rows = Array.from(rows).sort((a, b) => b.cells[1].textContent.localeCompare(a.cells[1].textContent));
+        }
+        // Re-append sorted rows to the table
+        var tbody = document.querySelector('#ageDetailsTable tbody');
+        tbody.innerHTML = ''; // Clear existing rows
+        rows.forEach(function(row) {
+            tbody.appendChild(row);
+        });
+    }
+
+    function filterByAge(filterValue) {
+    console.log('Filter by age:', filterValue);
+    // Close dropdown after selection
+    document.getElementById('ageDropdown').style.display = 'none';
+    // Get all table rows
+    var rows = document.querySelectorAll('#ageDetailsTable tbody tr');
+    rows.forEach(function(row) {
+        row.style.display = ''; // Reset to show all rows
+    });
+    if (filterValue === 'ascending') {
+        // Code to sort by ascending age
+        // Example: Sort the rows by age in ascending order
+        rows = Array.from(rows).sort((a, b) => parseInt(a.cells[2].textContent) - parseInt(b.cells[2].textContent));
+    } else if (filterValue === 'descending') {
+        // Code to sort by descending age
+        // Example: Sort the rows by age in descending order
+        rows = Array.from(rows).sort((a, b) => parseInt(b.cells[2].textContent) - parseInt(a.cells[2].textContent));
+    }
+    // Re-append sorted rows to the table
+    var tbody = document.querySelector('#ageDetailsTable tbody');
+    tbody.innerHTML = ''; // Clear existing rows
+    rows.forEach(function(row) {
+        tbody.appendChild(row);
+    });
+}
+
+// Function to filter by grading
+function filterByGrading(filterValue) {
+    console.log('Filter by grading:', filterValue);
+    // Get all table rows
+    var rows = document.querySelectorAll('#academicDetailsTable tbody tr');
+    rows.forEach(function(row) {
+        var cellValue = row.cells[4].textContent.trim();
+        if (filterValue === 'all' || cellValue === filterValue) {
+            row.style.display = ''; // Show row if it matches the filter or if "All" is selected
+        } else {
+            row.style.display = 'none'; // Hide row otherwise
+        }
+    });
+}
+
+// Function to filter by year
+function filterByYear(filterValue) {
+    console.log('Filter by year:', filterValue);
+    // Get all table rows
+    var rows = document.querySelectorAll('#academicDetailsTable tbody tr');
+    rows.forEach(function(row) {
+        var cellValue = row.cells[2].textContent.trim();
+        if (filterValue === 'all' || cellValue === filterValue) {
+            row.style.display = ''; // Show row if it matches the filter or if "All" is selected
+        } else {
+            row.style.display = 'none'; // Hide row otherwise
+        }
+    });
+}
+
+// Function to toggle dropdown display
+function toggleDropdown(dropdownId) {
+    var dropdown = document.getElementById(dropdownId + 'Dropdown');
+    var dropdownStyle = window.getComputedStyle(dropdown);
+    if (dropdownStyle.display === 'none') {
+        // Close all other dropdowns
+        closeAllDropdowns();
+        // Show the selected dropdown
+        dropdown.style.display = 'block';
+    } else {
+        // Toggle the display of the dropdown
+        dropdown.style.display = dropdownStyle.display === 'none' ? 'block' : 'none';
+    }
+}
+
+// Function to close all dropdowns
+function closeAllDropdowns() {
+    var allDropdowns = document.querySelectorAll('.dropdown-menu');
+    allDropdowns.forEach(function(dropdown) {
+        dropdown.style.display = 'none';
+    });
+}
+
+</script>
 
 
 
