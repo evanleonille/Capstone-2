@@ -89,43 +89,57 @@
       <div class="col-sm m-3 border vh-100 overflow-auto bg-light rounded-4">
         <!-- content -->
         <div>
-          <div class="container-fluid mb-0  ">
-            <div class=" border row d-flex justify-content-center">
-              <div class="col-3 m-1 bgdash rounded-2">
-                <h3>Total Orphans</h3>
-                <h4>100</h4>
+          <div class="mb-0">
+            <div class=" row d-flex justify-content-center">
+              <div href="" class=" btn btn-primary col-md-3  d-flex flex-column justify-content-center bgdash rounded-2 border border-2 border-light rounded-4">
+                <h5>Orphan Analysis</h5>
+                <h1 class="text-center mt-3">100</h1>
               </div>
-              <div class="col-2 m-1 bgdash rounded-2">
-                <h3>Gender</h3>
+              <div class=" col-md-2  d-flex flex-column justify-content-center bgdash rounded-2 border border-2 border-light rounded-4">
+                <h5 class="pt-2 text-center">Gender <i class="txtColor icon fa-solid fa-venus-mars fs-5"></i></h5>
                 <div class="row">
-                  <h5 class="col-6 text-center">
-                    Male
-                  </h5>
-                  <p class="col-6 text-center bg-success rounded-2 w-50">
-                    55
-                  </p>
-                  <h5 class="col-6 text-center">
-                    Female
-                  </h5>
-                  <p class="col-6 text-center">
-                    55
-                  </p>
-                </div>
+                  <div class="col-6 d-flex justify-content-center align-items-center">
+                      <p class="m-1">Male</p>
+                  </div>
+                  <div class="col-6 d-flex justify-content-center align-items-center">
+                      <span class="badge bg-success rounded-pill">55</span>
+                  </div>
+                  <div class="col-6 d-flex justify-content-center align-items-center">
+                      <p class="m-1">Female</p>
+                  </div>
+                  <div class="col-6 d-flex justify-content-center align-items-center">
+                      <span class="badge bg-danger rounded-pill">55</span>
+                  </div>
+                  <hr class="mb-1">
+                  <div class="col-6 d-flex justify-content-center align-items-center">
+                      <p class="m-1">Total</p>
+                  </div>
+                  <div class="col-6 d-flex justify-content-center align-items-center">
+                      <span class="badge bg-secondary rounded-pill">110</span>
+                  </div>
               </div>
-              <div class="col-2 m-1 bgdash rounded-2">
-                <h3>Health</h3>
-                <h4>50</h4>
-                <p>Needs Intervention</p>
+              
               </div>
-              <div class="col-2 m-1 bgdash rounded-2">
-                <h3>Academic</h3>
-                <h4>50</h4>
-                <p>Needs Intervention</p>
+              <div class=" btn  btn-primary col-md-2  d-flex flex-column justify-content-center bgdash rounded-2 border border-2 border-light rounded-4">
+                <a href="./intervention-health.html" class="text-decoration-none txtColor">
+                  <h5 class="pt-2">Behavior <i class="txtColor icon fa-solid fa-heart-circle-exclamation fs-5"></i></h5>
+                  <h1 class="text-center mt-3">100</h1>
+                  <p>Needs Intervention</p>
+                </a>
               </div>
-              <div class="col-2 m-1 bgdash rounded-2">
-                <h3>Behavior</h3>
-                <h4>50</h4>
-                <p>Needs Intervention</p>
+              <div class=" btn  btn-primary col-md-2  d-flex flex-column justify-content-center bgdash rounded-2 border border-2 border-light rounded-4">
+                <a href="./intervention-academics.html" class="text-decoration-none txtColor">
+                  <h5 class="pt-2">Education <i class="txtColor icon fa-solid fa-building-circle-exclamation fs-5"></i></h5>
+                  <h1 class="text-center mt-3">100</h1>
+                  <p>Needs Intervention</p>
+                </a>
+              </div>
+              <div class=" btn  btn-primary col-md-2  d-flex flex-column justify-content-center bgdash rounded-2 border border-2 border-light rounded-4">
+                <a href="./intervention-behavior.html" class="text-decoration-none txtColor">
+                  <h5 class="pt-2" >Behavior <i class="txtColor icon fa-solid fa-person-circle-exclamation fs-5"></i></h5>
+                  <h1 class="text-center mt-3">100</h1>
+                  <p>Needs Intervention</p>
+                </a>
               </div>
 
             </div>
@@ -138,28 +152,28 @@
             <div class="container mt-0">
               <div class="row">
                 <div class="col-md-4">
-                  <div id="sentimentsChartContainer" class="container mt-3 pb-3 justify-content-center align-items-center border border-2 rounded-2 d-flex p-4" onclick="window.location.href='./chart-sentiments.html';" style="height: 460px; flex-wrap: nowrap; flex-direction: column;">
-                    <h4 class="text-center ">Sentiments Chart</h4>
+                  <div id="sentimentsChartContainer" class="container mt-1 mb-0 justify-content-center align-items-center border border-2 rounded-2 d-flex p-0" onclick="window.location.href='./chart-sentiments.html';" style="height: 460px; flex-wrap: nowrap; flex-direction: column;">
+                    <h5 class="text-center ">Sentiments Chart</h5>
                     <canvas id="sentimentsChart"></canvas>
                   </div>
                 </div>
                 <div class="col-md-4">
-                  <div class="container rounded-4 border border-2 mt-3 canvas-container bar-chart-container" onclick="window.location.href='./chart-bmi.html';" style="height: 26.1h;">
-                    <h4 class="text-center">BMI Chart</h4>
+                  <div class="container mt-2 mb-4 justify-content-evenly align-items-center border border-2 rounded-2 d-flex flex-column  p-0" onclick="window.location.href='./chart-bmi.html';" style="height: 26.1h;">
+                    <h5 class="text-center">BMI Chart</h5>
                     <canvas id="bmiChart"></canvas>
                   </div>
-                  <div class="container rounded-4 border border-2 mt-3 canvas-container bar-chart-container" onclick="window.location.href='./chart-health.html';" style="height: 26.1h;">
-                    <h4 class="text-center">Health Chart</h4>
+                  <div class="container mt-2 mb-0 justify-content-evenly align-items-center border border-2 rounded-2 d-flex flex-column  p-0" onclick="window.location.href='./chart-health.html';" style="height: 26.1h;">
+                    <h5 class="text-center">Health Chart</h5>
                     <canvas id="healthChart"></canvas>
                   </div>
                 </div>
                 <div class="col-md-4">
-                  <div class="container rounded-4 border border-2 mt-3 canvas-container bar-chart-container" onclick="window.location.href='./chart-age.html';"style="height: 26.1h;">
-                    <h4 class="text-center">Age Chart</h4>
+                  <div class="container mt-2 mb-4 justify-content-evenly align-items-center border border-2 rounded-2 d-flex flex-column  p-0" onclick="window.location.href='./chart-age.html';"style="height: 26.1h;">
+                    <h5 class="text-center">Age Chart</h5>
                     <canvas id="ageChart"></canvas>
                   </div>
-                  <div class="container rounded-4 border border-2 mt-3 canvas-container bar-chart-container" onclick="window.location.href='./chart-academic.html';" style="height: 26.1h;">
-                    <h4 class="text-center">Academic Chart</h4>
+                  <div class="container mt-2 mb-0 justify-content-evenly align-items-center border border-2 rounded-2 d-flex flex-column  p-0" onclick="window.location.href='./chart-academic.html';" style="height: 26.1h;">
+                    <h5 class="text-center">Academic Chart</h5>
                     <canvas id="academicChart"></canvas>
                   </div>
                 </div>
